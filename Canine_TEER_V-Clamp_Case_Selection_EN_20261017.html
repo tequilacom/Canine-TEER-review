@@ -75,5 +75,26 @@
     Prepared by Xufeng Ying ｜ 2026-10-17 ｜ Reserved page for the Case Selection Summary (English version).
   </div>
 </div>
+
+<!-- Waline Comment System ｜ Comments -->
+<section class="waline-section" style="max-width:1000px;margin:20px auto 0;background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);padding:26px 40px 22px;">
+  <h2 style="font-size:1.05rem;color:#16213e;border-left:5px solid #533483;padding-left:12px;margin-bottom:10px;">Comments ｜ 评论</h2>
+  <p style="font-size:0.85rem;color:#666;margin-bottom:14px;">💬 Comments require only a nickname — no registration needed. 评论仅需昵称，无需注册。</p>
+  <div id="waline"></div>
+</section>
+<style>
+  @media (max-width: 720px) { .waline-section { padding-left: 20px !important; padding-right: 20px !important; } }
+  @media print { .waline-section { display: none !important; } }
+</style>
+<script type="module">
+  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+  init({
+    el: '#waline',
+    serverURL: 'https://waline-comment-ad9jhxwe4-tequilacom-9916.vercel.app',
+    lang: 'en-US',
+    requiredMeta: ['nick'],
+    pageview: true
+  });
+</script>
 </body>
 </html>
