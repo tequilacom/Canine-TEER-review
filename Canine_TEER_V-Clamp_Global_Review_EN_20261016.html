@@ -44,6 +44,11 @@
   .timeline-item { margin-bottom: 12px; position: relative; }
   .timeline-item::before { content: ''; position: absolute; left: -27px; top: 7px; width: 11px; height: 11px; border-radius: 50%; background: #533483; }
   .timeline-year { font-weight: 700; color: #533483; }
+
+  /* ===== Back-to-home floating button ===== */
+  .home-btn { position: fixed; top: 18px; right: 18px; z-index: 99; display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; background: rgba(22,33,62,0.92); color: #fff; border-radius: 999px; text-decoration: none; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.02em; box-shadow: 0 4px 14px rgba(0,0,0,0.22); backdrop-filter: blur(4px); transition: all .18s ease; }
+  .home-btn:hover { background: #533483; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(83,52,131,0.35); }
+  .home-btn img { height: 18px; width: 18px; display: block; }
   .callout { background: #f5f3ff; border: 1px solid #d8cfeb; border-radius: 10px; padding: 14px 18px; margin: 12px 0; font-size: 0.88rem; }
   .legend { padding: 16px 40px 28px; font-size: 0.78rem; color: #777; }
   .legend span.tag-A, .legend span.tag-B, .legend span.tag-C, .legend span.tag-D { margin-right: 8px; }
@@ -63,10 +68,12 @@
     h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
     thead { display: table-header-group; }
     a { color: inherit !important; text-decoration: none !important; }
+    .home-btn { display: none !important; }
   }
 </style>
 </head>
 <body>
+<a class="home-btn" href="index.html" title="Back to document index">⌂ Home</a>
 <div class="container">
   <div class="header">
     <h1>Transcatheter Edge-to-Edge Repair (TEER) of the Mitral Valve in Dogs and the V-Clamp Device: A Global Literature Review</h1>
