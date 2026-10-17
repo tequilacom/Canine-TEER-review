@@ -37,6 +37,9 @@
   caption { caption-side: top; text-align: left; font-size: 0.8rem; color: #6b6b80; padding: 0 0 7px; }
   .callout { background: #fff8ec; border-left: 4px solid #d99b2b; border-radius: 8px; padding: 13px 17px; margin: 14px 0 18px; font-size: 0.86rem; color: #5a4a2a; }
   .callout strong { color: #8a5c00; }
+  .reflink { color: #533483; text-decoration: none; border-bottom: 1px dotted #b3a6cf; }
+  .reflink:hover { border-bottom-color: #533483; }
+  .doi-tag { display: block; font-size: 0.66rem; color: #8a86a0; font-weight: 400; letter-spacing: 0; margin-top: 2px; }
   .note { background: #eef6f2; border-left: 4px solid #2f8f6b; border-radius: 8px; padding: 13px 17px; margin: 14px 0 18px; font-size: 0.86rem; color: #2c4d40; }
   .lv { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; letter-spacing: .02em; }
   .lv-g { background: #dff3e6; color: #1c6b42; }
@@ -81,7 +84,7 @@
     <div class="lede">
       <h2>本文件回答三个问题</h2>
       <p><strong>① 谁适合做</strong> —— 各团队实际采用的入选标准是什么；<strong>② 谁不适合</strong> —— 哪些解剖与临床特征被一致认定为排除或高危；<strong>③ 依据是什么</strong> —— 每一条判断的原始出处与证据强度。</p>
-      <p>文件分为两半：<strong>前半为逐篇对照（第一至七节）</strong>，把每篇文献的入选、排除、阈值原样并置，供溯源核查；<strong>后半为综合清单（第八节）</strong>，把上述证据收敛成一套可直接用于门诊与术前讨论的判断流程，每一条后附文献编号。</p>
+      <p>文件分为两半：<strong>前半为逐篇对照（第一至七节）</strong>，把每篇文献的入选、排除、阈值原样并置，供溯源核查；<strong>后半为综合清单（第八节）</strong>，把上述证据收敛成一套可直接用于门诊与术前讨论的判断流程，每一条后附文献编号。文末附录收录作者所在团队 10 例队列的筛选实践与结局，作为主清单的实测对照。</p>
       <p><strong>证据基础须知：</strong>犬 TEER 的全部解剖阈值目前合计基于不足 300 例犬的临床经验，尚无随机对照研究验证；现有"标准"多为各中心在失败病例中回溯形成的经验性警戒线，而非经过验证的算法。使用时应视为决策辅助，而非准入裁决。</p>
     </div>
 
@@ -93,23 +96,23 @@
           <caption>表 1　本文件所依据的文献及其证据属性</caption>
           <thead><tr><th>文献</th><th>设计</th><th>犬数</th><th>ACVIM 分期</th><th>有无疑似预定义标准</th><th>编号</th></tr></thead>
           <tbody>
-            <tr><td class="k">Potter 等，2024（科罗拉多州立大学）</td><td>前瞻性单臂可行性研究</td><td>50（筛查 56）</td><td>B2 30%／C 64%／D 6%</td><td><strong>有完整预定义纳入与排除标准</strong>；解剖排除事后演化</td><td>[1]</td></tr>
-            <tr><td class="k">Potter 等，2025</td><td>单中心队列，1 年超声随访＋2 年生存</td><td>111</td><td>B2／C／D</td><td>纳入有预定义；<strong>解剖排除无预定义</strong>，随研究演化</td><td>[2]</td></tr>
-            <tr><td class="k">Potter 等，2026</td><td>TEE 筛选与引导方法学专题（130 犬经验）</td><td>130（经验基数）</td><td>未限定</td><td>以"候选性要素"与"警示特征"表述，非硬性列表</td><td>[3]</td></tr>
-            <tr><td class="k">Orton &amp; Carroll，2025</td><td>人类经验迁移综述＋四中心 300+ 犬集体经验</td><td>300+（集体经验）</td><td>未限定</td><td>提出<strong>四级解剖复杂度分级</strong>（本文件第五节照录）</td><td>[4]</td></tr>
-            <tr><td class="k">Kongchatree &amp; Rattanasrisomporn，2026</td><td>叙述性综述＋五步选择框架</td><td>—（文献综合）</td><td>B2／C／早期 D</td><td>框架性标准，作者自述为推理辅助、非验证算法</td><td>[5]</td></tr>
-            <tr><td class="k">Del Nero 等，2025</td><td>前瞻性方法学比较（PISA vs 容量法）</td><td>51</td><td>B1 16／B2 18／C 17</td><td>无治疗标准；提供<strong>定量方法与参考区间</strong></td><td>[6]</td></tr>
-            <tr><td class="k">Scansen，2026</td><td>心脏 CT 解剖与后处理综述</td><td>—（单中心图例）</td><td>—</td><td>无筛选阈值；提供 CT 技术方案与适用边界</td><td>[7]</td></tr>
-            <tr><td class="k">Lee 等，2025（韩国，JVIM）</td><td>回顾性病例系列</td><td>20</td><td>B2 3／C 11／D 6</td><td><strong>无正式纳排标准</strong>；评估因素仅作参考（早期死亡 35%）</td><td>[8]</td></tr>
-            <tr><td class="k">Lee 等，2025（韩国，Vet Sci）</td><td>回顾性生物标志物研究</td><td>25</td><td>C／D</td><td>仅分析性纳排；<strong>不因合并症排除</strong></td><td>[9]</td></tr>
-            <tr><td class="k">Liu 等，2020</td><td>前瞻性首例系列</td><td>8</td><td>B1（全部）</td><td>叙述式入选条件；<strong>无排除标准</strong></td><td>[10]</td></tr>
-            <tr><td class="k">Petchdee 等，2024（泰国）</td><td>前瞻性试点</td><td>4</td><td>B2 2／C 2</td><td>叙述式入选标准；无显式排除清单</td><td>[11]</td></tr>
-            <tr><td class="k">Petchdee 等，2026（泰国）</td><td>前瞻性观察（心肌功）</td><td>10</td><td>B2 3／C 6／D 1</td><td><strong>六条明确排除标准</strong>；随访 4 例死亡后收紧</td><td>[12]</td></tr>
-            <tr><td class="k">Kurogochi 等，2025</td><td>前瞻性安全性研究（术中 TEE 并发症）</td><td>60</td><td>—（二尖瓣介入）</td><td>仅 3 条 TEE 相关排除；验证评估环节的安全性</td><td>[13]</td></tr>
+            <tr><td class="k"><a class="reflink" href="https://doi.org/10.3389/fvets.2024.1448828" target="_blank" rel="noopener">Potter 等，2024（科罗拉多州立大学）</a><span class="doi-tag">doi:10.3389/fvets.2024.1448828</span></td><td>前瞻性单臂可行性研究</td><td>50（筛查 56）</td><td>B2 30%／C 64%／D 6%</td><td><strong>有完整预定义纳入与排除标准</strong>；解剖排除事后演化</td><td>[1]</td></tr>
+            <tr><td class="k"><a class="reflink" href="https://doi.org/10.1016/j.jvc.2025.12.002" target="_blank" rel="noopener">Potter 等，2025</a><span class="doi-tag">doi:10.1016/j.jvc.2025.12.002</span></td><td>单中心队列，1 年超声随访＋2 年生存</td><td>111</td><td>B2／C／D</td><td>纳入有预定义；<strong>解剖排除无预定义</strong>，随研究演化</td><td>[2]</td></tr>
+            <tr><td class="k"><a class="reflink" href="https://doi.org/10.1016/j.jvc.2026.01.003" target="_blank" rel="noopener">Potter 等，2026</a><span class="doi-tag">doi:10.1016/j.jvc.2026.01.003</span></td><td>TEE 筛选与引导方法学专题（130 犬经验）</td><td>130（经验基数）</td><td>未限定</td><td>以"候选性要素"与"警示特征"表述，非硬性列表</td><td>[3]</td></tr>
+            <tr><td class="k"><a class="reflink" href="https://doi.org/10.1016/j.jvc.2025.10.005" target="_blank" rel="noopener">Orton &amp; Carroll，2025</a><span class="doi-tag">doi:10.1016/j.jvc.2025.10.005</span></td><td>人类经验迁移综述＋四中心 300+ 犬集体经验</td><td>300+（集体经验）</td><td>未限定</td><td>提出<strong>四级解剖复杂度分级</strong>（本文件第五节照录）</td><td>[4]</td></tr>
+            <tr><td class="k"><a class="reflink" href="https://doi.org/10.3389/fvets.2026.1900762" target="_blank" rel="noopener">Kongchatree &amp; Rattanasrisomporn，2026</a><span class="doi-tag">doi:10.3389/fvets.2026.1900762</span></td><td>叙述性综述＋五步选择框架</td><td>—（文献综合）</td><td>B2／C／早期 D</td><td>框架性标准，作者自述为推理辅助、非验证算法</td><td>[5]</td></tr>
+            <tr><td class="k"><a class="reflink" href="https://doi.org/10.1016/j.jvc.2025.01.002" target="_blank" rel="noopener">Del Nero 等，2025</a><span class="doi-tag">doi:10.1016/j.jvc.2025.01.002</span></td><td>前瞻性方法学比较（PISA vs 容量法）</td><td>51</td><td>B1 16／B2 18／C 17</td><td>无治疗标准；提供<strong>定量方法与参考区间</strong></td><td>[6]</td></tr>
+            <tr><td class="k"><a class="reflink" href="https://doi.org/10.1016/j.jvc.2026.05.006" target="_blank" rel="noopener">Scansen，2026</a><span class="doi-tag">doi:10.1016/j.jvc.2026.05.006</span></td><td>心脏 CT 解剖与后处理综述</td><td>—（单中心图例）</td><td>—</td><td>无筛选阈值；提供 CT 技术方案与适用边界</td><td>[7]</td></tr>
+            <tr><td class="k"><a class="reflink" href="https://doi.org/10.1111/jvim.70156" target="_blank" rel="noopener">Lee 等，2025（韩国，JVIM）</a><span class="doi-tag">doi:10.1111/jvim.70156</span></td><td>回顾性病例系列</td><td>20</td><td>B2 3／C 11／D 6</td><td><strong>无正式纳排标准</strong>；评估因素仅作参考（早期死亡 35%）</td><td>[8]</td></tr>
+            <tr><td class="k"><a class="reflink" href="https://doi.org/10.3390/vetsci12030223" target="_blank" rel="noopener">Lee 等，2025（韩国，Vet Sci）</a><span class="doi-tag">doi:10.3390/vetsci12030223</span></td><td>回顾性生物标志物研究</td><td>25</td><td>C／D</td><td>仅分析性纳排；<strong>不因合并症排除</strong></td><td>[9]</td></tr>
+            <tr><td class="k"><a class="reflink" href="https://doi.org/10.3389/fvets.2020.597879" target="_blank" rel="noopener">Liu 等，2020</a><span class="doi-tag">doi:10.3389/fvets.2020.597879</span></td><td>前瞻性首例系列</td><td>8</td><td>B1（全部）</td><td>叙述式入选条件；<strong>无排除标准</strong></td><td>[10]</td></tr>
+            <tr><td class="k"><a class="reflink" href="https://doi.org/10.3390/ani14213068" target="_blank" rel="noopener">Petchdee 等，2024（泰国）</a><span class="doi-tag">doi:10.3390/ani14213068</span></td><td>前瞻性试点</td><td>4</td><td>B2 2／C 2</td><td>叙述式入选标准；无显式排除清单</td><td>[11]</td></tr>
+            <tr><td class="k"><a class="reflink" href="https://doi.org/10.3390/vetsci13060597" target="_blank" rel="noopener">Petchdee 等，2026（泰国）</a><span class="doi-tag">doi:10.3390/vetsci13060597</span></td><td>前瞻性观察（心肌功）</td><td>10</td><td>B2 3／C 6／D 1</td><td><strong>六条明确排除标准</strong>；随访 4 例死亡后收紧</td><td>[12]</td></tr>
+            <tr><td class="k"><a class="reflink" href="https://doi.org/10.1111/jvim.70037" target="_blank" rel="noopener">Kurogochi 等，2025</a><span class="doi-tag">doi:10.1111/jvim.70037</span></td><td>前瞻性安全性研究（术中 TEE 并发症）</td><td>60</td><td>—（二尖瓣介入）</td><td>仅 3 条 TEE 相关排除；验证评估环节的安全性</td><td>[13]</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="callout"><strong>读表要点：</strong>13 篇中只有 1 篇（[1]）给出了完整的预定义纳排标准；2 篇（[8][10]）明确承认无标准，且 [8] 的早期死亡率为 35%。这一分布本身就是本文最重要的发现之一——<strong>犬 TEER 至今没有行业统一的准入标准，现有实践依赖各中心的经验与回溯教训。</strong></div>
+      <div class="callout"><strong>读表要点：</strong>13 篇中仅 2 篇（[1][12]）给出了完整的预定义纳入与排除标准，其余或为非硬性表述、或仅设分析性纳排；2 篇（[8][10]）明确承认无标准，且 [8] 的早期死亡率为 35%。这一分布本身就是本文最重要的发现之一——<strong>犬 TEER 至今没有行业统一的准入标准，现有实践依赖各中心的经验与回溯教训。</strong></div>
     </section>
 
     <section class="sec">
@@ -354,6 +357,67 @@
     </section>
 
     <section class="sec">
+      <h2>附录　本团队队列的一手经验：10 例 TEER 的筛选实践与结局</h2>
+      <div class="sub">Petchdee 等，2026（<em>Vet Sci</em> 13(6):597）｜ 作者所在团队（泰国农业大学兽医学院）的前瞻性观察队列，共 10 例</div>
+      <p>前九节的判断均来自外部文献。本附录补充一个内部视角：作者所在团队于 2026 年报告的 10 例犬 TEER 队列，其纳入与排除标准、随访结局与事后修订，是本文若干条目的直接来源之一，也可视为对第八节综合清单的一次实测检验。因系单中心、小样本、无对照设计，以下内容按经验陈述处理，不作因果推断。</p>
+
+      <div class="tw">
+        <table>
+          <caption>表 10　本团队队列（10 例）的纳入与排除标准</caption>
+          <thead><tr><th style="width:13%">类别</th><th>条目</th></tr></thead>
+          <tbody>
+            <tr><td class="k">纳入（3 条）</td><td>① 超声证实 MMVD，MR 至少中度（复合评分 ≥6；分级为轻度 &lt;6、中度 6–&lt;12、重度 ≥12）；② 体重与二尖瓣前后（AP）径与 TEER 装置兼容；③ 有临床症状，且具备手术指征、风险匹配</td></tr>
+            <tr><td class="k">排除（6 条）</td><td>① 收缩期 AP 径 &lt;12 mm；② 临床显著二尖瓣狭窄，含基线跨瓣压差升高提示功能性狭窄者；③ 先天性心脏病；④ 与容量负荷无关的严重收缩功能障碍；⑤ 重度肺动脉高压；⑥ 可能干扰麻醉或随访的全身性疾病</td></tr>
+            <tr><td class="k">队列构成</td><td>ACVIM B2 3 例、C 6 例、D 1 例；体重 8.1 ± 5.16 kg；LA:Ao 1.9 ± 0.3；LVIDdN 1.85 ± 0.25；术前跨瓣压差 3.03 ± 0.65 mmHg；MR 复合评分 12.2 ± 4.4</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tw">
+        <table>
+          <caption>表 11　术后即刻的减流幅度与心肌功变化（n = 10）</caption>
+          <thead><tr><th style="width:34%">指标</th><th>术前</th><th>术后即刻</th><th>变化</th></tr></thead>
+          <tbody>
+            <tr><td class="k">MR 复合评分</td><td>12.2</td><td>7.1</td><td>重度 → 中度</td></tr>
+            <tr><td class="k">vena contracta 宽度</td><td>5.9 mm</td><td>3.8 mm</td><td>下降</td></tr>
+            <tr><td class="k">反流量（MRV）</td><td>8.4 mL/beat</td><td>3.3 mL/beat</td><td>下降约 61%</td></tr>
+            <tr><td class="k">跨二尖瓣压差</td><td>3.03 ± 0.65 mmHg</td><td>1.01 ± 0.48 mmHg</td><td>下降，未触及 5 mmHg 警戒线</td></tr>
+            <tr><td class="k">整体做功指数（GWI）</td><td>921.7 mmHg%</td><td>1149.3 mmHg%</td><td>上升</td></tr>
+            <tr><td class="k">整体做功效率（GWE）</td><td>84.9%</td><td>92.7%</td><td>上升</td></tr>
+            <tr><td class="k">整体无效做功（GWW）</td><td>338.3 mmHg%</td><td>179.0 mmHg%</td><td>下降</td></tr>
+            <tr><td class="k">LVIDdN</td><td>1.90</td><td>1.76</td><td>下降（反向重构的早期信号）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>功能层面的外部验证：存活病例中 3/6 例 C、D 期犬因临床改善而下调利尿剂剂量，研究期内共 3 例实现完全停用利尿剂。</p>
+
+      <div class="tw">
+        <table>
+          <caption>表 12　本队列表取的六条可操作经验及其在主清单中的位置</caption>
+          <thead><tr><th style="width:8%">编号</th><th style="width:26%">经验</th><th>依据</th><th style="width:15%">对应第八节</th></tr></thead>
+          <tbody>
+            <tr><td class="k">L1</td><td><strong>瓣环下限是器械属性，不是生物学边界</strong></td><td>本队列的 12 mm 下限对应当年最短的 III 型器械；现行器械谱为 14–22 mm，故阈值随器械更替而变，筛选用"现有器械谱"而非固定数字</td><td>第三步</td></tr>
+            <tr><td class="k">L2</td><td><strong>术前跨瓣压差应作为筛选项，而非仅术中指标</strong></td><td>排除基线压差升高（提示功能性狭窄）者后，术后压差均值降至 1.01 mmHg，说明术前预筛与术后安全性同源</td><td>第二步、第四步</td></tr>
+            <tr><td class="k">L3</td><td><strong>血栓栓塞风险应单列为筛选项</strong></td><td>3/10 例于术后 1–4 周出现急性神经症状，按疑似血栓栓塞记录，构成 4 例死亡中的 3 例；团队已据此将术后早期依诺肝素联合抗血小板写入机构方案</td><td>第四步、第六步</td></tr>
+            <tr><td class="k">L4</td><td><strong>期别上限宜止于"早期 D"</strong></td><td>本队列为全部文献中少数纳入 D 期的队列之一（1/10 例）；4 例死亡均集中于进展期病例，且发生于术后 1–4 周</td><td>第一步</td></tr>
+            <tr><td class="k">L5</td><td><strong>部分减流即有临床价值</strong></td><td>减流同时伴随 GWI 上升、GWE 上升、GWW 下降与 LVIDdN 下降，GLS 单独不能反映这一改善</td><td>第六步</td></tr>
+            <tr><td class="k">L6</td><td><strong>筛选口径应随失败病例回溯修订</strong></td><td>作者自述：候选人选择已更趋保守，更多考量疾病分期、心脏重构程度、肺动脉高压、全身共存病与血栓栓塞风险</td><td>全部六步</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <strong>原文表述（作者自述，可作为本节的直接引证）：</strong><br>
+        "Based on our experience, candidate selection has become more conservative, with increased consideration given to disease stage, degree of cardiac remodeling, pulmonary hypertension, systemic comorbidities, and thromboembolic risk."<br>
+        "The deaths occurred between 1 and 4 weeks after the procedure and were not associated with intraoperative or immediate postoperative complications."
+      </div>
+
+      <div class="callout">
+        <strong>与主清单的对照：</strong>本队列的纳排宽于 Potter 系列——AP 下限取 12 mm 而非 14 mm、纳入 D 期、未设肺动脉高压的定量门槛、未将血栓栓塞风险列为排除条目；其随访死亡率（4/10）也高于 Potter 2024／2025 报告的水平。两者的方向一致，但样本量小、无对照、时点不同，只能作为提示而非因果证据。<strong>这也解释了本文第八节为何把期别、肺动脉高压、共存病与术后抗栓并列为筛选项，而不是只依赖解剖条件。</strong>以上三条已分别落入第八节的第一步、第四步与第六步。
+      </div>
+    </section>
+
+    <section class="sec">
       <h2>参考文献</h2>
       <ol class="refs">
         <li>Potter BM, Orton EC, Scansen BA, et al. Clinical feasibility study of transcatheter edge-to-edge mitral valve repair in dogs with the canine V-Clamp device. <em>Front Vet Sci</em> 2024;11:1448828.</li>
@@ -368,7 +432,7 @@
         <li>Liu B, Leach SB, Pan W, et al. Preliminary outcome of a novel edge-to-edge closure device to manage mitral regurgitation in dogs. <em>Front Vet Sci</em> 2020;7:597879.</li>
         <li>Petchdee S, et al. Transcatheter edge-to-edge mitral valve repair using the V-Clamp device in dogs: a four-case pilot study. <em>Animals</em> 2024;14(21):3068.</li>
         <li>Petchdee S, et al. Myocardial work analysis before and after transcatheter edge-to-edge mitral valve repair in dogs. <em>Vet Sci</em> 2026;13(6):597.</li>
-        <li>Kurogochi K, et al. Transesophageal echocardiography-related complications during mitral valve intervention in dogs. <em>J Vet Intern Med</em> 2025;39:e70420.</li>
+        <li>Kurogochi K, et al. Transesophageal echocardiography-related complications during mitral valve intervention in dogs. <em>J Vet Intern Med</em> 2025;39(2):e70037.</li>
       </ol>
     </section>
   </div>
