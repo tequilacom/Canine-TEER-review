@@ -56,6 +56,7 @@
   .ev-c { background: #fdf3e2; color: #8a5c00; border-color: #e8cf9d; }
   .ev-d { background: #f0eef7; color: #4d3f7a; border-color: #c9bfe0; }
   .ev-p { background: #f7e9ef; color: #8f2d54; border-color: #e0b6c8; }
+  .cat { display: inline-block; padding: 1px 7px; border-radius: 5px; font-size: 0.66rem; font-weight: 700; background: #eceff5; color: #44506b; white-space: nowrap; }
   .item { border: 1px solid #e6e2f0; border-radius: 12px; padding: 16px 20px 12px; margin: 0 0 14px; background: #fdfcff; }
   .item > h3 { margin: 0 0 10px; font-size: 0.98rem; color: #16213e; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
   .item .q { font-size: 0.9rem; color: #1f1f33; font-weight: 600; margin-bottom: 10px; padding-left: 11px; border-left: 3px solid #533483; line-height: 1.7; }
@@ -95,11 +96,11 @@
 <a class="home-btn" href="index.html" title="返回文档入口页">⌂ 返回主页</a>
 <div class="container">
   <div class="header">
-    <div class="draft">工作草稿 DRAFT v0.4 ｜ 未定稿 · 供同行讨论</div>
+    <div class="draft">工作草稿 DRAFT v0.5 ｜ 未定稿 · 供同行逐条讨论</div>
     <h1>犬二尖瓣 TEER（V-Clamp）病例筛选标准总结</h1>
     <div class="en">Case Selection Criteria for Transcatheter Edge-to-Edge Repair (TEER) with the V-Clamp Device in Dogs: A Working Draft</div>
     <div class="author">编制：应栩枫（Xufeng Ying）<br><span class="aff">Science and Innovation for Animal Health Program, Graduate School, Faculty of Veterinary Medicine, Kasetsart University, Bangkok 10900, Thailand</span></div>
-    <div class="meta">证据截止：2026 年 10 月 16 日 ｜ 文献基础：13 篇（含 3 篇方法学专题、1 篇四级分级标准）｜ 版本：2026-10-17</div>
+    <div class="meta">证据截止：2026 年 10 月 16 日 ｜ 文献基础：13 篇（含 3 篇方法学专题、1 篇四级分级标准）｜ 版本：v0.5（2026-10-17，新增判断一览与跳转）</div>
   </div>
 
   <div class="body">
@@ -157,7 +158,32 @@
       <h2>二、十一项核心判断</h2>
       <div class="sub">每一项按「结论—方法—讨论—局限」四段写：结论可直接用，方法说明它怎么来的，讨论说清分歧，局限说明什么时候会失效</div>
 
-      <div class="item">
+      <div class="tw" style="margin-top:6px;">
+        <table>
+          <caption>表　十一项判断一览 —— 点击编号可跳到该条的完整依据（本表为导航，不参与正文章节编号）</caption>
+          <thead><tr><th style="width:7%">编号</th><th style="width:24%">判断主题</th><th>一句话结论</th><th style="width:11%">类别</th><th style="width:6%">证据</th></tr></thead>
+          <tbody>
+            <tr><td class="k"><a class="reflink" href="#i1">①</a></td><td>期别门槛：B2 进展型、C 期与早期 D</td><td>只在 B2（具进展标志）、C 期或早期 D 期评估；A 期与 B1 期不干预</td><td><span class="cat">准入</span></td><td><span class="ev ev-b">B</span></td></tr>
+            <tr><td class="k"><a class="reflink" href="#i2">②</a></td><td>重度 MR 的三条量化门槛</td><td>E 波 &gt;1.0 m/s、RF &gt;50%、RVol &gt;1.0 mL/kg 三条同满足才进解剖评估</td><td><span class="cat">准入</span></td><td><span class="ev ev-b">B</span></td></tr>
+            <tr><td class="k"><a class="reflink" href="#i3">③</a></td><td>AP 瓣环径 14–22 mm</td><td>以收缩中期 AP 径 14–22 mm 判断装置适配，超出即器械范围外</td><td><span class="cat">准入</span></td><td><span class="ev ev-b">B</span></td></tr>
+            <tr><td class="k"><a class="reflink" href="#i4">④</a></td><td>夹尺寸等于收缩期 AP 径</td><td>夹尺寸＝AP 径（±0），不再按旧口径减 1–2 mm</td><td><span class="cat">器械</span></td><td><span class="ev ev-c">C</span></td></tr>
+            <tr><td class="k"><a class="reflink" href="#i5">⑤</a></td><td>靶区：A2/P2 中央段与后叶长度</td><td>靶区限 A2–P2 中央段；后叶 ≥7 mm，&lt;5 mm 不实施</td><td><span class="cat">准入</span></td><td><span class="ev ev-b">B</span></td></tr>
+            <tr><td class="k"><a class="reflink" href="#i6">⑥</a></td><td>对合间隙：一个禁忌、一个可接受</td><td>浅对合且水平间隙 &gt;3 mm 判不适合；垂直间隙 ≤4 mm 可接受</td><td><span class="cat">排除</span></td><td><span class="ev ev-c">C</span></td></tr>
+            <tr><td class="k"><a class="reflink" href="#i7">⑦</a></td><td>瓣叶质地与 flail 形态</td><td>厚 &gt;3 mm、深叶裂、P2 flail、A2 flail &gt;45°、双叶脱垂＝不适合或极复杂</td><td><span class="cat">排除</span></td><td><span class="ev ev-c">C</span></td></tr>
+            <tr><td class="k"><a class="reflink" href="#i8">⑧</a></td><td>肺动脉高压</td><td>TR-PG &gt;80 mmHg 排除；TRV &gt;3.7 m/s 仅作风险修饰</td><td><span class="cat">排除</span></td><td><span class="ev ev-b">B</span></td></tr>
+            <tr><td class="k"><a class="reflink" href="#i9">⑨</a></td><td>共存病与麻醉风险</td><td>预期生存 &lt;6 个月等为绝对禁忌；重度气管塌陷等须先优化</td><td><span class="cat">排除</span></td><td><span class="ev ev-b">B</span></td></tr>
+            <tr><td class="k"><a class="reflink" href="#i10">⑩</a></td><td>血栓栓塞风险（本团队补充）</td><td>将血栓栓塞风险列为独立筛选项，并写入术后抗栓管理</td><td><span class="cat">排除·术后</span></td><td><span class="ev ev-p">P</span></td></tr>
+            <tr><td class="k"><a class="reflink" href="#i11">⑪</a></td><td>术中终点：捕获长度与跨瓣压差</td><td>每叶捕获 ≥4 mm；跨瓣压差 ≤5 mmHg，超出即减捕获组织</td><td><span class="cat">术中</span></td><td><span class="ev ev-c">C</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <strong>怎么读：</strong>「结论」可直接用于门诊判断；「方法」说明它从哪来；「讨论」是各中心的分歧与本文件的取舍；「局限」写明它在什么情况下会失效。先看局限、再看结论，更容易判断一条标准是否适用于你手上的病例。<br>
+        <strong>怎么改：</strong>每一项都有固定编号（①–⑪）。讨论时只需报编号，例如「第③项，下限改成 12 mm」「第⑩项，证据级别从 P 提到 C」，我按编号定位修改，不会牵动其他条目。表 1 的六个数字、第三节四级分级、第四节六步流程同理，可按「表 1 第 2 行」「第三节 P2 一行」这样指认。
+      </div>
+
+      <div class="item" id="i1">
         <h3>①　期别门槛：B2 进展型、C 期与早期 D　<span class="ev ev-b">B</span></h3>
         <div class="q">结论：只在 ACVIM B2（且存在进展标志）、C 期或早期 D 期评估 TEER；A 期与 B1 期不干预。</div>
         <div class="row"><span class="lbl">方法</span><span>汇总 8 篇报告期别构成的研究（[1][2][5][8][9][10][11][12]）；以 ACVIM 共识为分期框架，“进展标志”取自 [4][5] 的表述：进行性心大、E 波持续升高、房颤、左房破裂风险。</span></div>
@@ -165,7 +191,7 @@
         <div class="row"><span class="lbl">局限</span><span>无研究以期别为唯一变量比较结局；B2 内部严重度谱系很宽，[4] 明确提示并非全部 B2 都应干预——B2 只是“可以开始评估”，不是“应该做”。</span></div>
       </div>
 
-      <div class="item">
+      <div class="item" id="i2">
         <h3>②　重度 MR 的三条量化门槛　<span class="ev ev-b">B</span></h3>
         <div class="q">结论：E 波 &gt;1.0 m/s、RF &gt;50%、RVol &gt;1.0 mL/kg，三条同时满足（或满足多数严重 MR 整合标准）才进入解剖评估。</div>
         <div class="row"><span class="lbl">方法</span><span>取自科罗拉多州立大学两项研究的预定义纳入标准 [1][2]，并为 [8] 沿用；三条均系整合指南的犬类改编，非犬原创阈值。</span></div>
@@ -173,7 +199,7 @@
         <div class="row"><span class="lbl">局限</span><span>犬无 RVol 金标准；容量法与 PISA 存在系统性差异（RVol 偏低 0.24 mL/kg、RF 偏低 13.7%），B1 期 RF 甚至出现负值，说明阈值本身带有测量学不确定性。多束反流与腱索断裂时数值不可信。</span></div>
       </div>
 
-      <div class="item">
+      <div class="item" id="i3">
         <h3>③　AP 瓣环径 14–22 mm　<span class="ev ev-b">B</span></h3>
         <div class="q">结论：以收缩中期 AP 径 14–22 mm 判断装置适配；&lt;14 mm 或 &gt;22 mm 均为器械范围外。</div>
         <div class="row"><span class="lbl">方法</span><span>六篇给出数值口径（[1][2][5][8][11][12]）。下限随器械而变：III 型对应 12 mm（[12] 采用），现行五种尺寸为 14／16／18／20／22 mm；上限自 2024 年的 20 mm 放宽至 22 mm（VI 型上市）。</span></div>
@@ -181,7 +207,7 @@
         <div class="row"><span class="lbl">局限</span><span>&lt;14 mm 的犬目前无植入数据；&lt;3 kg 体型还叠加 TEE 探头限制，两者常同时构成障碍。</span></div>
       </div>
 
-      <div class="item">
+      <div class="item" id="i4">
         <h3>④　夹尺寸等于收缩期 AP 径　<span class="ev ev-c">C</span></h3>
         <div class="q">结论：按“夹尺寸＝收缩期 AP 径（±0）”选型，不再减 1–2 mm。</div>
         <div class="row"><span class="lbl">方法</span><span>口径三段演变：[1] AP−1~−2 mm → [2] AP−0~−1 mm → [3] 等于 AP 径。本文件采用最新口径 [3]。</span></div>
@@ -189,7 +215,7 @@
         <div class="row"><span class="lbl">局限</span><span>三种口径从未做过对照；测量时相（收缩早期、铰点间）在不同研究中并不统一，1 mm 的差别很可能落在测量误差之内。</span></div>
       </div>
 
-      <div class="item">
+      <div class="item" id="i5">
         <h3>⑤　靶区：A2/P2 中央段与后叶长度　<span class="ev ev-b">B</span></h3>
         <div class="q">结论：靶区限 A2–P2 中央段、主反流束居中；后叶长度 ≥7 mm，&lt;5 mm 不实施。</div>
         <div class="row"><span class="lbl">方法</span><span>[1][2] 把“主束居中于 A2–P2”设为唯一预定义解剖纳入；[3] 报告瓣叶 &lt;6 mm 难以充分捕获；[4] 分级给 P2 &lt;7 mm 极复杂、&lt;5 mm 不适合；[5] 采用“后叶 ≥7 mm”。</span></div>
@@ -197,7 +223,7 @@
         <div class="row"><span class="lbl">局限</span><span>P2 长度在 TEE 上的测量重复性未见报告；“&lt;5 mm 不适合”来自失败病例回溯，不是前瞻验证。</span></div>
       </div>
 
-      <div class="item">
+      <div class="item" id="i6">
         <h3>⑥　对合间隙：一个禁忌、一个可接受　<span class="ev ev-c">C</span></h3>
         <div class="q">结论：浅对合且水平间隙 &gt;3 mm 判为不适合；垂直间隙 ≤4 mm 属可接受范围。</div>
         <div class="row"><span class="lbl">方法</span><span>[4] 的分级判据；[3] 以“警示特征”表述为水平间隙 &gt;3–4 mm。两个来源方向一致，仅措辞不同。</span></div>
@@ -205,7 +231,7 @@
         <div class="row"><span class="lbl">局限</span><span>3 mm 与 4 mm 来自不同中心、不同测量时相，未统一；缺乏重复性数据，实际读片差异可能吞掉这 1 mm 的判据。</span></div>
       </div>
 
-      <div class="item">
+      <div class="item" id="i7">
         <h3>⑦　瓣叶质地与 flail 形态　<span class="ev ev-c">C</span></h3>
         <div class="q">结论：瓣叶厚 &gt;3 mm（所有时相）、深部后叶裂、P2 flail、A2 flail 角 &gt;45°、双叶脱垂——判为不适合或极复杂。</div>
         <div class="row"><span class="lbl">方法</span><span>以 [4] 四级分级的“不适合”列为骨架；以 [8] 的实际失败作交叉验证：20 犬中深叶裂 2 例、瓣叶增厚 4 mm 1 例，术前已识别为高危但未排除，3 例死亡可归因于解剖与选择。</span></div>
@@ -213,7 +239,7 @@
         <div class="row"><span class="lbl">局限</span><span>3 mm 的厚度测量受增益、切面与心动周期影响；flail 角度需在特定平面测量，操作者依赖性强，尚无观察者间一致性数据。</span></div>
       </div>
 
-      <div class="item">
+      <div class="item" id="i8">
         <h3>⑧　肺动脉高压　<span class="ev ev-b">B</span></h3>
         <div class="q">结论：TR-PG &gt;80 mmHg 排除；TRV ≤3.7 m/s 视为可控，&gt;3.7 m/s 仅作风险修饰。</div>
         <div class="row"><span class="lbl">方法</span><span>三个独立来源（[1][2][5]）给出同一条 80 mmHg 排除线，是全部条目中一致性最高的一条；3.7 m/s 来自 [5] 引用的开胸修补数据（远期事件 HR 2.5）。</span></div>
@@ -221,7 +247,7 @@
         <div class="row"><span class="lbl">局限</span><span>犬的 TR 压差测量受心率、容量状态、麻醉影响明显；“术后肺高压是否可逆”缺少前瞻数据。</span></div>
       </div>
 
-      <div class="item">
+      <div class="item" id="i9">
         <h3>⑨　共存病与麻醉风险　<span class="ev ev-b">B</span></h3>
         <div class="q">结论：预期生存 &lt;6 个月的非心脏病、活动性感染或免疫介导病属绝对禁忌；重度气管塌陷、脑积水、未控糖尿病或肾病属相对禁忌，须术前优化。</div>
         <div class="row"><span class="lbl">方法</span><span>[1][2] 的三条临床排除为骨架；[8] 提供反面证据：20 犬中 7 例死亡，其中 3 例死因为气管塌陷、脑积水与心源性休克，均与瓣膜解剖无关；[9] 不设临床排除，出院生存 76%，低于 [1] 的 96%。</span></div>
@@ -229,7 +255,7 @@
         <div class="row"><span class="lbl">局限</span><span>各研究对“共存病”定义不统一，无法合并；单中心样本小，且死亡归因多为回顾判断。</span></div>
       </div>
 
-      <div class="item">
+      <div class="item" id="i10">
         <h3>⑩　血栓栓塞风险（本团队补充）　<span class="ev ev-p">P</span></h3>
         <div class="q">结论：把血栓栓塞风险（左房显著增大、自发显影或血栓、房颤、既往栓塞史）列为独立筛选项，并写入术后管理。</div>
         <div class="row"><span class="lbl">方法</span><span>来自本团队 10 例队列：3 例于术后 1–4 周出现急性神经症状，按疑似血栓栓塞记录，构成 4 例死亡中的 3 例；团队据此在机构方案中加入术后早期依诺肝素联合抗血小板治疗。</span></div>
@@ -237,7 +263,7 @@
         <div class="row"><span class="lbl">局限</span><span>无尸检或影像证实，“疑似”即是不确定性本身；10 例样本无法估计发生率，也无法判断抗栓是否降低了死亡。</span></div>
       </div>
 
-      <div class="item">
+      <div class="item" id="i11">
         <h3>⑪　术中终点：捕获长度与跨瓣压差　<span class="ev ev-c">C</span></h3>
         <div class="q">结论：每叶捕获 ≥4 mm；术后跨瓣压差 ≤5 mmHg；抓取后即刻压差 ≥5 mmHg 应释放并减少捕获组织。</div>
         <div class="row"><span class="lbl">方法</span><span>[1][5] 给“每叶 ≥4 mm”；[3] 给“≥4–5 mm”并给出压差处理规则；[4] 以 MVPG ≥5 mmHg 定义人工瓣膜狭窄。</span></div>
