@@ -1,5 +1,5 @@
-# 犬二尖瓣 TEER 与 V-Clamp 全球文献综述
-# Canine Mitral TEER & V-Clamp Global Literature Review
+# 犬二尖瓣经导管缘对缘修补（TEER）全球文献综述
+# Canine Mitral Transcatheter Edge-to-Edge Repair (TEER): A Global Literature Review
 
 **网站 ｜ Website**：https://tequilacom.github.io/Canine-TEER-review/
 
@@ -8,16 +8,16 @@
 ## 目的 ｜ Purpose ｜ วัตถุประสงค์ ｜ 目的
 
 **中文**
-本网站是一份关于犬二尖瓣经导管缘对缘修补（TEER）与 V-Clamp 器械的公开文献综述与病例筛选笔记。最初为个人自用而建，同时也为接受过 TEER 操作培训的医生提供一个随时可查的资料入口。欢迎任何语言的讨论与批评。
+本网站是一份关于犬二尖瓣经导管缘对缘修补（TEER）的公开文献综述与病例筛选笔记，讨论的是这项技术本身——适应证、影像评估、操作要点、疗效与证据质量，而不是某一款器械。部分犬类文献所用器械为 V-Clamp。最初为个人自用而建，同时也为接受过 TEER 操作培训的医生提供一个随时可查的资料入口。欢迎任何语言的讨论与批评。
 
 **English**
-A public literature review and case-selection notebook on transcatheter edge-to-edge repair (TEER) of the mitral valve in dogs and the V-Clamp device. It started as a personal working file and now also serves as a reference point for clinicians trained in TEER techniques. Comments in any language are welcome.
+A public literature review and case-selection notebook on transcatheter edge-to-edge repair (TEER) of the mitral valve in dogs — the technique itself: indications, imaging assessment, procedural detail and the quality of the evidence behind it, rather than any single device. Some of the reviewed canine work uses the V-Clamp system. It started as a personal working file and now also serves as a reference point for clinicians trained in TEER techniques. Comments in any language are welcome.
 
 **ไทย**
-เว็บไซต์นี้เป็นการทบทวนวรรณกรรมและบันทึกเกณฑ์การคัดเลือกผู้ป่วยสำหรับการซ่อมลิ้นหัวใจไมตรัลด้วยวิธี TEER และอุปกรณ์ V-Clamp ในสุนัข เดิมจัดทำขึ้นเพื่อใช้ส่วนตัว และเพื่อเป็นแหล่งค้นคว้าเพิ่มเติมสำหรับสัตวแพทย์ที่ได้รับการฝึกอบรมเทคนิค TEER ยินดีรับความคิดเห็นและการวิจารณ์ในทุกภาษา
+เว็บไซต์นี้เป็นการทบทวนวรรณกรรมและบันทึกเกณฑ์การคัดเลือกผู้ป่วยสำหรับการซ่อมลิ้นหัวใจไมตรัลในสุนัขด้วยวิธี TEER (Transcatheter Edge-to-Edge Repair) โดยเน้นที่ตัวเทคนิคการรักษา ทั้งข้อบ่งชี้ การประเมินด้วยภาพวินิจฉัย ขั้นตอนการทำ และคุณภาพของหลักฐาน ไม่ได้มุ่งเน้นที่อุปกรณ์ตัวใดตัวหนึ่ง เดิมจัดทำขึ้นเพื่อใช้ส่วนตัว และเพื่อเป็นแหล่งค้นคว้าเพิ่มเติมสำหรับสัตวแพทย์ที่ได้รับการฝึกอบรมเทคนิค TEER ยินดีรับความคิดเห็นและการวิจารณ์ในทุกภาษา
 
 **日本語**
-本サイトは、犬の僧帽弁に対する経カテーテル僧帽弁接合修復術（TEER）および V-Clamp デバイスに関する文献レビューと症例選択の記録です。もともとは個人用の作業ノートとして始め、TEER 手技の研修を受けた獣医師がいつでも参照できる資料となることも目的としています。あらゆる言語でのご意見を歓迎します。
+本サイトは、犬の僧帽弁に対する経カテーテル僧帽弁接合修復術（TEER）に関する文献レビューと症例選択の記録です。扱うのは手技そのもの——適応、画像評価、手技の要点、治療成績とエビデンスの質——であり、特定のデバイスではありません。もともとは個人用の作業ノートとして始め、TEER 手技の研修を受けた獣医師がいつでも参照できる資料となることも目的としています。あらゆる言語でのご意見を歓迎します。
 
 ---
 
@@ -25,17 +25,21 @@ A public literature review and case-selection notebook on transcatheter edge-to-
 
 **中文**
 
-这个网站最初是给我自己建的，当作一个持续更新的工作笔记：把散落在各处的犬 TEER 文献、器械数据、病例筛选口径收在一处，需要时不用重新翻一遍。
+这个网站最初是给我自己建的，当作一个持续更新的工作笔记：把散落在各处的犬 TEER 文献、影像与操作要点、病例筛选口径收在一处，需要时不用重新翻一遍。
 
 第二个原因是给经我培训过 TEER 操作技术的医生一个「找不到我时也能查」的地方——算是一种技术支持的延长线，而不是替代。
+
+网站以技术为主线，不以器械为卖点，也不评价任何具体厂商或产品；正文中出现的器械名称，只是为了标明那篇文献实际用的是什么工具。
 
 需要说明的是：本网站为个人学术资料，**与任何公司无关**。本人目前在泰国农业大学（Kasetsart University）兽医学院研究生院 Soontaree 教授门下攻读学位，感谢大学在此期间给予的支持与保护。
 
 **English**
 
-This site began as a working notebook for myself — a single place to keep the canine TEER literature, device data and case-selection criteria that would otherwise be scattered across dozens of PDFs and half-remembered conversations.
+This site began as a working notebook for myself — a single place to keep the canine TEER literature, imaging and procedural detail, and case-selection criteria that would otherwise be scattered across dozens of PDFs and half-remembered conversations.
 
 The second reason is quieter: the clinicians I have trained in TEER techniques deserve somewhere to look things up when I am not reachable. This site is an extension of that support, not a replacement for it.
+
+The organising subject here is the technique, not a product. Device names appear only to record what a given paper actually used; nothing on this site endorses or evaluates any manufacturer.
 
 To be explicit: this is a personal academic resource and is **not affiliated with any company**. I am currently a graduate student under Prof. Soontaree at the Faculty of Veterinary Medicine, Kasetsart University, Thailand, and I am grateful to the university for its support and protection during this period.
 
@@ -68,7 +72,7 @@ To be explicit: this is a personal academic resource and is **not affiliated wit
 | 页面 ｜ Page | 语言 ｜ Language | 内容 ｜ Content |
 |---|---|---|
 | [入口页 ｜ Index](https://tequilacom.github.io/Canine-TEER-review/) | 中 / EN | 全部文档入口 ｜ Entry point to all documents |
-| [文献综述 ｜ Literature Review](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_V-Clamp_Global_Review_CN_20261016.html) | 中 | 文献总表、核心团队脉络、趋势总结、人类 ValveClamp 文献（五节）｜ Master table, team trajectories, trends, human ValveClamp literature |
+| [文献综述 ｜ Literature Review](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_V-Clamp_Global_Review_CN_20261016.html) | 中 | 文献总表、核心团队脉络、趋势总结、人类 TEER 器械演进文献（五节）｜ Master table, team trajectories, trends, human TEER and device-evolution literature |
 | [Literature Review](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_V-Clamp_Global_Review_EN_20261016.html) | EN | 与中文版逐节对应 ｜ Section-by-section counterpart of the Chinese version |
 | [病例筛选总结 ｜ Case Selection](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_V-Clamp_Case_Selection_CN_20261017.html) | 中 | 十一项核心判断、四级解剖分级、六步流程、本团队 10 例经验（v0.5 草稿）｜ Eleven core judgements, four-tier anatomy grading, six-step workflow, institutional 10-case experience (draft v0.5) |
 | [检索与筛选清单 ｜ Retrieval Log](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_V-Clamp_Retrieval_Log_20261017.html) | 中 | 检索式命中数、逐篇纳入排除判定、全文中转状态 ｜ Search yields, per-paper inclusion decisions, full-text status |
@@ -93,6 +97,7 @@ English and Thai versions of the case-selection document are in preparation and 
 | 2026-10-17 | 新增「检索与筛选结果清单」页面 ｜ Retrieval & screening log page added |
 | 2026-10-18 | 隐私设置：关闭访客地区与浏览器信息显示（`DISABLE_REGION` / `DISABLE_USERAGENT`）｜ Privacy: visitor region and user-agent display disabled |
 | 2026-10-18 | 仓库补全网站链接与简介；新增本 README ｜ Repository homepage link and description added; this README created |
+| 2026-10-18 | README 与仓库简介改为以 TEER 技术为主线，弱化具体器械 ｜ README and repository description re-centred on the TEER technique rather than a specific device |
 
 ---
 
