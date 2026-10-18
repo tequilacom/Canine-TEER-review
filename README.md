@@ -1,5 +1,5 @@
-# 犬二尖瓣经导管缘对缘修补（TEER）全球文献综述
-# Canine Mitral Transcatheter Edge-to-Edge Repair (TEER): A Global Literature Review
+# 犬二尖瓣经导管缘对缘修补（TEER）全球文献调查
+# Canine Mitral Transcatheter Edge-to-Edge Repair (TEER): A Global Literature Survey
 
 **网站 ｜ Website**：https://tequilacom.github.io/Canine-TEER-review/
 
@@ -8,10 +8,10 @@
 ## 目的 ｜ Purpose ｜ วัตถุประสงค์ ｜ 目的
 
 **中文**
-本网站是一份关于犬二尖瓣经导管缘对缘修补（TEER）的公开文献综述与病例筛选笔记，讨论的是这项技术本身——适应证、影像评估、操作要点、疗效与证据质量，而不是某一款器械。部分犬类文献所用器械为 V-Clamp。最初为个人自用而建，同时也为接受过 TEER 操作培训的医生提供一个随时可查的资料入口。欢迎任何语言的讨论与批评。
+本网站是一份关于犬二尖瓣经导管缘对缘修补（TEER）的公开文献调查与病例筛选笔记，讨论的是这项技术本身——适应证、影像评估、操作要点、疗效与证据质量，而不是某一款器械。部分犬类文献所用器械为 V-Clamp。最初为个人自用而建，同时也为接受过 TEER 操作培训的医生提供一个随时可查的资料入口。欢迎任何语言的讨论与批评。
 
 **English**
-A public literature review and case-selection notebook on transcatheter edge-to-edge repair (TEER) of the mitral valve in dogs — the technique itself: indications, imaging assessment, procedural detail and the quality of the evidence behind it, rather than any single device. Some of the reviewed canine work uses the V-Clamp system. It started as a personal working file and now also serves as a reference point for clinicians trained in TEER techniques. Comments in any language are welcome.
+A public literature survey and case-selection notebook on transcatheter edge-to-edge repair (TEER) of the mitral valve in dogs — the technique itself: indications, imaging assessment, procedural detail and the quality of the evidence behind it, rather than any single device. Some of the reviewed canine work uses the V-Clamp system. It started as a personal working file and now also serves as a reference point for clinicians trained in TEER techniques. Comments in any language are welcome.
 
 **ไทย**
 เว็บไซต์นี้เป็นการทบทวนวรรณกรรมและบันทึกเกณฑ์การคัดเลือกผู้ป่วยสำหรับการซ่อมลิ้นหัวใจไมตรัลในสุนัขด้วยวิธี TEER (Transcatheter Edge-to-Edge Repair) โดยเน้นที่ตัวเทคนิคการรักษา ทั้งข้อบ่งชี้ การประเมินด้วยภาพวินิจฉัย ขั้นตอนการทำ และคุณภาพของหลักฐาน ไม่ได้มุ่งเน้นที่อุปกรณ์ตัวใดตัวหนึ่ง เดิมจัดทำขึ้นเพื่อใช้ส่วนตัว และเพื่อเป็นแหล่งค้นคว้าเพิ่มเติมสำหรับสัตวแพทย์ที่ได้รับการฝึกอบรมเทคนิค TEER ยินดีรับความคิดเห็นและการวิจารณ์ในทุกภาษา
@@ -72,8 +72,8 @@ To be explicit: this is a personal academic resource and is **not affiliated wit
 | 页面 ｜ Page | 语言 ｜ Language | 内容 ｜ Content |
 |---|---|---|
 | [入口页 ｜ Index](https://tequilacom.github.io/Canine-TEER-review/) | 中 / EN | 全部文档入口 ｜ Entry point to all documents |
-| [文献综述 ｜ Literature Review](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Global_Review_CN_20261016.html) | 中 | 文献总表、核心团队脉络、趋势总结、人类 TEER 器械演进文献（五节）｜ Master table, team trajectories, trends, human TEER and device-evolution literature |
-| [Literature Review](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Global_Review_EN_20261016.html) | EN | 与中文版逐节对应 ｜ Section-by-section counterpart of the Chinese version |
+| [文献调查 ｜ Literature Survey](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Survey_CN_20261016.html) | 中 | 文献总表、核心团队脉络、趋势总结、人类 TEER 器械演进文献（五节）｜ Master table, team trajectories, trends, human TEER and device-evolution literature |
+| [Literature Survey](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Survey_EN_20261016.html) | EN | 与中文版逐节对应 ｜ Section-by-section counterpart of the Chinese version |
 | [病例筛选总结 ｜ Case Selection](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Case_Selection_CN_20261017.html) | 中 | **线下维护中**（2026-10-18 起下线，页面仅保留标题与联系说明）｜ **Offline for revision** since 2026-10-18; title and contact notice only |
 | [检索与筛选清单 ｜ Retrieval Log](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Retrieval_Log_20261017.html) | 中 | **线下维护中**（2026-10-18 起下线）｜ **Offline for revision** since 2026-10-18 |
 
@@ -100,6 +100,25 @@ To be explicit: this is a personal academic resource and is **not affiliated wit
 | 2026-10-18 | 病例筛选总结与检索清单**下线维护**：保留页面与标题，正文替换为维护说明与联系方式；入口页同步标注 ｜ Case selection and retrieval log taken offline for revision; titles kept, body replaced with a maintenance notice and contact details |
 | 2026-10-18 | README 与仓库简介改为以 TEER 技术为主线，弱化具体器械 ｜ README and repository description re-centred on the TEER technique rather than a specific device |
 | 2026-10-18 | 页面文件名与页面标题去器械名（如 `Canine_TEER_Global_Review_CN_…`）；旧网址保留跳转页，外链不会失效 ｜ File names and page titles no longer lead with a device name; old URLs kept as redirect pages so shared links keep working |
+| 2026-10-18 | **"综述"改称"调查"**：两份长文改名为 `Canine_TEER_Survey_*`，标题、入口页、本 README 统一为 literature survey；页首加"非同行评议"声明；旧 `Global_Review` 网址保留跳转页 ｜ Renamed from "review" to "survey" across pages, index and README; status notice added; old URLs kept as redirects |
+
+---
+
+## 文档状态 ｜ Document status
+
+本站两份长文是**文献调查**（literature survey），不是综述，也未经同行评议。它们记录的是检索、整理与判断的过程，供核对与同行交流使用；正式论文正在撰写，结构、数据与结论均可能变更。
+
+三个阶段的约定：
+
+| 阶段 ｜ Stage | 站点状态 ｜ What the site shows |
+|---|---|
+| 调查期（当前 ｜ current） | 页面在线，页首标注"文献调查记录，非同行评议综述" ｜ Online, with a status notice |
+| 论文结构定稿 / 投稿 ｜ manuscript finalised | 页面冻结，标注"投稿中"，不再修改 ｜ Frozen and marked "under review" |
+| 正式发表 ｜ published | 正文撤下或移入 `/archive/`，本区**只保留出版信息与 DOI 链接** ｜ Full text withdrawn; only the publication record and DOI remain |
+
+引用时请注意区分：站内文字是调查记录，正式结论以发表版本为准。
+
+The two long documents are literature **surveys**, not peer-reviewed reviews; they document the search and compilation process. The manuscript is in preparation. Once published, the full text will be withdrawn and only the publication record will remain here. Please cite the published version, not this page.
 
 ---
 
