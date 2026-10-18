@@ -1,5 +1,5 @@
-# 犬二尖瓣经导管缘对缘修补（TEER）全球文献调查
-# Canine Mitral Transcatheter Edge-to-Edge Repair (TEER): A Global Literature Survey
+# 犬二尖瓣修复全球文献调查
+# Canine Mitral Valve Repair: A Global Literature Survey
 
 **网站 ｜ Website**：https://tequilacom.github.io/Canine-TEER-review/
 
@@ -8,16 +8,16 @@
 ## 目的 ｜ Purpose ｜ วัตถุประสงค์ ｜ 目的
 
 **中文**
-本网站是一份关于犬二尖瓣经导管缘对缘修补（TEER）的公开文献调查与病例筛选笔记，讨论的是这项技术本身——适应证、影像评估、操作要点、疗效与证据质量，而不是某一款器械。部分犬类文献所用器械为 V-Clamp。最初为个人自用而建，同时也为接受过 TEER 操作培训的医生提供一个随时可查的资料入口。欢迎任何语言的讨论与批评。
+本网站是一份关于犬二尖瓣修复的公开文献调查与病例筛选笔记，按两个技术方向分栏：**经导管缘对缘修补（TEER）**与**直视下外科修复（OSMVR，Open Surgical Mitral Valve Repair）**。讨论的是技术本身——适应证、影像评估、操作要点、疗效与证据质量，而不是某一款器械。部分犬类 TEER 文献所用器械为 V-Clamp。最初为个人自用而建，同时也为接受过 TEER 操作培训的医生提供一个随时可查的资料入口。欢迎任何语言的讨论与批评。
 
 **English**
-A public literature survey and case-selection notebook on transcatheter edge-to-edge repair (TEER) of the mitral valve in dogs — the technique itself: indications, imaging assessment, procedural detail and the quality of the evidence behind it, rather than any single device. Some of the reviewed canine work uses the V-Clamp system. It started as a personal working file and now also serves as a reference point for clinicians trained in TEER techniques. Comments in any language are welcome.
+A public literature survey and case-selection notebook on mitral valve repair in dogs, organised by two technical directions: **transcatheter edge-to-edge repair (TEER)** and **open surgical mitral valve repair (OSMVR)**. The subject is the technique itself: indications, imaging assessment, procedural detail and the quality of the evidence behind it, rather than any single device. Some of the reviewed canine work uses the V-Clamp system. It started as a personal working file and now also serves as a reference point for clinicians trained in TEER techniques. Comments in any language are welcome.
 
 **ไทย**
-เว็บไซต์นี้เป็นการทบทวนวรรณกรรมและบันทึกเกณฑ์การคัดเลือกผู้ป่วยสำหรับการซ่อมลิ้นหัวใจไมตรัลในสุนัขด้วยวิธี TEER (Transcatheter Edge-to-Edge Repair) โดยเน้นที่ตัวเทคนิคการรักษา ทั้งข้อบ่งชี้ การประเมินด้วยภาพวินิจฉัย ขั้นตอนการทำ และคุณภาพของหลักฐาน ไม่ได้มุ่งเน้นที่อุปกรณ์ตัวใดตัวหนึ่ง เดิมจัดทำขึ้นเพื่อใช้ส่วนตัว และเพื่อเป็นแหล่งค้นคว้าเพิ่มเติมสำหรับสัตวแพทย์ที่ได้รับการฝึกอบรมเทคนิค TEER ยินดีรับความคิดเห็นและการวิจารณ์ในทุกภาษา
+เว็บไซต์นี้เป็นการทบทวนวรรณกรรมและบันทึกเกณฑ์การคัดเลือกผู้ป่วยสำหรับการซ่อมลิ้นหัวใจไมตรัลในสุนัข โดยแบ่งเป็นสองแนวทาง คือ TEER (Transcatheter Edge-to-Edge Repair) และการผ่าตัดซ่อมแซมแบบเปิด (Open Surgical Mitral Valve Repair) โดยเน้นที่ตัวเทคนิคการรักษา ทั้งข้อบ่งชี้ การประเมินด้วยภาพวินิจฉัย ขั้นตอนการทำ และคุณภาพของหลักฐาน ไม่ได้มุ่งเน้นที่อุปกรณ์ตัวใดตัวหนึ่ง เดิมจัดทำขึ้นเพื่อใช้ส่วนตัว และเพื่อเป็นแหล่งค้นคว้าเพิ่มเติมสำหรับสัตวแพทย์ที่ได้รับการฝึกอบรมเทคนิค TEER ยินดีรับความคิดเห็นและการวิจารณ์ในทุกภาษา
 
 **日本語**
-本サイトは、犬の僧帽弁に対する経カテーテル僧帽弁接合修復術（TEER）に関する文献レビューと症例選択の記録です。扱うのは手技そのもの——適応、画像評価、手技の要点、治療成績とエビデンスの質——であり、特定のデバイスではありません。もともとは個人用の作業ノートとして始め、TEER 手技の研修を受けた獣医師がいつでも参照できる資料となることも目的としています。あらゆる言語でのご意見を歓迎します。
+本サイトは、犬の僧帽弁修復に関する文献レビューと症例選択の記録です。経カテーテル僧帽弁接合修復術（TEER）と直視下外科的修復（OSMVR）の二方向を扱い、主題は手技そのもの——適応、画像評価、手技の要点、治療成績とエビデンスの質——であり、特定のデバイスではありません。もともとは個人用の作業ノートとして始め、TEER 手技の研修を受けた獣医師がいつでも参照できる資料となることも目的としています。あらゆる言語でのご意見を歓迎します。
 
 ---
 
@@ -25,7 +25,7 @@ A public literature survey and case-selection notebook on transcatheter edge-to-
 
 **中文**
 
-这个网站最初是给我自己建的，当作一个持续更新的工作笔记：把散落在各处的犬 TEER 文献、影像与操作要点、病例筛选口径收在一处，需要时不用重新翻一遍。
+这个网站最初是给我自己建的，当作一个持续更新的工作笔记：把散落在各处的犬二尖瓣修复文献（经导管与直视外科两支）、影像与操作要点、病例筛选口径收在一处，需要时不用重新翻一遍。
 
 第二个原因是给经我培训过 TEER 操作技术的医生一个「找不到我时也能查」的地方——算是一种技术支持的延长线，而不是替代。
 
@@ -35,7 +35,7 @@ A public literature survey and case-selection notebook on transcatheter edge-to-
 
 **English**
 
-This site began as a working notebook for myself — a single place to keep the canine TEER literature, imaging and procedural detail, and case-selection criteria that would otherwise be scattered across dozens of PDFs and half-remembered conversations.
+This site began as a working notebook for myself — a single place to keep the canine mitral valve repair literature (both transcatheter and open surgical), imaging and procedural detail, and case-selection criteria that would otherwise be scattered across dozens of PDFs and half-remembered conversations.
 
 The second reason is quieter: the clinicians I have trained in TEER techniques deserve somewhere to look things up when I am not reachable. This site is an extension of that support, not a replacement for it.
 
@@ -69,11 +69,16 @@ To be explicit: this is a personal academic resource and is **not affiliated wit
 
 ## 网站内容 ｜ What's inside
 
+按技术方向分栏；每个方向中文版与英文版逐节对应。
+Organised by technical direction; each direction is available in Chinese and English, section by section.
+
 | 页面 ｜ Page | 语言 ｜ Language | 内容 ｜ Content |
 |---|---|---|
 | [入口页 ｜ Index](https://tequilacom.github.io/Canine-TEER-review/) | 中 / EN | 全部文档入口 ｜ Entry point to all documents |
-| [文献调查 ｜ Literature Survey](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Survey_CN_20261016.html) | 中 | 文献总表、核心团队脉络、趋势总结、人类 TEER 器械演进文献（五节）｜ Master table, team trajectories, trends, human TEER and device-evolution literature |
+| [方向一 · 文献调查 ｜ TEER Survey](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Survey_CN_20261016.html) | 中 | 文献总表、核心团队脉络、趋势总结、人类 TEER 器械演进文献（五节）｜ Master table, team trajectories, trends, human TEER and device-evolution literature |
 | [Literature Survey](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Survey_EN_20261016.html) | EN | 与中文版逐节对应 ｜ Section-by-section counterpart of the Chinese version |
+| 犬二尖瓣直视修复全球文献调查 ｜ Open Surgical MVR Survey | 中 | **整理中**：检索与筛选正在线下进行 ｜ **In preparation**: search and screening under way |
+| Open Surgical Mitral Valve Repair: A Global Survey | EN | **整理中**，与中文版同步发布 ｜ **In preparation**, to be released together with the Chinese edition |
 | [病例筛选总结 ｜ Case Selection](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Case_Selection_CN_20261017.html) | 中 | **线下维护中**（2026-10-18 起下线，页面仅保留标题与联系说明）｜ **Offline for revision** since 2026-10-18; title and contact notice only |
 | [检索与筛选清单 ｜ Retrieval Log](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Retrieval_Log_20261017.html) | 中 | **线下维护中**（2026-10-18 起下线）｜ **Offline for revision** since 2026-10-18 |
 
@@ -101,12 +106,13 @@ To be explicit: this is a personal academic resource and is **not affiliated wit
 | 2026-10-18 | README 与仓库简介改为以 TEER 技术为主线，弱化具体器械 ｜ README and repository description re-centred on the TEER technique rather than a specific device |
 | 2026-10-18 | 页面文件名与页面标题去器械名（如 `Canine_TEER_Global_Review_CN_…`）；旧网址保留跳转页，外链不会失效 ｜ File names and page titles no longer lead with a device name; old URLs kept as redirect pages so shared links keep working |
 | 2026-10-18 | **"综述"改称"调查"**：两份长文改名为 `Canine_TEER_Survey_*`，标题、入口页、本 README 统一为 literature survey；页首加"非同行评议"声明；旧 `Global_Review` 网址保留跳转页 ｜ Renamed from "review" to "survey" across pages, index and README; status notice added; old URLs kept as redirects |
+| 2026-10-18 | **站点大方向改为"犬二尖瓣修复"**：入口页按两个技术方向分栏（① TEER 已上线 ② 直视外科修复整理中）；两份 TEER 页加"方向一 / 二"标识；README 标题与目的段同步 ｜ Site scope widened to mitral valve repair as a whole, organised into two directions (TEER live; open surgical in preparation); direction label added to both TEER pages |
 
 ---
 
 ## 文档状态 ｜ Document status
 
-本站两份长文是**文献调查**（literature survey），不是综述，也未经同行评议。它们记录的是检索、整理与判断的过程，供核对与同行交流使用；正式论文正在撰写，结构、数据与结论均可能变更。
+本站长文（按技术方向分篇）是**文献调查**（literature survey），不是综述，也未经同行评议。它们记录的是检索、整理与判断的过程，供核对与同行交流使用；正式论文正在撰写，结构、数据与结论均可能变更。
 
 三个阶段的约定：
 
@@ -118,7 +124,7 @@ To be explicit: this is a personal academic resource and is **not affiliated wit
 
 引用时请注意区分：站内文字是调查记录，正式结论以发表版本为准。
 
-The two long documents are literature **surveys**, not peer-reviewed reviews; they document the search and compilation process. The manuscript is in preparation. Once published, the full text will be withdrawn and only the publication record will remain here. Please cite the published version, not this page.
+The long documents, one series per technical direction, are literature **surveys**, not peer-reviewed reviews; they document the search and compilation process. The manuscript is in preparation. Once published, the full text will be withdrawn and only the publication record will remain here. Please cite the published version, not this page.
 
 ---
 
