@@ -3,653 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>犬 TEER 病例筛选标准总结（中文版·工作草稿）｜ Canine TEER Case Selection Summary (CN Draft)</title>
+<title>犬 TEER 病例筛选标准总结 ｜ 线下维护中</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; background: #f0f2f5; color: #1a1a2e; line-height: 1.75; padding: 24px; min-height: 100vh; }
-  .container { max-width: 1000px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); overflow: hidden; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+    background: #f0f2f5; color: #1a1a2e; line-height: 1.7; padding: 24px;
+    min-height: 100vh;
+  }
+  .container { max-width: 960px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); overflow: hidden; }
   .header { background: linear-gradient(135deg, #16213e 0%, #0f3460 50%, #533483 100%); color: #fff; padding: 36px 40px; }
-  .header h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; }
-  .header .en { font-size: 0.95rem; font-weight: 400; opacity: 0.9; }
-  .header .author { font-size: 0.9rem; opacity: 0.95; margin-top: 14px; line-height: 1.55; }
-  .header .author .aff { font-size: 0.78rem; opacity: 0.85; }
-  .header .meta { font-size: 0.78rem; opacity: 0.82; margin-top: 10px; }
-  .draft { display: inline-block; background: #fff3d6; color: #8a5c00; border: 1px solid #e8cf9d; padding: 3px 11px; border-radius: 6px; font-size: 0.72rem; font-weight: 700; letter-spacing: .06em; margin-bottom: 12px; }
-  .body { padding: 32px 40px 24px; }
-  .lede { background: #f5f3ff; border: 1px solid #d8cfeb; border-radius: 12px; padding: 22px 26px; margin-bottom: 26px; }
-  .lede h2 { font-size: 1.02rem; color: #16213e; border-left: 5px solid #533483; padding-left: 12px; margin-bottom: 12px; }
-  .lede p { font-size: 0.9rem; color: #3d3d4e; margin-bottom: 9px; text-align: justify; }
-  .lede p:last-child { margin-bottom: 0; }
-  .toc { border: 1px solid #e6e2f0; border-radius: 12px; padding: 16px 22px; margin-bottom: 30px; background: #fcfbff; }
-  .toc h2 { font-size: 0.92rem; color: #533483; margin-bottom: 8px; }
-  .toc ol { padding-left: 20px; font-size: 0.86rem; color: #44445c; column-count: 2; column-gap: 28px; }
-  .toc li { margin-bottom: 4px; }
-  .toc a { color: #44445c; text-decoration: none; border-bottom: 1px dotted #c9bfe0; }
-  .toc a:hover { color: #533483; }
-  section.sec { margin-bottom: 34px; }
-  section.sec > h2 { font-size: 1.12rem; color: #16213e; border-left: 5px solid #533483; padding-left: 12px; margin-bottom: 6px; }
-  section.sec > .sub { font-size: 0.82rem; color: #7a7a8c; margin-bottom: 14px; padding-left: 17px; }
-  section.sec h3 { font-size: 0.96rem; color: #0f3460; margin: 18px 0 8px; }
-  section.sec p { font-size: 0.9rem; color: #33334a; margin-bottom: 10px; text-align: justify; }
-  section.sec ul, section.sec ol { padding-left: 22px; font-size: 0.89rem; color: #33334a; margin-bottom: 12px; }
-  section.sec li { margin-bottom: 6px; }
-  .tw { overflow-x: auto; margin: 12px 0 18px; border: 1px solid #e3e0ee; border-radius: 10px; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.8rem; min-width: 640px; }
-  th { background: #16213e; color: #fff; text-align: left; padding: 9px 11px; font-weight: 600; vertical-align: top; }
-  td { padding: 9px 11px; border-top: 1px solid #ece9f3; vertical-align: top; color: #33334a; }
-  tbody tr:nth-child(even) td { background: #faf9fd; }
-  td.k { font-weight: 600; color: #16213e; white-space: nowrap; }
-  caption { caption-side: top; text-align: left; font-size: 0.8rem; color: #6b6b80; padding: 0 0 7px; }
-  .callout { background: #fff8ec; border-left: 4px solid #d99b2b; border-radius: 8px; padding: 13px 17px; margin: 14px 0 18px; font-size: 0.86rem; color: #5a4a2a; }
-  .callout strong { color: #8a5c00; }
-  .reflink { color: #533483; text-decoration: none; border-bottom: 1px dotted #b3a6cf; }
-  .reflink:hover { border-bottom-color: #533483; }
-  .doi-tag { display: block; font-size: 0.66rem; color: #8a86a0; font-weight: 400; margin-top: 2px; }
-  .note { background: #eef6f2; border-left: 4px solid #2f8f6b; border-radius: 8px; padding: 13px 17px; margin: 14px 0 18px; font-size: 0.86rem; color: #2c4d40; }
-  .lv { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; letter-spacing: .02em; }
-  .lv-g { background: #dff3e6; color: #1c6b42; }
-  .lv-y { background: #fdf0d2; color: #8a5c00; }
-  .lv-r { background: #fbe0e0; color: #8f2020; }
-  .ev { display: inline-block; padding: 1px 8px; border-radius: 5px; font-size: 0.68rem; font-weight: 700; letter-spacing: .04em; border: 1px solid; vertical-align: 2px; }
-  .ev-a { background: #e3f2e9; color: #1c6b42; border-color: #a9d5bc; }
-  .ev-b { background: #eef3fa; color: #1d4f91; border-color: #b9cde6; }
-  .ev-c { background: #fdf3e2; color: #8a5c00; border-color: #e8cf9d; }
-  .ev-d { background: #f0eef7; color: #4d3f7a; border-color: #c9bfe0; }
-  .ev-p { background: #f7e9ef; color: #8f2d54; border-color: #e0b6c8; }
-  .cat { display: inline-block; padding: 1px 7px; border-radius: 5px; font-size: 0.66rem; font-weight: 700; background: #eceff5; color: #44506b; white-space: nowrap; }
-  .item { border: 1px solid #e6e2f0; border-radius: 12px; padding: 16px 20px 12px; margin: 0 0 14px; background: #fdfcff; }
-  .item > h3 { margin: 0 0 10px; font-size: 0.98rem; color: #16213e; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
-  .item .q { font-size: 0.9rem; color: #1f1f33; font-weight: 600; margin-bottom: 10px; padding-left: 11px; border-left: 3px solid #533483; line-height: 1.7; }
-  .item .row { display: grid; grid-template-columns: 46px 1fr; gap: 10px; font-size: 0.85rem; margin-bottom: 7px; color: #3d3d4e; line-height: 1.7; }
-  .item .lbl { font-weight: 700; color: #8a86a0; font-size: 0.78rem; letter-spacing: .04em; }
-  .item .row:last-child { margin-bottom: 2px; }
-  pre { background: #16213e; color: #e8e6f5; border-radius: 8px; padding: 13px 16px; font-size: 0.76rem; line-height: 1.65; overflow-x: auto; margin: 10px 0 16px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; }
-  .ref { font-size: 0.92rem; color: #533483; font-weight: 600; }
-  ol.refs { padding-left: 24px; font-size: 0.82rem; color: #444; }
-  ol.refs li { margin-bottom: 7px; line-height: 1.6; }
-  .footer { padding: 18px 40px 26px; background: #f8f9fa; border-top: 1px solid #e9ecef; font-size: 0.78rem; color: #888; }
-  .home-btn { position: fixed; top: 18px; right: 18px; z-index: 99; display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; background: rgba(22,33,62,0.92); color: #fff; border-radius: 999px; text-decoration: none; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.02em; box-shadow: 0 4px 14px rgba(0,0,0,0.22); backdrop-filter: blur(4px); transition: all .18s ease; }
-  .home-btn:hover { background: #533483; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(83,52,131,0.35); }
+  .header .kicker { font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.62; margin-bottom: 10px; }
+  .header h1 { font-size: 1.55rem; font-weight: 700; margin-bottom: 8px; }
+  .header .en { font-size: 1.02rem; font-weight: 400; opacity: 0.9; }
+  .header .subtitle { font-size: 0.86rem; opacity: 0.8; margin-top: 12px; }
+  .status-bar { display: flex; align-items: center; gap: 10px; padding: 13px 40px; background: #fff8e8; border-bottom: 1px solid #f2e0b8; font-size: 0.83rem; color: #7a5a15; }
+  .status-bar .dot { width: 9px; height: 9px; border-radius: 50%; background: #b8860b; flex: 0 0 auto; }
+  .body-wrap { padding: 44px 40px 36px; }
+  .panel { border: 1px solid #e6e3ef; border-radius: 14px; background: #fbfaff; padding: 34px 34px 30px; text-align: center; }
+  .panel .badge { display: inline-block; padding: 5px 14px; border-radius: 999px; background: #533483; color: #fff; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.08em; }
+  .panel h2 { font-size: 1.28rem; color: #16213e; margin: 18px 0 10px; }
+  .panel p { font-size: 0.92rem; color: #4a4a58; margin: 0 auto 10px; max-width: 620px; }
+  .panel .en-line { font-size: 0.84rem; color: #8a8a99; }
+  .contact { margin-top: 24px; border-top: 1px dashed #ddd8ea; padding-top: 22px; }
+  .contact .label { font-size: 0.74rem; letter-spacing: 0.1em; color: #8a86a0; text-transform: uppercase; margin-bottom: 8px; }
+  .contact .name { font-size: 0.98rem; font-weight: 700; color: #16213e; }
+  .contact .aff { font-size: 0.8rem; color: #6c6c7a; max-width: 640px; margin: 6px auto 0; line-height: 1.6; }
+  .contact a { color: #533483; font-weight: 600; text-decoration: none; border-bottom: 1px solid #d8cfeb; }
+  .contact a:hover { border-bottom-color: #533483; }
+  .actions { margin-top: 26px; }
+  .btn { display: inline-block; padding: 9px 20px; border-radius: 999px; background: #16213e; color: #fff; text-decoration: none; font-size: 0.84rem; font-weight: 600; transition: all .18s ease; }
+  .btn:hover { background: #533483; transform: translateY(-1px); }
+  .btn.ghost { background: transparent; color: #533483; border: 1px solid #cfc4e4; margin-left: 8px; }
+  .btn.ghost:hover { background: #f5f3ff; color: #533483; }
+  .note { margin-top: 26px; font-size: 0.78rem; color: #8a8a99; line-height: 1.75; }
+  .footer { padding: 18px 40px 24px; background: #f8f9fa; border-top: 1px solid #e9ecef; font-size: 0.77rem; color: #8a8a99; }
   @media (max-width: 720px) {
     body { padding: 12px; }
-    .header, .body, .footer { padding-left: 20px; padding-right: 20px; }
+    .header, .status-bar, .body-wrap, .footer { padding-left: 20px; padding-right: 20px; }
     .header h1 { font-size: 1.2rem; }
-    .toc ol { column-count: 1; }
-    .item .row { grid-template-columns: 1fr; gap: 2px; }
-  }
-  @page { size: A4 landscape; margin: 10mm; }
-  @media print {
-    body { background: #fff !important; padding: 0 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-    .container { max-width: none !important; box-shadow: none !important; border-radius: 0 !important; }
-    a { color: inherit !important; text-decoration: none !important; }
-    .home-btn { display: none !important; }
-    .toc { display: none !important; }
-    section.sec { break-inside: auto; }
-    .tw { overflow: visible !important; break-inside: avoid; }
-    .item { break-inside: avoid; }
-    table { min-width: 0 !important; font-size: 8.4pt; }
-    th { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .panel { padding: 26px 18px; }
+    .contact .aff { font-size: 0.76rem; }
   }
 </style>
 </head>
 <body>
-<a class="home-btn" href="index.html" title="返回文档入口页">⌂ 返回主页</a>
 <div class="container">
   <div class="header">
-    <div class="draft">工作草稿 DRAFT v0.5 ｜ 未定稿 · 供同行逐条讨论</div>
-    <h1>犬二尖瓣 TEER 病例筛选标准总结</h1>
-    <div class="en">Case Selection Criteria for Transcatheter Edge-to-Edge Repair (TEER) of the Mitral Valve in Dogs: A Working Draft</div>
-    <div class="author">编制：应栩枫（Xufeng Ying）<br><span class="aff">Science and Innovation for Animal Health Program, Graduate School, Faculty of Veterinary Medicine, Kasetsart University, Bangkok 10900, Thailand</span></div>
-    <div class="meta">证据截止：2026 年 10 月 16 日 ｜ 文献基础：13 篇（含 3 篇方法学专题、1 篇四级分级标准）｜ 版本：v0.5（2026-10-17，新增判断一览与跳转）</div>
+    <div class="kicker">Canine Mitral TEER · Case Selection</div>
+    <h1>犬 TEER 病例筛选标准总结</h1>
+    <div class="en">Case Selection Criteria for Transcatheter Edge-to-Edge Repair in Dogs</div>
+    <div class="subtitle">页面状态：线下维护中 ｜ Status: offline, under revision</div>
   </div>
 
-  <div class="body">
+  <div class="status-bar">
+    <span class="dot"></span>
+    <span>本页内容已于 2026-10-18 下线，正在线下维护与修订。</span>
+  </div>
 
-    <div class="lede">
-      <h2>本文件的目的与性质</h2>
-      <p><strong>目的：</strong>推动经导管缘对缘修补（TEER）在犬二尖瓣退行性病变中的规范应用。TEER 在犬的价值必须同时从四个维度衡量——<strong>安全性</strong>（围术期与随访期并发症）、<strong>治疗效率</strong>（减流幅度、再干预率、住院时长）、<strong>医疗经济学</strong>（单次介入成本对照长期药物与心衰管理支出）、<strong>预后与生存质量</strong>（生存期、活动耐量、主人报告结局）。病例筛选是这四个维度的共同前提：选错一例，四个方面同时受损，而这类损失在早期队列中已反复出现（[8] 早期死亡 35%，[12] 随访死亡 4/10）。</p>
-      <p><strong>性质：</strong>本文件是作者的<strong>工作草稿</strong>，不是指南、不是共识、不是系统评价。它的结构刻意与期刊论文不同——<strong>结论先行，逐项给出依据（方法）、讨论与局限</strong>，便于同行在最短时间内判断某一条是否值得采纳。所有数值均标注来源，凡属作者引申者明确标注“引申”。</p>
-      <p><strong>证据基础须知：</strong>犬 TEER 的全部解剖阈值目前合计基于不足 300 例犬的临床经验，无随机对照研究；现有“标准”多为各中心在失败病例中回溯形成的警戒线，而非经验证的算法。本文件是决策辅助，不是准入裁决。</p>
-    </div>
+  <div class="body-wrap">
+    <div class="panel">
+      <span class="badge">线下维护中</span>
+      <h2>本页暂时不对外提供</h2>
+      <p>该文档的检索、筛选与判定标准正在整体修订，修订完成前撤下线上版本，以免旧版数据被引用或转存。</p>
+      <p class="en-line">This document is temporarily offline while its search and screening records are being revised.</p>
 
-    <div class="toc">
-      <h2>目录</h2>
-      <ol>
-        <li><a href="#s1">一页速查：六个数字与三色判定</a></li>
-        <li><a href="#s2">十一项核心判断（结论 · 方法 · 讨论 · 局限）</a></li>
-        <li><a href="#s3">解剖复杂度的四级分级</a></li>
-        <li><a href="#s4">六步筛查流程与退出口</a></li>
-        <li><a href="#s5">本团队 10 例队列的一手经验</a></li>
-        <li><a href="#s6">方法与检索策略</a></li>
-        <li><a href="#s7">局限与使用声明</a></li>
-        <li><a href="#s8">证据附录：十三篇文献逐篇对照</a></li>
-      </ol>
-    </div>
-
-    <section class="sec" id="s1">
-      <h2>一、一页速查：六个数字与三色判定</h2>
-      <div class="sub">给忙碌的临床医生：先看这一页，需要依据时再往下翻到对应条目</div>
-
-      <div class="tw">
-        <table>
-          <caption>表 1　六个必须记住的数字（各自的条件与出处见第二节）</caption>
-          <thead><tr><th style="width:26%">指标</th><th style="width:22%">数值</th><th>含义</th></tr></thead>
-          <tbody>
-            <tr><td class="k">收缩期 AP 瓣环径</td><td><strong>14–22 mm</strong></td><td>装置适配窗口，由现有五种夹尺寸决定；随器械谱变化，不是生物学边界</td></tr>
-            <tr><td class="k">夹尺寸</td><td><strong>＝收缩期 AP 径（±0）</strong></td><td>测量点位于 A2–P2 铰点之间、收缩早期；口径由 AP−1~−2 mm 逐步收紧至此</td></tr>
-            <tr><td class="k">后叶长度（P2）</td><td><strong>≥7 mm；&lt;5 mm 不做</strong></td><td>5–7 mm 属个体化区间，需 TEE 复核与高经验术者</td></tr>
-            <tr><td class="k">对合水平间隙</td><td><strong>≤3 mm</strong></td><td>&gt;3 mm 且浅对合即为不适合；垂直间隙 ≤4 mm 可接受</td></tr>
-            <tr><td class="k">三尖瓣反流压差</td><td><strong>≤80 mmHg</strong></td><td>&gt;80 mmHg 排除；TRV &gt;3.7 m/s 为风险修饰而非排除线</td></tr>
-            <tr><td class="k">每叶捕获长度</td><td><strong>≥4 mm</strong></td><td>术后跨瓣压差须 ≤5 mmHg；抓取后即刻 ≥5 mmHg 应减少捕获组织</td></tr>
-          </tbody>
-        </table>
+      <div class="contact">
+        <div class="label">Contact the author</div>
+        <div class="name">应栩枫 ｜ Xufeng Ying</div>
+        <div class="aff">Science and Innovation for Animal Health Program, Graduate School,<br>Faculty of Veterinary Medicine, Kasetsart University, Bangkok 10900, Thailand</div>
+        <p style="margin-top:12px;font-size:0.86rem;color:#4a4a58;">如需获取文档、核对数据或讨论内容，请联系作者；<br>也可在项目仓库留言：<a href="https://github.com/tequilacom/Canine-TEER-review/issues" target="_blank" rel="noopener">GitHub Issues</a></p>
       </div>
 
-      <div class="note" style="margin-top:18px;">
-        <strong>三色判定（完整判据见第二节与第三节）</strong><br>
-        <span class="lv lv-g">可做</span>　B2 进展型／C／早期 D ＋ 三条重度 MR 量化门槛 ＋ A2–P2 中央段 ＋ AP 14–22 mm ＋ P2 ≥7 mm ＋ 水平间隙 ≤3 mm ＋ 无深裂、厚度 &lt;3 mm ＋ TR-PG ≤80 mmHg ＋ 无活动性感染／免疫病。<br>
-        <span class="lv lv-y">慎重</span>　AP &gt;20 mm、P2 5–7 mm、水平间隙 3–4 mm、A2 flail 角接近 45°、双叶脱垂、叶-环指数 1.0–1.2、中度肺高压、重度气管塌陷／脑积水、既往血栓栓塞史。<br>
-        <span class="lv lv-r">不做</span>　主束在 A2–P2 之外、P2 flail、A2 flail 角 &gt;45°、多股宽大独立射流、深部后叶裂、瓣叶厚 &gt;3 mm、P2 &lt;5 mm、叶-环指数 ≤1.0、AP 超出 14–22 mm、TR-PG &gt;80 mmHg、活动性感染／免疫病、预期生存 &lt;6 个月。
-      </div>
-      <p style="font-size:0.82rem;color:#7a7a8c;">证据等级标注说明见 <a href="#s6" style="color:#533483;">第 6.5 节</a>：<span class="ev ev-a">A 一致前瞻</span> <span class="ev ev-b">B 单项前瞻</span> <span class="ev ev-c">C 回顾／外推</span> <span class="ev ev-d">D 专家意见</span> <span class="ev ev-p">P 个人经验</span></p>
-    </section>
-
-    <section class="sec" id="s2">
-      <h2>二、十一项核心判断</h2>
-      <div class="sub">每一项按「结论—方法—讨论—局限」四段写：结论可直接用，方法说明它怎么来的，讨论说清分歧，局限说明什么时候会失效</div>
-
-      <div class="tw" style="margin-top:6px;">
-        <table>
-          <caption>表　十一项判断一览 —— 点击编号可跳到该条的完整依据（本表为导航，不参与正文章节编号）</caption>
-          <thead><tr><th style="width:7%">编号</th><th style="width:24%">判断主题</th><th>一句话结论</th><th style="width:11%">类别</th><th style="width:6%">证据</th></tr></thead>
-          <tbody>
-            <tr><td class="k"><a class="reflink" href="#i1">①</a></td><td>期别门槛：B2 进展型、C 期与早期 D</td><td>只在 B2（具进展标志）、C 期或早期 D 期评估；A 期与 B1 期不干预</td><td><span class="cat">准入</span></td><td><span class="ev ev-b">B</span></td></tr>
-            <tr><td class="k"><a class="reflink" href="#i2">②</a></td><td>重度 MR 的三条量化门槛</td><td>E 波 &gt;1.0 m/s、RF &gt;50%、RVol &gt;1.0 mL/kg 三条同满足才进解剖评估</td><td><span class="cat">准入</span></td><td><span class="ev ev-b">B</span></td></tr>
-            <tr><td class="k"><a class="reflink" href="#i3">③</a></td><td>AP 瓣环径 14–22 mm</td><td>以收缩中期 AP 径 14–22 mm 判断装置适配，超出即器械范围外</td><td><span class="cat">准入</span></td><td><span class="ev ev-b">B</span></td></tr>
-            <tr><td class="k"><a class="reflink" href="#i4">④</a></td><td>夹尺寸等于收缩期 AP 径</td><td>夹尺寸＝AP 径（±0），不再按旧口径减 1–2 mm</td><td><span class="cat">器械</span></td><td><span class="ev ev-c">C</span></td></tr>
-            <tr><td class="k"><a class="reflink" href="#i5">⑤</a></td><td>靶区：A2/P2 中央段与后叶长度</td><td>靶区限 A2–P2 中央段；后叶 ≥7 mm，&lt;5 mm 不实施</td><td><span class="cat">准入</span></td><td><span class="ev ev-b">B</span></td></tr>
-            <tr><td class="k"><a class="reflink" href="#i6">⑥</a></td><td>对合间隙：一个禁忌、一个可接受</td><td>浅对合且水平间隙 &gt;3 mm 判不适合；垂直间隙 ≤4 mm 可接受</td><td><span class="cat">排除</span></td><td><span class="ev ev-c">C</span></td></tr>
-            <tr><td class="k"><a class="reflink" href="#i7">⑦</a></td><td>瓣叶质地与 flail 形态</td><td>厚 &gt;3 mm、深叶裂、P2 flail、A2 flail &gt;45°、双叶脱垂＝不适合或极复杂</td><td><span class="cat">排除</span></td><td><span class="ev ev-c">C</span></td></tr>
-            <tr><td class="k"><a class="reflink" href="#i8">⑧</a></td><td>肺动脉高压</td><td>TR-PG &gt;80 mmHg 排除；TRV &gt;3.7 m/s 仅作风险修饰</td><td><span class="cat">排除</span></td><td><span class="ev ev-b">B</span></td></tr>
-            <tr><td class="k"><a class="reflink" href="#i9">⑨</a></td><td>共存病与麻醉风险</td><td>预期生存 &lt;6 个月等为绝对禁忌；重度气管塌陷等须先优化</td><td><span class="cat">排除</span></td><td><span class="ev ev-b">B</span></td></tr>
-            <tr><td class="k"><a class="reflink" href="#i10">⑩</a></td><td>血栓栓塞风险（本团队补充）</td><td>将血栓栓塞风险列为独立筛选项，并写入术后抗栓管理</td><td><span class="cat">排除·术后</span></td><td><span class="ev ev-p">P</span></td></tr>
-            <tr><td class="k"><a class="reflink" href="#i11">⑪</a></td><td>术中终点：捕获长度与跨瓣压差</td><td>每叶捕获 ≥4 mm；跨瓣压差 ≤5 mmHg，超出即减捕获组织</td><td><span class="cat">术中</span></td><td><span class="ev ev-c">C</span></td></tr>
-          </tbody>
-        </table>
+      <div class="actions">
+        <a class="btn" href="index.html">返回文档入口</a>
+        <a class="btn ghost" href="Canine_TEER_Global_Review_CN_20261016.html">阅读文献综述</a>
       </div>
 
       <div class="note">
-        <strong>怎么读：</strong>「结论」可直接用于门诊判断；「方法」说明它从哪来；「讨论」是各中心的分歧与本文件的取舍；「局限」写明它在什么情况下会失效。先看局限、再看结论，更容易判断一条标准是否适用于你手上的病例。<br>
-        <strong>怎么改：</strong>每一项都有固定编号（①–⑪）。讨论时只需报编号，例如「第③项，下限改成 12 mm」「第⑩项，证据级别从 P 提到 C」，我按编号定位修改，不会牵动其他条目。表 1 的六个数字、第三节四级分级、第四节六步流程同理，可按「表 1 第 2 行」「第三节 P2 一行」这样指认。
+        原页面（2026-10-17 版）已归档，不再对外发布。此前对外分享的链接仍指向本页，不会出现无法访问的错误页。<br>
+        修订完成后本页将恢复为正式文档，并在此注明版本日期。
       </div>
-
-      <div class="item" id="i1">
-        <h3>①　期别门槛：B2 进展型、C 期与早期 D　<span class="ev ev-b">B</span></h3>
-        <div class="q">结论：只在 ACVIM B2（且存在进展标志）、C 期或早期 D 期评估 TEER；A 期与 B1 期不干预。</div>
-        <div class="row"><span class="lbl">方法</span><span>汇总 8 篇报告期别构成的研究（[1][2][5][8][9][10][11][12]）；以 ACVIM 共识为分期框架，“进展标志”取自 [4][5] 的表述：进行性心大、E 波持续升高、房颤、左房破裂风险。</span></div>
-        <div class="row"><span class="lbl">讨论</span><span>各团队口径高度一致（均为 B2／C／早期 D）。B1 仅出现在 2020 年首例系列 [10]（8 例全部 B1，目的为器械安全性）。与人类 M-TEER 的结论方向一致：症状与重构达阈值者获益最大。</span></div>
-        <div class="row"><span class="lbl">局限</span><span>无研究以期别为唯一变量比较结局；B2 内部严重度谱系很宽，[4] 明确提示并非全部 B2 都应干预——B2 只是“可以开始评估”，不是“应该做”。</span></div>
-      </div>
-
-      <div class="item" id="i2">
-        <h3>②　重度 MR 的三条量化门槛　<span class="ev ev-b">B</span></h3>
-        <div class="q">结论：E 波 &gt;1.0 m/s、RF &gt;50%、RVol &gt;1.0 mL/kg，三条同时满足（或满足多数严重 MR 整合标准）才进入解剖评估。</div>
-        <div class="row"><span class="lbl">方法</span><span>取自科罗拉多州立大学两项研究的预定义纳入标准 [1][2]，并为 [8] 沿用；三条均系整合指南的犬类改编，非犬原创阈值。</span></div>
-        <div class="row"><span class="lbl">讨论</span><span>[6] 的 51 犬数据显示，C 期犬的 RF 中位 67.2%、RVol 2.72 mL/kg，远高于门槛——门槛的实际作用是“排除轻中度”，而不是“界定适应证中的重度”。</span></div>
-        <div class="row"><span class="lbl">局限</span><span>犬无 RVol 金标准；容量法与 PISA 存在系统性差异（RVol 偏低 0.24 mL/kg、RF 偏低 13.7%），B1 期 RF 甚至出现负值，说明阈值本身带有测量学不确定性。多束反流与腱索断裂时数值不可信。</span></div>
-      </div>
-
-      <div class="item" id="i3">
-        <h3>③　AP 瓣环径 14–22 mm　<span class="ev ev-b">B</span></h3>
-        <div class="q">结论：以收缩中期 AP 径 14–22 mm 判断装置适配；&lt;14 mm 或 &gt;22 mm 均为器械范围外。</div>
-        <div class="row"><span class="lbl">方法</span><span>六篇给出数值口径（[1][2][5][8][11][12]）。下限随器械而变：III 型对应 12 mm（[12] 采用），现行五种尺寸为 14／16／18／20／22 mm；上限自 2024 年的 20 mm 放宽至 22 mm（VI 型上市）。</span></div>
-        <div class="row"><span class="lbl">讨论</span><span>这是产品边界，不是解剖学边界——[12] 的 12 mm 与 [1] 的 14 mm 并不矛盾，只是器械不同。因此该数字会随器械更替过期，引用时必须同时写明器械谱。</span></div>
-        <div class="row"><span class="lbl">局限</span><span>&lt;14 mm 的犬目前无植入数据；&lt;3 kg 体型还叠加 TEE 探头限制，两者常同时构成障碍。</span></div>
-      </div>
-
-      <div class="item" id="i4">
-        <h3>④　夹尺寸等于收缩期 AP 径　<span class="ev ev-c">C</span></h3>
-        <div class="q">结论：按“夹尺寸＝收缩期 AP 径（±0）”选型，不再减 1–2 mm。</div>
-        <div class="row"><span class="lbl">方法</span><span>口径三段演变：[1] AP−1~−2 mm → [2] AP−0~−1 mm → [3] 等于 AP 径。本文件采用最新口径 [3]。</span></div>
-        <div class="row"><span class="lbl">讨论</span><span>收紧的物理原因清楚：夹偏小则捕获不足（每叶 &lt;4 mm 是单叶脱附的主要原因），夹偏大则术后压差升高。两端代价不对称，因此宁可略小不宜略大——[4] 仍写 ±1 mm 并建议取整向下。</span></div>
-        <div class="row"><span class="lbl">局限</span><span>三种口径从未做过对照；测量时相（收缩早期、铰点间）在不同研究中并不统一，1 mm 的差别很可能落在测量误差之内。</span></div>
-      </div>
-
-      <div class="item" id="i5">
-        <h3>⑤　靶区：A2/P2 中央段与后叶长度　<span class="ev ev-b">B</span></h3>
-        <div class="q">结论：靶区限 A2–P2 中央段、主反流束居中；后叶长度 ≥7 mm，&lt;5 mm 不实施。</div>
-        <div class="row"><span class="lbl">方法</span><span>[1][2] 把“主束居中于 A2–P2”设为唯一预定义解剖纳入；[3] 报告瓣叶 &lt;6 mm 难以充分捕获；[4] 分级给 P2 &lt;7 mm 极复杂、&lt;5 mm 不适合；[5] 采用“后叶 ≥7 mm”。</span></div>
-        <div class="row"><span class="lbl">讨论</span><span>靶区限制来自器械形态——单枚夹只能处理一个对合点，而不是瓣膜本身的生物学属性。这也解释了为什么 A1/A3/P1/P3 受累者被系统性地推向开胸修复。</span></div>
-        <div class="row"><span class="lbl">局限</span><span>P2 长度在 TEE 上的测量重复性未见报告；“&lt;5 mm 不适合”来自失败病例回溯，不是前瞻验证。</span></div>
-      </div>
-
-      <div class="item" id="i6">
-        <h3>⑥　对合间隙：一个禁忌、一个可接受　<span class="ev ev-c">C</span></h3>
-        <div class="q">结论：浅对合且水平间隙 &gt;3 mm 判为不适合；垂直间隙 ≤4 mm 属可接受范围。</div>
-        <div class="row"><span class="lbl">方法</span><span>[4] 的分级判据；[3] 以“警示特征”表述为水平间隙 &gt;3–4 mm。两个来源方向一致，仅措辞不同。</span></div>
-        <div class="row"><span class="lbl">讨论</span><span>水平间隙决定夹能否同时抓住两叶，是“能不能夹”；垂直间隙影响夹合后的张力分布，是“夹得稳不稳”。这就是同为一组数值、一个成禁忌一个仍可接受的解剖学根据。</span></div>
-        <div class="row"><span class="lbl">局限</span><span>3 mm 与 4 mm 来自不同中心、不同测量时相，未统一；缺乏重复性数据，实际读片差异可能吞掉这 1 mm 的判据。</span></div>
-      </div>
-
-      <div class="item" id="i7">
-        <h3>⑦　瓣叶质地与 flail 形态　<span class="ev ev-c">C</span></h3>
-        <div class="q">结论：瓣叶厚 &gt;3 mm（所有时相）、深部后叶裂、P2 flail、A2 flail 角 &gt;45°、双叶脱垂——判为不适合或极复杂。</div>
-        <div class="row"><span class="lbl">方法</span><span>以 [4] 四级分级的“不适合”列为骨架；以 [8] 的实际失败作交叉验证：20 犬中深叶裂 2 例、瓣叶增厚 4 mm 1 例，术前已识别为高危但未排除，3 例死亡可归因于解剖与选择。</span></div>
-        <div class="row"><span class="lbl">讨论</span><span>这组判据是“失败后回溯”最集中的区域——几乎全部来自单叶脱附与瓣叶撕裂病例的复盘，而不是前瞻设计。这也是本文件反复强调“标准来自教训”的原因。</span></div>
-        <div class="row"><span class="lbl">局限</span><span>3 mm 的厚度测量受增益、切面与心动周期影响；flail 角度需在特定平面测量，操作者依赖性强，尚无观察者间一致性数据。</span></div>
-      </div>
-
-      <div class="item" id="i8">
-        <h3>⑧　肺动脉高压　<span class="ev ev-b">B</span></h3>
-        <div class="q">结论：TR-PG &gt;80 mmHg 排除；TRV ≤3.7 m/s 视为可控，&gt;3.7 m/s 仅作风险修饰。</div>
-        <div class="row"><span class="lbl">方法</span><span>三个独立来源（[1][2][5]）给出同一条 80 mmHg 排除线，是全部条目中一致性最高的一条；3.7 m/s 来自 [5] 引用的开胸修补数据（远期事件 HR 2.5）。</span></div>
-        <div class="row"><span class="lbl">讨论</span><span>两条线不可混用：80 mmHg 是“排除”，3.7 m/s 是“加分项”。按经验换算，TR-PG 80 mmHg 约相当于 TRV 4.5 m/s，两者之间是宽大的灰色地带。</span></div>
-        <div class="row"><span class="lbl">局限</span><span>犬的 TR 压差测量受心率、容量状态、麻醉影响明显；“术后肺高压是否可逆”缺少前瞻数据。</span></div>
-      </div>
-
-      <div class="item" id="i9">
-        <h3>⑨　共存病与麻醉风险　<span class="ev ev-b">B</span></h3>
-        <div class="q">结论：预期生存 &lt;6 个月的非心脏病、活动性感染或免疫介导病属绝对禁忌；重度气管塌陷、脑积水、未控糖尿病或肾病属相对禁忌，须术前优化。</div>
-        <div class="row"><span class="lbl">方法</span><span>[1][2] 的三条临床排除为骨架；[8] 提供反面证据：20 犬中 7 例死亡，其中 3 例死因为气管塌陷、脑积水与心源性休克，均与瓣膜解剖无关；[9] 不设临床排除，出院生存 76%，低于 [1] 的 96%。</span></div>
-        <div class="row"><span class="lbl">讨论</span><span>在本领域的实际权重上，共存病不亚于解剖条件——两个低生存率队列的共同点都是“解剖勉强可做、全身状态不佳”。</span></div>
-        <div class="row"><span class="lbl">局限</span><span>各研究对“共存病”定义不统一，无法合并；单中心样本小，且死亡归因多为回顾判断。</span></div>
-      </div>
-
-      <div class="item" id="i10">
-        <h3>⑩　血栓栓塞风险（本团队补充）　<span class="ev ev-p">P</span></h3>
-        <div class="q">结论：把血栓栓塞风险（左房显著增大、自发显影或血栓、房颤、既往栓塞史）列为独立筛选项，并写入术后管理。</div>
-        <div class="row"><span class="lbl">方法</span><span>来自本团队 10 例队列：3 例于术后 1–4 周出现急性神经症状，按疑似血栓栓塞记录，构成 4 例死亡中的 3 例；团队据此在机构方案中加入术后早期依诺肝素联合抗血小板治疗。</span></div>
-        <div class="row"><span class="lbl">讨论</span><span>此前 13 篇文献无一将其列为排除条目，本条目属于新增。人类 M-TEER 术后抗栓已是标准流程，犬缺少对应证据，本文件以最低强度（P）收入，供其他中心验证。</span></div>
-        <div class="row"><span class="lbl">局限</span><span>无尸检或影像证实，“疑似”即是不确定性本身；10 例样本无法估计发生率，也无法判断抗栓是否降低了死亡。</span></div>
-      </div>
-
-      <div class="item" id="i11">
-        <h3>⑪　术中终点：捕获长度与跨瓣压差　<span class="ev ev-c">C</span></h3>
-        <div class="q">结论：每叶捕获 ≥4 mm；术后跨瓣压差 ≤5 mmHg；抓取后即刻压差 ≥5 mmHg 应释放并减少捕获组织。</div>
-        <div class="row"><span class="lbl">方法</span><span>[1][5] 给“每叶 ≥4 mm”；[3] 给“≥4–5 mm”并给出压差处理规则；[4] 以 MVPG ≥5 mmHg 定义人工瓣膜狭窄。</span></div>
-        <div class="row"><span class="lbl">讨论</span><span>把两个“术中可测的数字”写进术前谈话与操作清单，是降低单叶脱附最直接的手段——它把失败从“术后发现”提前到“释放前可改”。</span></div>
-        <div class="row"><span class="lbl">局限</span><span>4 mm 是共识性目标，非剂量-反应关系；5 mmHg 借自人类瓣膜标准，犬的最佳阈值未经验证。</span></div>
-      </div>
-    </section>
-
-    <section class="sec" id="s3">
-      <h2>三、解剖复杂度的四级分级</h2>
-      <div class="sub">Orton &amp; Carroll 2025 Table 2 全文照录（基于四家北美中心 300 余犬的集体经验；最终分级应以 TEE 为准）　<span class="ev ev-d">D</span></div>
-      <div class="tw">
-        <table>
-          <caption>表 2　犬二尖瓣 TEER 解剖复杂度判据（非复杂／复杂／极复杂／不适合）</caption>
-          <thead><tr><th style="width:16%">判据</th><th><span class="lv lv-g">非复杂</span> 理想</th><th><span class="lv lv-g">复杂</span> 适合</th><th><span class="lv lv-y">极复杂</span> 有挑战</th><th><span class="lv lv-r">不适合</span> 困难或不可能</th></tr></thead>
-          <tbody>
-            <tr><td class="k">获益-风险</td><td>获益远大于风险</td><td>获益明显大于风险</td><td>获益 ≥ 风险</td><td><strong>风险大于获益</strong></td></tr>
-            <tr><td class="k">反流束／瓣叶位置</td><td>局限性前叶（A2）脱垂；后方反流束；关节部 VC</td><td>中央双叶（A2&amp;P2）脱垂；后-中央反流束；关节部 VC</td><td>A2 flail（与瓣环平面夹角 &lt;45°）；中央反流束；关节部 VC</td><td><strong>A2 flail（夹角 &gt;45°）；P2 flail；主反流束位于 A2／P2 之外；多股宽大独立反流束</strong></td></tr>
-            <tr><td class="k">关节部 VC 宽／瓣环径</td><td>&lt;0.33</td><td>0.33–0.66</td><td>&gt;0.66</td><td>—</td></tr>
-            <tr><td class="k">对合情况</td><td>对合储备良好（脱垂瓣叶与非脱垂瓣叶有重叠）</td><td>中度保留对合，垂直间隙 ≤4 mm</td><td>浅对合（无或极少重叠）± 水平间隙 ≤3 mm；后叶两段脱垂</td><td><strong>浅对合且水平间隙 &gt;3 mm；深部反流性后叶裂</strong></td></tr>
-            <tr><td class="k">叶-环指数</td><td>&gt;1.2</td><td>1.0–1.2</td><td>—</td><td><strong>≤1.0</strong></td></tr>
-            <tr><td class="k">前叶冗余</td><td>—</td><td>—</td><td>前叶过度冗余／桶状（Barlow 样）</td><td>—</td></tr>
-            <tr><td class="k">瓣叶厚度</td><td>—</td><td>—</td><td>—</td><td><strong>&gt;3 mm（所有时相）</strong></td></tr>
-            <tr><td class="k">P2 长度</td><td>—</td><td>—</td><td>&lt;7 mm</td><td><strong>&lt;5 mm</strong></td></tr>
-            <tr><td class="k">收缩期 AP 径 vs 夹尺寸</td><td>AP 径大于夹尺寸 1 mm 以上</td><td>AP 径大于夹尺寸 2 mm 以上</td><td>—</td><td>AP 径与夹尺寸相差不足 2 mm</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="row" style="display:grid;grid-template-columns:46px 1fr;gap:10px;font-size:0.85rem;color:#3d3d4e;">
-        <span class="lbl" style="font-weight:700;color:#8a86a0;font-size:0.78rem;">讨论</span>
-        <span>原文脚注的选型口径为“最佳夹尺寸＝中收缩期 AP 径 ±1 mm”，与 [2][3] 的“±0”存在 1 mm 差异；临床取整宜向下。作者同时强调：复杂度是风险、获益与中心经验构成的连续谱，不应作为绝对的二元准入裁决。</span>
-      </div>
-      <div class="row" style="display:grid;grid-template-columns:46px 1fr;gap:10px;font-size:0.85rem;color:#3d3d4e;margin-top:7px;">
-        <span class="lbl" style="font-weight:700;color:#8a86a0;font-size:0.78rem;">局限</span>
-        <span>该分级来自四家中心 300 余例的集体经验，尚缺前瞻队列验证其预测效度；原文亦自述分级标准将随经验继续演化。</span>
-      </div>
-    </section>
-
-    <section class="sec" id="s4">
-      <h2>四、六步筛查流程与退出口</h2>
-      <div class="sub">把第二节的十一项判断排成临床可执行的顺序；每一步都设“退回药物治疗”的出口，避免单向推进</div>
-      <div class="tw">
-        <table>
-          <caption>表 3　六步流程</caption>
-          <thead><tr><th style="width:20%">步骤</th><th>判断内容</th><th style="width:26%">退回药物治疗的出口</th><th style="width:8%">证据</th></tr></thead>
-          <tbody>
-            <tr><td class="k">1　期别与指征</td><td>B2 进展型／C／早期 D；有症状或重构进展；主人可承担随访</td><td>主人拒绝；B1 期；与 MMVD 无关的健康状况差</td><td><span class="ev ev-b">B</span></td></tr>
-            <tr><td class="k">2　严重度</td><td>三条量化门槛同时满足；定量方法基线固定（优先容量法）；确认定量结果可信（无多束、无腱索断裂干扰）</td><td>未达门槛；定量不可信且无法以 3D VCA 复核</td><td><span class="ev ev-b">B</span></td></tr>
-            <tr><td class="k">3　解剖适配</td><td>靶区、AP 径、后叶长度、对合、质地、flail 形态（对应第二节③–⑦）</td><td>判为不适合，且开胸修复不可行</td><td><span class="ev ev-b">B</span></td></tr>
-            <tr><td class="k">4　排除性条件</td><td>TR-PG &gt;80 mmHg、活动性感染／免疫病、预期生存 &lt;6 个月、无法完成抗栓与随访</td><td>出现任一条即停止</td><td><span class="ev ev-b">B</span></td></tr>
-            <tr><td class="k">5　团队与围术期</td><td>中心能力与档期同患者窗口匹配；具备全麻下 3D TEE、透视、术后监护与 3 个月抗栓管理</td><td>无“能力＋档期”兼得的中心</td><td><span class="ev ev-d">D</span></td></tr>
-            <tr><td class="k">6　术中与术后判定</td><td>每叶捕获 ≥4 mm、术后 MVPG ≤5 mmHg、残余 RF ≤40%、3D VCA 较释放前减少 &gt;50%</td><td>不适用（术中即时调整或释放）</td><td><span class="ev ev-c">C</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="callout"><strong>为何把共存病与团队条件写进流程：</strong>[8] 的 20 犬中 7 例死亡，其中 3 例为气管塌陷、脑积水与心源性休克，均非瓣膜解剖问题；[9] 因不设临床排除标准，出院生存率 76%，低于 [1] 的 96%。共存病与中心经验对结局的实际权重，在本领域不亚于解剖条件。</div>
-    </section>
-
-    <section class="sec" id="s5">
-      <h2>五、本团队 10 例队列的一手经验</h2>
-      <div class="sub">Petchdee 等，2026（<em>Vet Sci</em> 13(6):597）｜ 作者所在团队（泰国农业大学兽医学院）的前瞻性观察队列　<span class="ev ev-p">P</span> <span class="ev ev-b">B</span></div>
-      <p>前述十项判断均来自外部文献。本节补充一个内部视角：作者所在团队 2026 年报告的 10 例队列，其纳排标准、结局与事后修订，是本文若干条目的直接来源，也可视为对第二节判断的一次实测检验。因系单中心、小样本、无对照，按经验陈述处理，不作因果推断。</p>
-
-      <div class="tw">
-        <table>
-          <caption>表 4　本团队队列（10 例）的纳入与排除标准</caption>
-          <thead><tr><th style="width:13%">类别</th><th>条目</th></tr></thead>
-          <tbody>
-            <tr><td class="k">纳入（3 条）</td><td>① 超声证实 MMVD，MR 至少中度（复合评分 ≥6；轻度 &lt;6、中度 6–&lt;12、重度 ≥12）；② 体重与二尖瓣前后（AP）径与 TEER 装置兼容；③ 有临床症状，且具备手术指征、风险匹配</td></tr>
-            <tr><td class="k">排除（6 条）</td><td>① 收缩期 AP 径 &lt;12 mm；② 临床显著二尖瓣狭窄，含基线跨瓣压差升高提示功能性狭窄者；③ 先天性心脏病；④ 与容量负荷无关的严重收缩功能障碍；⑤ 重度肺动脉高压；⑥ 可能干扰麻醉或随访的全身性疾病</td></tr>
-            <tr><td class="k">队列构成</td><td>ACVIM B2 3 例、C 6 例、D 1 例；体重 8.1 ± 5.16 kg；LA:Ao 1.9 ± 0.3；LVIDdN 1.85 ± 0.25；术前跨瓣压差 3.03 ± 0.65 mmHg；MR 复合评分 12.2 ± 4.4</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="tw">
-        <table>
-          <caption>表 5　术后即刻的减流幅度与心肌功变化（n = 10）</caption>
-          <thead><tr><th style="width:34%">指标</th><th>术前</th><th>术后即刻</th><th>变化</th></tr></thead>
-          <tbody>
-            <tr><td class="k">MR 复合评分</td><td>12.2</td><td>7.1</td><td>重度 → 中度</td></tr>
-            <tr><td class="k">vena contracta 宽度</td><td>5.9 mm</td><td>3.8 mm</td><td>下降</td></tr>
-            <tr><td class="k">反流量（MRV）</td><td>8.4 mL/beat</td><td>3.3 mL/beat</td><td>下降约 61%</td></tr>
-            <tr><td class="k">跨二尖瓣压差</td><td>3.03 ± 0.65 mmHg</td><td>1.01 ± 0.48 mmHg</td><td>下降，未触及 5 mmHg 警戒线</td></tr>
-            <tr><td class="k">整体做功指数（GWI）</td><td>921.7 mmHg%</td><td>1149.3 mmHg%</td><td>上升</td></tr>
-            <tr><td class="k">整体做功效率（GWE）</td><td>84.9%</td><td>92.7%</td><td>上升</td></tr>
-            <tr><td class="k">整体无效做功（GWW）</td><td>338.3 mmHg%</td><td>179.0 mmHg%</td><td>下降</td></tr>
-            <tr><td class="k">LVIDdN</td><td>1.90</td><td>1.76</td><td>下降（反向重构的早期信号）</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p>功能层面的外部验证：存活病例中 3/6 例 C、D 期犬因临床改善而下调利尿剂剂量，研究期内共 3 例完全停用利尿剂。</p>
-
-      <div class="tw">
-        <table>
-          <caption>表 6　本队列表取的六条可操作经验及其在本文件中的位置</caption>
-          <thead><tr><th style="width:8%">编号</th><th style="width:26%">经验</th><th>依据</th><th style="width:12%">对应条目</th></tr></thead>
-          <tbody>
-            <tr><td class="k">L1</td><td><strong>瓣环下限是器械属性，不是生物学边界</strong></td><td>本队列的 12 mm 下限对应当年最短的 III 型器械；现行器械谱为 14–22 mm，故阈值随器械更替而变</td><td>第二节③</td></tr>
-            <tr><td class="k">L2</td><td><strong>术前跨瓣压差应作为筛选项</strong></td><td>排除基线压差升高（提示功能性狭窄）者后，术后压差均值降至 1.01 mmHg，说明术前预筛与术后安全性同源</td><td>第二节⑪</td></tr>
-            <tr><td class="k">L3</td><td><strong>血栓栓塞风险应单列为筛选项</strong></td><td>3/10 例于术后 1–4 周出现急性神经症状，按疑似血栓栓塞记录，构成 4 例死亡中的 3 例；团队已据此将术后早期依诺肝素联合抗血小板写入机构方案</td><td>第二节⑩</td></tr>
-            <tr><td class="k">L4</td><td><strong>期别上限宜止于“早期 D”</strong></td><td>本队列为少数纳入 D 期的队列之一（1/10 例）；4 例死亡均发生于进展期病例的术后 1–4 周</td><td>第二节①</td></tr>
-            <tr><td class="k">L5</td><td><strong>部分减流即有临床价值</strong></td><td>减流同时伴随 GWI 上升、GWE 上升、GWW 下降与 LVIDdN 下降，GLS 单独不能反映这一改善</td><td>第四节第 6 步</td></tr>
-            <tr><td class="k">L6</td><td><strong>筛选口径应随失败病例回溯修订</strong></td><td>作者自述：候选人选择已更趋保守，更多考量疾病分期、心脏重构程度、肺动脉高压、全身共存病与血栓栓塞风险</td><td>全篇</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="callout">
-        <strong>原文表述（可直接引证）：</strong><br>
-        “Based on our experience, candidate selection has become more conservative, with increased consideration given to disease stage, degree of cardiac remodeling, pulmonary hypertension, systemic comorbidities, and thromboembolic risk.”<br>
-        “The deaths occurred between 1 and 4 weeks after the procedure and were not associated with intraoperative or immediate postoperative complications.”
-      </div>
-
-      <div class="row" style="display:grid;grid-template-columns:46px 1fr;gap:10px;font-size:0.85rem;color:#3d3d4e;margin-top:12px;">
-        <span class="lbl" style="font-weight:700;color:#8a86a0;font-size:0.78rem;">讨论</span>
-        <span>本队列的纳排宽于 Potter 系列——AP 下限取 12 mm 而非 14 mm、纳入 D 期、未设肺动脉高压的定量门槛、未将血栓栓塞风险列为排除条目；其随访死亡率（4/10）也高于 Potter 2024／2025 报告的水平。方向一致，但样本量小、无对照、时点不同，只能作为提示而非因果证据。</span>
-      </div>
-      <div class="row" style="display:grid;grid-template-columns:46px 1fr;gap:10px;font-size:0.85rem;color:#3d3d4e;margin-top:7px;">
-        <span class="lbl" style="font-weight:700;color:#8a86a0;font-size:0.78rem;">局限</span>
-        <span>10 例、单中心、无对照、无尸检；死亡归因为临床推断；抗栓方案变更后尚无新队列验证其效果。</span>
-      </div>
-    </section>
-
-    <section class="sec" id="s6">
-      <h2>六、方法与检索策略</h2>
-      <div class="sub">本节说明第二节的十一项判断是如何从文献中得来的，供他人复核或重复</div>
-
-      <h3>6.1　检索来源与时间窗</h3>
-      <ul>
-        <li><strong>数据库：</strong>PubMed（含 MEDLINE）、Europe PMC（全文 XML 接口）；辅以 Semantic Scholar 引文网络（前向与后向引文追踪）、出版商官网目次（Frontiers、MDPI、Elsevier ScienceDirect）。</li>
-        <li><strong>时间窗：</strong>2020-01-01 至 2026-10-16（证据截止日）。2020 年以前仅纳入器械溯源与概念奠基文献。</li>
-        <li><strong>语言：</strong>英文为主；同时检索中文与泰文来源（含本地会议报告），非英文文献保留原文题录并附英文译名。</li>
-        <li><strong>灰文献：</strong>公开的临床病例报道、会议摘要与厂商技术资料仅用于交叉核对，不作为阈值来源；凡引用均在正文标注。</li>
-      </ul>
-
-      <h3>6.2　检索式</h3>
-      <p style="font-size:0.86rem;color:#6b6b80;">以下为实际执行的检索式（PubMed 语法），可原样复用；第三方复现时请记录执行日期，因该领域每季度均有新增。</p>
-      <pre>A（物种与疾病）
-("dog"[MeSH Terms] OR dog OR dogs OR canine) AND
-("mitral valve"[MeSH Terms] OR "mitral valve" OR "mitral regurgitation"
- OR "myxomatous mitral valve disease" OR MMVD)
-
-B（技术）
-(TEER OR "edge-to-edge" OR "transcatheter edge-to-edge repair"
- OR "V-Clamp" OR ValveClamp OR "mitral clip" OR MitraClip
- OR "leaflet repair")
-
-C（组合）
-A AND B AND ("2020/01/01"[dp] : "2026/10/16"[dp])</pre>
-      <pre>补充检索 1（筛选与决策框架）
-("mitral valve" AND dog AND (surgery OR repair OR intervention))
-AND (criteria OR selection OR framework OR indication OR candidate)
-
-补充检索 2（影像方法学）
-(dog OR canine) AND ("transesophageal echocardiography" OR TEE
- OR "computed tomography") AND mitral AND (repair OR intervention)
-
-补充检索 3（作者追踪）
-Potter BM / Orton EC / Scansen BA / Visser LC / Arai S /
-Petchdee S / Kongchatree S / Rattanasrisomporn J /
-Lee JM / Liu B / Kurogochi K</pre>
-
-      <h3>6.3　纳入与排除</h3>
-      <ul>
-        <li><strong>纳入：</strong>① 研究对象为犬（含实验犬与尸体研究）② 涉及二尖瓣缘对缘修补或同类器械 ③ 报告筛选标准、解剖判据、影像方法或可用于外推的结局。</li>
-        <li><strong>排除：</strong>① 仅讨论开胸修复且无 TEER 对照 ② 纯人类研究（仅用于判据溯源时保留，如 [4]）③ 综述而无原始数据且不涉及筛选 ④ 厂商宣传材料与重复发表。</li>
-        <li><strong>结果：</strong>同行评议文献 20 篇中，与“筛选”直接相关的 13 篇纳入本文件；其余 7 篇作为背景引用。</li>
-      </ul>
-      <div class="callout"><strong>方法学缺陷（须明示）：</strong>初检命中数、去重后条数、标题摘要筛除数等中间计数未留档，故本文件不满足 PRISMA 流程图要求，<strong>不是系统评价</strong>。若后续需投稿，应重跑检索并补齐计数。</div>
-
-      <h3>6.4　数据提取与核对</h3>
-      <ul>
-        <li><strong>统一五字段：</strong>纳入标准／排除标准／阈值与测量／评估流程／出处定位。</li>
-        <li><strong>全文获取：</strong>开放获取文献经 Europe PMC fullTextXML 接口获取；付费墙 2 篇（[6][7]）由作者本人获取 PDF 后解析。</li>
-        <li><strong>表格与数值：</strong>PDF 表格以 pdfplumber 提取，再人工核对；所有数值经“原文 → 提取表 → 本文件”两次核对。</li>
-        <li><strong>可溯源：</strong>每条数值标注出处（段落或表号）；原文无数值者明确写“原文无数值”，不作补全。</li>
-      </ul>
-
-      <h3>6.5　证据分级规则</h3>
-      <div class="tw">
-        <table>
-          <caption>表 7　本文件使用的证据级别（与正文徽标一致）</caption>
-          <thead><tr><th style="width:8%">级别</th><th style="width:36%">定义</th><th>使用方式</th></tr></thead>
-          <tbody>
-            <tr><td class="k"><span class="ev ev-a">A</span></td><td>多项前瞻性研究结论一致，且有预定义终点</td><td>可直接采用</td></tr>
-            <tr><td class="k"><span class="ev ev-b">B</span></td><td>单项前瞻性研究，或多项回顾性研究结论一致</td><td>推荐采用，须注明来源与样本量</td></tr>
-            <tr><td class="k"><span class="ev ev-c">C</span></td><td>单一回顾性系列、方法学研究外推，或器械说明书</td><td>谨慎采用，须说明外推路径</td></tr>
-            <tr><td class="k"><span class="ev ev-d">D</span></td><td>综述、专家意见、多中心集体经验（无原始数据）</td><td>作框架使用，不作数值依据</td></tr>
-            <tr><td class="k"><span class="ev ev-p">P</span></td><td>本文作者团队的单中心已发表／未发表观察，或个人经验</td><td>仅作提示，必须显式标注，不得单独支撑结论</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h3>6.6　合成规则</h3>
-      <ul>
-        <li><strong>不做统计合并。</strong>文献异质性过大（期别、器械、测量方法均不同），本文件为叙述性综合，未做 meta 分析。</li>
-        <li><strong>口径冲突的处理：</strong>“器械谱最新 + 多来源一致”优先；旧口径保留并在原地注明演变（如夹尺寸由 AP−1~−2 mm 演变至 ±0）。</li>
-        <li><strong>分歧不取中位数。</strong>不同来源数值不一致时保留分歧、标注各自出处，不擅自调和。</li>
-        <li><strong>推断与原文分离。</strong>凡属作者引申者，正文明确标注“引申”。</li>
-      </ul>
-    </section>
-
-    <section class="sec" id="s7">
-      <h2>七、局限与使用声明</h2>
-      <div class="sub">先把本文件可能错在哪说清楚，再谈怎么用</div>
-
-      <h3>7.1　证据层面</h3>
-      <ul>
-        <li><strong>样本总量有限。</strong>本文件引用的全部犬 TEER 案例合计不超过 300 例，无随机对照研究；现有阈值多为单中心经验与失败病例回溯的产物，[5] 亦自述其框架为“推理辅助而非验证算法”。</li>
-        <li><strong>解剖分级缺前瞻验证。</strong>四级分级来自四家中心集体经验，未经前瞻队列验证预测效度，原文明确其标准将继续演化。</li>
-        <li><strong>定量方法有结构性缺陷。</strong>犬缺乏左室每搏量金标准，容量法与 PISA 均未验证准确度；RF 在 B1 期甚至出现负值，提示轻度端噪声大于信号。</li>
-        <li><strong>CT 尚无犬类参考值。</strong>本文件未给出任何 CT 筛选阈值，因现有文献确实不存在（[7] 全文无正常犬瓣环与瓣叶的 CT 测量值）；未来出现相关定量研究时应增补。</li>
-        <li><strong>体型外推受限。</strong>全部证据来自小型至中型犬（中位体重 3.8–8.1 kg），对大型犬的外推须谨慎。</li>
-      </ul>
-
-      <h3>7.2　方法层面</h3>
-      <ul>
-        <li>本文件<strong>不是系统评价</strong>：未预注册、无 PRISMA 流程、中间计数缺失，检索可能遗漏未被常用数据库索引的灰色文献。</li>
-        <li>提取与核对均由单一作者完成，未做双人独立提取与一致性检验（κ）。</li>
-        <li>语言覆盖以英文为主，中文与泰文来源虽已检索，但覆盖面无法与英文数据库相比。</li>
-        <li>本文件为<strong>草稿</strong>，条目、阈值与分级可能在同行讨论后修改；引用前请与作者确认版本号。</li>
-      </ul>
-
-      <p style="margin-top:12px;">本文件为临床决策辅助材料，不构成对具体病例的医疗建议。每一例的最终判断，应由具备犬 TEER 经验的心脏专科医师与介入团队，在完整评估后共同作出。</p>
-    </section>
-
-    <section class="sec" id="s8">
-      <h2>八、证据附录：十三篇文献逐篇对照</h2>
-      <div class="sub">前七节的结论在此可逐条溯源；表 8 的文献名均可点击跳转 DOI</div>
-
-      <div class="tw">
-        <table>
-          <caption>表 8　本文件所依据的文献及其证据属性</caption>
-          <thead><tr><th>文献</th><th>设计</th><th>犬数</th><th>ACVIM 分期</th><th>有无疑似预定义标准</th><th>编号</th></tr></thead>
-          <tbody>
-            <tr><td class="k"><a class="reflink" href="https://doi.org/10.3389/fvets.2024.1448828" target="_blank" rel="noopener">Potter 等，2024（科罗拉多州立大学）</a><span class="doi-tag">doi:10.3389/fvets.2024.1448828</span></td><td>前瞻性单臂可行性研究</td><td>50（筛查 56）</td><td>B2 30%／C 64%／D 6%</td><td><strong>有完整预定义纳入与排除标准</strong>；解剖排除事后演化</td><td>[1]</td></tr>
-            <tr><td class="k"><a class="reflink" href="https://doi.org/10.1016/j.jvc.2025.12.002" target="_blank" rel="noopener">Potter 等，2025</a><span class="doi-tag">doi:10.1016/j.jvc.2025.12.002</span></td><td>单中心队列，1 年超声随访＋2 年生存</td><td>111</td><td>B2／C／D</td><td>纳入有预定义；<strong>解剖排除无预定义</strong>，随研究演化</td><td>[2]</td></tr>
-            <tr><td class="k"><a class="reflink" href="https://doi.org/10.1016/j.jvc.2026.01.003" target="_blank" rel="noopener">Potter 等，2026</a><span class="doi-tag">doi:10.1016/j.jvc.2026.01.003</span></td><td>TEE 筛选与引导方法学专题（130 犬经验）</td><td>130（经验基数）</td><td>未限定</td><td>以“候选性要素”与“警示特征”表述，非硬性列表</td><td>[3]</td></tr>
-            <tr><td class="k"><a class="reflink" href="https://doi.org/10.1016/j.jvc.2025.10.005" target="_blank" rel="noopener">Orton &amp; Carroll，2025</a><span class="doi-tag">doi:10.1016/j.jvc.2025.10.005</span></td><td>人类经验迁移综述＋四中心 300+ 犬集体经验</td><td>300+（集体经验）</td><td>未限定</td><td>提出<strong>四级解剖复杂度分级</strong>（本文件第三节照录）</td><td>[4]</td></tr>
-            <tr><td class="k"><a class="reflink" href="https://doi.org/10.3389/fvets.2026.1900762" target="_blank" rel="noopener">Kongchatree &amp; Rattanasrisomporn，2026</a><span class="doi-tag">doi:10.3389/fvets.2026.1900762</span></td><td>叙述性综述＋五步选择框架</td><td>—（文献综合）</td><td>B2／C／早期 D</td><td>框架性标准，作者自述为推理辅助、非验证算法</td><td>[5]</td></tr>
-            <tr><td class="k"><a class="reflink" href="https://doi.org/10.1016/j.jvc.2025.01.002" target="_blank" rel="noopener">Del Nero 等，2025</a><span class="doi-tag">doi:10.1016/j.jvc.2025.01.002</span></td><td>前瞻性方法学比较（PISA vs 容量法）</td><td>51</td><td>B1 16／B2 18／C 17</td><td>无治疗标准；提供<strong>定量方法与参考区间</strong></td><td>[6]</td></tr>
-            <tr><td class="k"><a class="reflink" href="https://doi.org/10.1016/j.jvc.2026.05.006" target="_blank" rel="noopener">Scansen，2026</a><span class="doi-tag">doi:10.1016/j.jvc.2026.05.006</span></td><td>心脏 CT 解剖与后处理综述</td><td>—（单中心图例）</td><td>—</td><td>无筛选阈值；提供 CT 技术方案与适用边界</td><td>[7]</td></tr>
-            <tr><td class="k"><a class="reflink" href="https://doi.org/10.1111/jvim.70156" target="_blank" rel="noopener">Lee 等，2025（韩国，JVIM）</a><span class="doi-tag">doi:10.1111/jvim.70156</span></td><td>回顾性病例系列</td><td>20</td><td>B2 3／C 11／D 6</td><td><strong>无正式纳排标准</strong>；评估因素仅作参考（早期死亡 35%）</td><td>[8]</td></tr>
-            <tr><td class="k"><a class="reflink" href="https://doi.org/10.3390/vetsci12030223" target="_blank" rel="noopener">Lee 等，2025（韩国，Vet Sci）</a><span class="doi-tag">doi:10.3390/vetsci12030223</span></td><td>回顾性生物标志物研究</td><td>25</td><td>C／D</td><td>仅分析性纳排；<strong>不因合并症排除</strong></td><td>[9]</td></tr>
-            <tr><td class="k"><a class="reflink" href="https://doi.org/10.3389/fvets.2020.597879" target="_blank" rel="noopener">Liu 等，2020</a><span class="doi-tag">doi:10.3389/fvets.2020.597879</span></td><td>前瞻性首例系列</td><td>8</td><td>B1（全部）</td><td>叙述式入选条件；<strong>无排除标准</strong></td><td>[10]</td></tr>
-            <tr><td class="k"><a class="reflink" href="https://doi.org/10.3390/ani14213068" target="_blank" rel="noopener">Petchdee 等，2024（泰国）</a><span class="doi-tag">doi:10.3390/ani14213068</span></td><td>前瞻性试点</td><td>4</td><td>B2 2／C 2</td><td>叙述式入选标准；无显式排除清单</td><td>[11]</td></tr>
-            <tr><td class="k"><a class="reflink" href="https://doi.org/10.3390/vetsci13060597" target="_blank" rel="noopener">Petchdee 等，2026（泰国，本团队）</a><span class="doi-tag">doi:10.3390/vetsci13060597</span></td><td>前瞻性观察（心肌功）</td><td>10</td><td>B2 3／C 6／D 1</td><td><strong>六条明确排除标准</strong>；随访 4 例死亡后收紧</td><td>[12]</td></tr>
-            <tr><td class="k"><a class="reflink" href="https://doi.org/10.1111/jvim.70037" target="_blank" rel="noopener">Kurogochi 等，2025</a><span class="doi-tag">doi:10.1111/jvim.70037</span></td><td>前瞻性安全性研究（术中 TEE 并发症）</td><td>60</td><td>—（二尖瓣介入）</td><td>仅 3 条 TEE 相关排除；验证评估环节的安全性</td><td>[13]</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="callout"><strong>读表要点：</strong>13 篇中仅 2 篇（[1][12]）给出了完整的预定义纳入与排除标准，其余或为非硬性表述、或仅设分析性纳排；2 篇（[8][10]）明确承认无标准，且 [8] 的早期死亡率为 35%。这一分布本身就是本文件最重要的发现之一——<strong>犬 TEER 至今没有行业统一的准入标准，现有实践依赖各中心的经验与回溯教训。</strong></div>
-
-      <div class="tw">
-        <table>
-          <caption>表 9　各文献的入选条件</caption>
-          <thead><tr><th>文献</th><th>ACVIM 分期</th><th>MR 严重度要求</th><th>解剖位置要求</th><th>瓣环径要求</th><th>其他</th></tr></thead>
-          <tbody>
-            <tr><td class="k">[1] Potter 2024</td><td>早期仅 C／D；初步成功后纳入 B2</td><td>E 波 &gt;1 m/s；RF &gt;50%；RVol &gt;1.0 mL/kg（三条同时满足）</td><td>A2 和／或 P2 段脱垂或 flail</td><td>收缩中期 AP 14–22 mm（TTE 左心尖 IO 视图，TEE 复核）</td><td>—</td></tr>
-            <tr><td class="k">[2] Potter 2025</td><td>B2／C／D，不限利尿剂状态</td><td>满足多数严重 MR 整合标准（E 波 &gt;1 m/s、RF &gt;50%、RVol &gt;1 mL/kg、短轴 LA:Ao &gt;2、LVIDdN &gt;1.9）</td><td>主反流束位于中央段 A2–P2（唯一预定义解剖纳入）</td><td>中收缩期 AP 14–22 mm（TTE 估测、TEE 确认）</td><td>—</td></tr>
-            <tr><td class="k">[3] Potter 2026</td><td>未限定，以 TEE 判断为准</td><td>严重度用 TTE 整合评估；TEE 上可用 3D VCA 定量</td><td>A2–P2 对合不良且主反流束居中；主束旁的小股独立射流不排除</td><td>AP 径用于装置选型（=收缩期 AP 径）</td><td>候选性三要素：解剖＋严重度＋瓣环尺寸</td></tr>
-            <tr><td class="k">[4] Orton &amp; Carroll 2025</td><td>B2（LA:Ao ≥1.6、LVIDdN ≥1.7）／C（需长期利尿）／D</td><td>满足严重 dMR 整合标准；<strong>不以利尿剂状态或主人对症状的感知为门槛</strong></td><td>依四级复杂度分级（见第三节）</td><td>与夹尺寸匹配关系见第三节</td><td>B2 期 MR 严重度谱系宽，并非全部适合干预</td></tr>
-            <tr><td class="k">[5] Kongchatree 2026</td><td>B2（进行性心大／E 波持续升高／房颤／左房破裂）、C、早期 D</td><td>符合严重 MR 标准；LV 收缩功能保留或仅轻度受损</td><td>A2／P2 中央性；后叶 ≥7 mm；对合深度足够</td><td>14–22 mm（上限因 22 mm 装置上市自 20 mm 放宽）</td><td>PH 缺如或可控（TRV ≤3.7 m/s）；肾功能可耐受麻醉</td></tr>
-            <tr><td class="k">[8] Lee 2025（JVIM）</td><td>B2／C／D 实际入组</td><td>五条：抵壁偏心束或中央束面积 ≥50%；E 波 ≥1 m/s；CW 致密三角形频谱；RF ≥50%；RVol ≥1.0 mL/kg</td><td>无硬性要求（评估因素图仅作参考）</td><td>按 AP 径选型（&lt;14／14–16／16–18／&gt;20 mm）</td><td>TEER 通常先经开胸修补会诊后决定</td></tr>
-            <tr><td class="k">[9] Lee 2025（Vet Sci）</td><td>仅 C／D</td><td>未设量化门槛</td><td>未设</td><td>未设</td><td>术前 7 天内有 NT-proBNP 或 cTnI 检测；已有匹莫苯丹＋呋塞米治疗</td></tr>
-            <tr><td class="k">[10] Liu 2020</td><td>B1（实际全部）</td><td>超声证实 MR；MRA/LAA &gt;50% 记为重度（半定量分级，非准入门槛）</td><td>未设</td><td>&lt;20 mm 用 14 mm 型；20–30 mm 用 16 mm 型</td><td>体健、未使用任何心脏药物</td></tr>
-            <tr><td class="k">[11] Petchdee 2024</td><td>B2／C</td><td>有临床症状（咳嗽、呼吸困难、运动不耐受）</td><td>反流局限于单一瓣叶、无瓣叶裂、以 A2–P2 为主</td><td>AP &gt;10 mm（TTE，参考区间 12–24 mm）</td><td>小型犬、体重 &gt;3 kg</td></tr>
-            <tr><td class="k">[12] Petchdee 2026</td><td>B2／C／D</td><td>至少中度 MR（复合评分 ≥6）</td><td>无二尖瓣狭窄、无先心病</td><td>AP ≥12 mm，与装置兼容</td><td>有临床症状且具备手术指征；体重与装置兼容</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="tw">
-        <table>
-          <caption>表 10　各文献的排除条件</caption>
-          <thead><tr><th>文献</th><th>有否预定义排除</th><th>肺动脉高压</th><th>非心疾病</th><th>感染／免疫</th><th>解剖性排除</th></tr></thead>
-          <tbody>
-            <tr><td class="k">[1] Potter 2024</td><td>有（三条）</td><td>TR-PG &gt;80 mmHg</td><td>预期影响 6 个月生存者</td><td>活动性全身感染或免疫介导病</td><td>无预定义；56 只 TEE 中 6 只因重度 flail／非中央段广泛受累／AP 径被剔除</td></tr>
-            <tr><td class="k">[2] Potter 2025</td><td>临床三条，解剖无预定义</td><td>TR 压差 &gt;80 mmHg</td><td>同上</td><td>同上</td><td>随研究演化（后叶 flail、AP &gt;20 mm、后叶 &lt;7 mm、浅对合、宽关节部 VC）</td></tr>
-            <tr><td class="k">[3] Potter 2026</td><td>以“警示特征”表述</td><td>—</td><td>—</td><td>—</td><td>瓣叶 &lt;6 mm 难捕获；水平对合间隙 &gt;3–4 mm；PML flail；双瓣叶脱垂；P2 窄或内凹陷；主束在 A2–P2 之外</td></tr>
-            <tr><td class="k">[4] Orton &amp; Carroll 2025</td><td>四级分级中的“不适合”级</td><td>—</td><td>—</td><td>—</td><td>A2 flail 角 &gt;45°；P2 flail；主束在中央段外；多股宽大独立射流；浅对合且水平间隙 &gt;3 mm；深部后叶裂；瓣叶厚 &gt;3 mm；P2 &lt;5 mm；叶-环指数 ≤1.0</td></tr>
-            <tr><td class="k">[5] Kongchatree 2026</td><td>框架式（每步设退出口）</td><td>TRV 压差 &gt;80 mmHg</td><td>可能危及 6 个月生存者</td><td>活动性感染或免疫介导病</td><td>双瓣叶脱垂；A1／A3／P1／P3 受累；AP &gt;22 mm；后叶脱垂；深裂；显著增厚；浅对合；AP &lt;14 mm</td></tr>
-            <tr><td class="k">[8] Lee 2025（JVIM）</td><td><strong>无</strong>（作者明确承认）</td><td>未排除（TR-PG 中位 30.5 mmHg）</td><td>未排除</td><td>未排除</td><td>无；深叶裂 2 例、瓣叶增厚 4 mm 1 例术前已识别高危但未排除</td></tr>
-            <tr><td class="k">[9] Lee 2025（Vet Sci）</td><td>无临床排除</td><td><strong>明确未排除</strong></td><td>未排除</td><td>未排除</td><td>无</td></tr>
-            <tr><td class="k">[10] Liu 2020</td><td>无列表</td><td>未设</td><td>体查／CBC／尿检异常者不入选</td><td>—</td><td>无</td></tr>
-            <tr><td class="k">[11] Petchdee 2024</td><td>无显式清单</td><td>未显式排除</td><td>隐含（重症 CHF 合并多器官病属高危）</td><td>隐含</td><td>瓣叶裂、反流不局限于单一瓣叶</td></tr>
-            <tr><td class="k">[12] Petchdee 2026</td><td><strong>六条明确</strong></td><td>重度肺高压排除</td><td>可能干扰麻醉或随访的系统疾病</td><td>—</td><td>AP &lt;12 mm；临床显著二尖瓣狭窄；先心病；非容量性严重收缩障碍；基线压差升高提示功能性狭窄</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="callout"><strong>对照得出的两条关键结论：</strong>① 三条临床排除（TR-PG &gt;80 mmHg、预期 6 个月生存受限的非心疾病、活动性感染／免疫病）在采用预定义标准的研究中完全一致，可视为最低共识；② 解剖性排除的全部条目都来自“失败后回溯”，无一条来自前瞻性设计——这正是 [8] 中 3 例可预防死亡的来源。</div>
-
-      <div class="tw">
-        <table>
-          <caption>表 11　筛选相关阈值的全文献汇总</caption>
-          <thead><tr><th style="width:26%">指标</th><th>阈值／规则</th><th style="width:15%">出处</th></tr></thead>
-          <tbody>
-            <tr><td class="k">收缩期 AP 瓣环径</td><td>14–22 mm 为装置适配窗口（对应 14／16／18／20／22 mm 五种夹尺寸）；&lt;14 mm 或 &gt;22 mm 超出范围。<em>口径演变：</em>2024 年三种尺寸时上限为 20 mm，22 mm 装置上市后放宽至 22 mm</td><td>[1][2][5]</td></tr>
-            <tr><td class="k">夹尺寸选择</td><td><em>早期</em>：AP 径 −1～−2 mm；<em>中期</em>：AP 径 −0～−1 mm；<em>当前</em>：<strong>等于收缩期 AP 径（±0）</strong>，测量时相为收缩早期、瓣叶铰点至铰点、A2–P2 处 IO 视图</td><td>[1][2][3][4]</td></tr>
-            <tr><td class="k">P2 长度</td><td>≥7 mm 适合；<strong>&lt;7 mm 极复杂</strong>；<strong>&lt;5 mm 不适合</strong>；&lt;6 mm 难以充分捕获；二夹落点处前后叶理想均 &gt;6 mm</td><td>[3][4][5]</td></tr>
-            <tr><td class="k">对合间隙</td><td>水平间隙 &gt;3 mm 且浅对合＝不适合；&gt;3–4 mm 视为解剖复杂性不利；垂直间隙 ≤4 mm 可接受（AML flail 的垂直间隙非绝对禁忌）</td><td>[3][4]</td></tr>
-            <tr><td class="k">叶-环指数</td><td>&gt;1.2 非复杂；1.0–1.2 复杂；<strong>≤1.0 不适合</strong></td><td>[4]</td></tr>
-            <tr><td class="k">关节部 VC 宽／瓣环径比</td><td>&lt;0.33 非复杂；0.33–0.66 复杂；<strong>&gt;0.66 极复杂</strong></td><td>[4]</td></tr>
-            <tr><td class="k">瓣叶厚度</td><td><strong>&gt;3 mm（所有时相）＝不适合</strong>；4 mm 增厚在回顾性研究中与瓣叶撕裂相关</td><td>[4][8]</td></tr>
-            <tr><td class="k">A2 flail 角度</td><td>与瓣环平面夹角 &lt;45°＝极复杂（有挑战）；<strong>&gt;45°＝不适合</strong></td><td>[4]</td></tr>
-            <tr><td class="k">肺动脉高压</td><td>TR-PG &gt;80 mmHg 排除；TRV ≤3.7 m/s 视为可控；TRV &gt;3.7 m/s 在开胸修补中为远期死亡风险修饰因子（HR 2.5）</td><td>[1][2][5]</td></tr>
-            <tr><td class="k">术后跨二尖瓣压差</td><td>均值 ≥5 mmHg 定义人工瓣膜狭窄；抓取后即刻 ≥5 mmHg 应减少捕获组织；≥5 mmHg 不宜再放第二夹</td><td>[3][4]</td></tr>
-            <tr><td class="k">每叶捕获长度</td><td>目标 ≥4 mm（[1][5]）／≥4–5 mm（[3]）；捕获不足是单叶装置附着（SLDA）与瓣叶撕裂的主因</td><td>[1][3][5]</td></tr>
-            <tr><td class="k">第二夹条件</td><td>残余 MR ≥中度、夹不稳定、落点 AP &gt;14 mm 且瓣叶 &gt;6 mm、MVPG ≤5 mmHg、有可用瓣叶组织</td><td>[3]</td></tr>
-            <tr><td class="k">术后残余 MR 分层</td><td>RF &lt;30%（轻度）／30–40%（中度）／&gt;40%；RF ≤40% 为获益目标（&gt;40% 心脏死亡 HR 14.1）</td><td>[2]</td></tr>
-            <tr><td class="k">术中 3D VCA 目标</td><td>较释放前减少 &gt;50%</td><td>[3]</td></tr>
-            <tr><td class="k">重度 MR 定量门槛</td><td>E 波 &gt;1 m/s；RF &gt;50%；RVol &gt;1.0 mL/kg。<em>补充：</em>RF ≥50% 可作为介入决策参考；RVol &gt;1.5 mL/kg 与 C 期高度对应</td><td>[1][2][6]</td></tr>
-            <tr><td class="k">TEE 探头限制</td><td>成人探头慎用于 &lt;3 kg 犬；小型犬宜用小儿／3D 小儿探头</td><td>[3]</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="tw">
-        <table>
-          <caption>表 12　51 犬跨 ACVIM 分期的定量参考值［中位数（P25，P75）］</caption>
-          <thead><tr><th>指标</th><th>B1（n=16）</th><th>B2（n=18）</th><th>C（n=17）</th></tr></thead>
-          <tbody>
-            <tr><td class="k">RVol 容量法（mL/kg）</td><td>0.19（−0.02，0.25）</td><td>1.49（1.09，2.12）</td><td><strong>2.72（1.76，3.13）</strong></td></tr>
-            <tr><td class="k">RF 容量法（%）</td><td>13.6（−2.17，20.6）</td><td>55.6（45.0，70.5）</td><td><strong>67.2（61.8，78.5）</strong></td></tr>
-            <tr><td class="k">RVol PISA 法（mL/kg）</td><td>0.39（0.22，0.69）</td><td>1.67（1.33，2.15）</td><td>3.10（1.91，3.57）</td></tr>
-            <tr><td class="k">RF PISA 法（%）</td><td>34.3（19.0，56.1）</td><td>58.8（49.8，73.9）</td><td>75.2（66.4，92.0）</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="callout"><strong>须避免的误引：</strong>[6] 只提供跨分期的分布，<strong>没有给出犬的轻／中／重三档正式切点</strong>，也未涉及 3D VCA 的犬类数值。引用“RVol ≥1.5 mL/kg 即重度”时，应表述为“与 C 期高度对应”，而非“官方切点”。</div>
-    </section>
-
-    <section class="sec">
-      <h2>参考文献</h2>
-      <ol class="refs">
-        <li>Potter BM, Orton EC, Scansen BA, et al. Clinical feasibility study of transcatheter edge-to-edge mitral valve repair in dogs with the canine V-Clamp device. <em>Front Vet Sci</em> 2024;11:1448828. doi:10.3389/fvets.2024.1448828</li>
-        <li>Potter BM, Orton EC, Scansen BA, Abbott-Johnson KM, Tantisuwat L, Arai S, Visser LC, Bonagura JD. One-year echocardiographic follow-up and two-year survival in 111 dogs undergoing mitral transcatheter edge-to-edge repair. <em>J Vet Cardiol</em> 2025. doi:10.1016/j.jvc.2025.12.002</li>
-        <li>Potter BM, Chi IB, Tantisuwat L, Scansen BA. Transesophageal echocardiography for mitral valve transcatheter edge-to-edge repair in dogs using the V-Clamp device. <em>J Vet Cardiol</em> 2026. doi:10.1016/j.jvc.2026.01.003</li>
-        <li>Orton EC, Carroll JD. Mitral transcatheter edge-to-edge repair: guidance in dogs from the human experience. <em>J Vet Cardiol</em> 2025. doi:10.1016/j.jvc.2025.10.005</li>
-        <li>Kongchatree S, Rattanasrisomporn J. When to consider mitral valve surgery in dogs: a comparative review of open mitral valve repair and transcatheter edge-to-edge repair with a proposed selection framework. <em>Front Vet Sci</em> 2026. doi:10.3389/fvets.2026.1900762</li>
-        <li>Del Nero B, Potter BM, Visser LC, Scansen BA, Orton EC. Quantitative methods for evaluation of mitral regurgitation severity in canine degenerative mitral valve disease. <em>J Vet Cardiol</em> 2025;58:38–46. doi:10.1016/j.jvc.2025.01.002</li>
-        <li>Scansen BA. Cardiac computed tomography of the canine mitral and tricuspid valves. <em>J Vet Cardiol</em> 2026. doi:10.1016/j.jvc.2026.05.006</li>
-        <li>Lee JM, Youp KA, et al. Retrospective evaluation of transcatheter edge-to-edge mitral valve repair in dogs with myxomatous mitral valve disease. <em>J Vet Intern Med</em> 2025;39(4):e70156. doi:10.1111/jvim.70156</li>
-        <li>Lee JM, et al. Preliminary evaluation of NT-proBNP and cTnI as predictors of procedure safety in dogs undergoing transcatheter edge-to-edge mitral valve repair. <em>Vet Sci</em> 2025;12(3):223. doi:10.3390/vetsci12030223</li>
-        <li>Liu B, Leach SB, Pan W, et al. Preliminary outcome of a novel edge-to-edge closure device to manage mitral regurgitation in dogs. <em>Front Vet Sci</em> 2020;7:597879. doi:10.3389/fvets.2020.597879</li>
-        <li>Petchdee S, et al. Transcatheter edge-to-edge mitral valve repair using the V-Clamp device in dogs: a four-case pilot study. <em>Animals</em> 2024;14(21):3068. doi:10.3390/ani14213068</li>
-        <li>Petchdee S, Ying X, et al. Outcomes associated with mitral regurgitation reduction and myocardial work after transcatheter edge-to-edge repair of a mitral valve in dogs. <em>Vet Sci</em> 2026;13(6):597. doi:10.3390/vetsci13060597</li>
-        <li>Kurogochi K, et al. Transesophageal echocardiography-related complications during mitral valve intervention in dogs. <em>J Vet Intern Med</em> 2025;39(2):e70037. doi:10.1111/jvim.70037</li>
-      </ol>
-    </section>
+    </div>
   </div>
 
   <div class="footer">
-    编制：应栩枫 ｜ Prepared by Xufeng Ying ｜ 工作草稿 v0.4 ｜ 2026-10-17 ｜ 本页为「犬 TEER 病例筛选标准总结」中文版（英文、泰文、日文版另行发布）。
+    编制：应栩枫 ｜ Prepared by Xufeng Ying　·　Kasetsart University, Bangkok, Thailand<br>
+    页面状态更新：2026-10-18
   </div>
 </div>
-
-<!-- Waline 评论系统 ｜ Comments -->
-<section class="waline-section" style="max-width:1000px;margin:20px auto 0;background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);padding:26px 40px 22px;">
-  <h2 style="font-size:1.05rem;color:#16213e;border-left:5px solid #533483;padding-left:12px;margin-bottom:10px;">文章评论 ｜ Comments</h2>
-  <div style="background:#f6f4fb;border-left:4px solid #533483;border-radius:10px;padding:14px 18px 12px;margin-bottom:18px;">
-    <p style="font-size:0.92rem;color:#533483;font-weight:600;margin:0 0 8px;">💬 欢迎留言讨论 · 三条规则，十秒看懂</p>
-    <ul style="font-size:0.86rem;color:#555;line-height:1.8;margin:0;padding-left:18px;">
-      <li><strong>不用注册、不用登录</strong>：填个昵称就能发言，邮箱和网址都可不填，完全没人会追问你是谁。</li>
-      <li><strong>想留名就自己签</strong>：希望被认出，请在正文末尾注明（例如「—— 应栩枫」）；不写就是匿名，看到的人只会记住你的观点。</li>
-      <li><strong>畅所欲言</strong>：赞同、质疑、提问、补充文献都欢迎，哪怕只是简单一句反馈。涉及病例时请勿写入可识别身份的隐私信息。</li>
-    </ul>
-    <p style="font-size:0.86rem;color:#533483;line-height:1.8;margin:10px 0 0;padding-top:10px;border-top:1px dashed #d8d0ec;">讨论内容不限，语言不限——欢迎用中文、English、ภาษาไทย、日本語留言。祝愿所有在此相遇过的你：无病无烦，平安喜乐。</p>
-  </div>
-  <div id="waline"></div>
-</section>
-<style>
-  @media (max-width: 720px) { .waline-section { padding-left: 20px !important; padding-right: 20px !important; } }
-  @media print { .waline-section { display: none !important; } }
-</style>
-<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
-<script type="module">
-  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
-  init({
-    el: '#waline',
-    serverURL: 'https://waline-comment-ad9jhxwe4-tequilacom-9916.vercel.app',
-    lang: 'zh-CN',
-    requiredMeta: ['nick'],
-    pageview: true
-  });
-</script>
 </body>
 </html>

@@ -3,363 +3,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>犬 TEER 病例筛选 · 检索与筛选结果（检索清单 v1）</title>
+<title>检索与筛选结果清单 ｜ 线下维护中</title>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif; background:#f0f2f5; color:#1a1a2e; line-height:1.75; padding:24px; }
-  .container { max-width:1120px; margin:0 auto; background:#fff; border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,.08); overflow:hidden; }
-  .header { background:linear-gradient(135deg,#16213e 0%,#0f3460 50%,#533483 100%); color:#fff; padding:34px 40px; }
-  .draft { display:inline-block; background:#fff3d6; color:#8a5c00; border:1px solid #e8cf9d; padding:3px 11px; border-radius:6px; font-size:.72rem; font-weight:700; letter-spacing:.06em; margin-bottom:12px; }
-  .header h1 { font-size:1.42rem; margin-bottom:9px; }
-  .header .sub { font-size:.9rem; opacity:.88; }
-  .header .meta { font-size:.78rem; opacity:.8; margin-top:12px; }
-  .body { padding:30px 40px 26px; }
-  h2 { font-size:1.06rem; color:#16213e; border-left:5px solid #533483; padding-left:12px; margin:26px 0 8px; }
-  h2:first-child { margin-top:0; }
-  .sub2 { font-size:.83rem; color:#7a7a8c; padding-left:17px; margin-bottom:12px; }
-  p { font-size:.9rem; color:#33334a; margin-bottom:10px; text-align:justify; }
-  .kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:16px 0 22px; }
-  .kpi { background:#f7f5fb; border:1px solid #e6e2f0; border-radius:10px; padding:13px 15px; }
-  .kpi .v { font-size:1.5rem; font-weight:700; color:#533483; line-height:1.2; }
-  .kpi .l { font-size:.75rem; color:#6b6b80; margin-top:3px; }
-  .tw { overflow-x:auto; margin:12px 0 16px; border:1px solid #e3e0ee; border-radius:10px; }
-  table { width:100%; border-collapse:collapse; font-size:.78rem; }
-  th { background:#16213e; color:#fff; text-align:left; padding:9px 10px; font-weight:600; font-size:.75rem; }
-  td { padding:9px 10px; border-top:1px solid #ece9f3; vertical-align:top; color:#33334a; }
-  tr.out td { background:#fbfafc; color:#8a869c; }
-  tr.in:hover td { background:#f7f5ff; }
-  td.num { font-weight:700; color:#533483; text-align:center; width:34px; }
-  td.ref { width:36%; }
-  td.ref .ln { font-size:.68rem; color:#8a86a0; margin-top:3px; }
-  td.n { white-space:nowrap; text-align:center; }
-  .ty { display:inline-block; padding:1px 7px; border-radius:5px; font-size:.68rem; font-weight:700; white-space:nowrap; }
-  .ty.rt { background:#e3f2e9; color:#1c6b42; }
-  .ty.rc { background:#fdf3e2; color:#8a5c00; }
-  .ty.rv { background:#f0eef7; color:#4d3f7a; }
-  .ty.ex { background:#eef3fa; color:#1d4f91; }
-  .ty.ed { background:#eceff5; color:#44506b; }
-  .st { display:inline-block; padding:1px 7px; border-radius:5px; font-size:.68rem; font-weight:700; white-space:nowrap; }
-  .st.ok { background:#dff3e6; color:#1c6b42; }
-  .st.wa { background:#fdf0d2; color:#8a5c00; }
-  .st.no { background:#fbe0e0; color:#8f2020; }
-  table.ext td { font-size:.74rem; line-height:1.6; }
-  table.ext td b { color:#3b2f63; }
-  .sm { font-size:.68rem; color:#8a86a0; }
-  .note { background:#eef6f2; border-left:4px solid #2f8f6b; border-radius:8px; padding:13px 17px; margin:14px 0 18px; font-size:.86rem; color:#2c4d40; }
-  .callout { background:#fff8ec; border-left:4px solid #d99b2b; border-radius:8px; padding:13px 17px; margin:14px 0 18px; font-size:.86rem; color:#5a4a2a; }
-  .reflink { color:#533483; text-decoration:none; border-bottom:1px dotted #b3a6cf; word-break:break-all; }
-  ul, ol { padding-left:22px; font-size:.88rem; color:#33334a; margin-bottom:12px; }
-  li { margin-bottom:6px; }
-  .file { font-family:ui-monospace,Consolas,monospace; font-size:.78rem; background:#f4f2fa; padding:1px 6px; border-radius:4px; color:#4d3f7a; }
-  .footer { padding:18px 40px 26px; background:#f8f9fa; border-top:1px solid #e9ecef; font-size:.76rem; color:#888; }
-  .home-btn { position:fixed; top:18px; right:18px; z-index:99; padding:9px 18px; background:rgba(22,33,62,.92); color:#fff; border-radius:999px; text-decoration:none; font-size:.82rem; font-weight:600; box-shadow:0 4px 14px rgba(0,0,0,.22); }
-  @media (max-width:760px) { body{padding:10px} .header,.body,.footer{padding-left:18px;padding-right:18px} .kpis{grid-template-columns:1fr 1fr} td.ref{width:auto} }
-  @page { size:A4 landscape; margin:10mm; }
-  @media print {
-    body { background:#fff!important; padding:0!important; -webkit-print-color-adjust:exact!important; print-color-adjust:exact!important; }
-    .container { box-shadow:none!important; border-radius:0!important; max-width:none!important; }
-    .home-btn { display:none!important; }
-    a { color:inherit!important; text-decoration:none!important; }
-    table { font-size:7.6pt; } tr { break-inside:avoid; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+    background: #f0f2f5; color: #1a1a2e; line-height: 1.7; padding: 24px;
+    min-height: 100vh;
+  }
+  .container { max-width: 960px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); overflow: hidden; }
+  .header { background: linear-gradient(135deg, #16213e 0%, #0f3460 50%, #533483 100%); color: #fff; padding: 36px 40px; }
+  .header .kicker { font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.62; margin-bottom: 10px; }
+  .header h1 { font-size: 1.55rem; font-weight: 700; margin-bottom: 8px; }
+  .header .en { font-size: 1.02rem; font-weight: 400; opacity: 0.9; }
+  .header .subtitle { font-size: 0.86rem; opacity: 0.8; margin-top: 12px; }
+  .status-bar { display: flex; align-items: center; gap: 10px; padding: 13px 40px; background: #fff8e8; border-bottom: 1px solid #f2e0b8; font-size: 0.83rem; color: #7a5a15; }
+  .status-bar .dot { width: 9px; height: 9px; border-radius: 50%; background: #b8860b; flex: 0 0 auto; }
+  .body-wrap { padding: 44px 40px 36px; }
+  .panel { border: 1px solid #e6e3ef; border-radius: 14px; background: #fbfaff; padding: 34px 34px 30px; text-align: center; }
+  .panel .badge { display: inline-block; padding: 5px 14px; border-radius: 999px; background: #533483; color: #fff; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.08em; }
+  .panel h2 { font-size: 1.28rem; color: #16213e; margin: 18px 0 10px; }
+  .panel p { font-size: 0.92rem; color: #4a4a58; margin: 0 auto 10px; max-width: 620px; }
+  .panel .en-line { font-size: 0.84rem; color: #8a8a99; }
+  .contact { margin-top: 24px; border-top: 1px dashed #ddd8ea; padding-top: 22px; }
+  .contact .label { font-size: 0.74rem; letter-spacing: 0.1em; color: #8a86a0; text-transform: uppercase; margin-bottom: 8px; }
+  .contact .name { font-size: 0.98rem; font-weight: 700; color: #16213e; }
+  .contact .aff { font-size: 0.8rem; color: #6c6c7a; max-width: 640px; margin: 6px auto 0; line-height: 1.6; }
+  .contact a { color: #533483; font-weight: 600; text-decoration: none; border-bottom: 1px solid #d8cfeb; }
+  .contact a:hover { border-bottom-color: #533483; }
+  .actions { margin-top: 26px; }
+  .btn { display: inline-block; padding: 9px 20px; border-radius: 999px; background: #16213e; color: #fff; text-decoration: none; font-size: 0.84rem; font-weight: 600; transition: all .18s ease; }
+  .btn:hover { background: #533483; transform: translateY(-1px); }
+  .btn.ghost { background: transparent; color: #533483; border: 1px solid #cfc4e4; margin-left: 8px; }
+  .btn.ghost:hover { background: #f5f3ff; color: #533483; }
+  .note { margin-top: 26px; font-size: 0.78rem; color: #8a8a99; line-height: 1.75; }
+  .footer { padding: 18px 40px 24px; background: #f8f9fa; border-top: 1px solid #e9ecef; font-size: 0.77rem; color: #8a8a99; }
+  @media (max-width: 720px) {
+    body { padding: 12px; }
+    .header, .status-bar, .body-wrap, .footer { padding-left: 20px; padding-right: 20px; }
+    .header h1 { font-size: 1.2rem; }
+    .panel { padding: 26px 18px; }
+    .contact .aff { font-size: 0.76rem; }
   }
 </style>
 </head>
 <body>
-<a class="home-btn" href="index.html">⌂ 返回主页</a>
 <div class="container">
   <div class="header">
-    <div class="draft">检索清单 v1 ｜ 2026-10-17 ｜ 待作者核定</div>
-    <h1>犬二尖瓣 TEER 病例筛选 · 检索与筛选结果</h1>
-    <div class="sub">第 6.1–6.3 节的执行记录：检索式、去重、逐篇判定与证据属性</div>
-    <div class="meta">检索日期 2026-10-17 ｜ 数据库 PubMed（MEDLINE）／Europe PMC ｜ 时间窗 2020-01-01 至 2026-10-16，另附全库对照 ｜ 编制：应栩枫（Xufeng Ying）</div>
+    <div class="kicker">Canine Mitral TEER · Retrieval Log</div>
+    <h1>检索与筛选结果清单</h1>
+    <div class="en">Search and Screening Record for Canine Mitral TEER</div>
+    <div class="subtitle">页面状态：线下维护中 ｜ Status: offline, under revision</div>
   </div>
 
-  <div class="body">
+  <div class="status-bar">
+    <span class="dot"></span>
+    <span>本页内容已于 2026-10-18 下线，正在线下维护与修订。</span>
+  </div>
 
-    <h2>一、本次检索的结果规模</h2>
-    <p>主检索式（物种与疾病 × 技术，限 2020 年以后）在 PubMed 命中 15 条，去重后仍为 15 条。将时间窗完全放开后，同一组合在全库仅 18 条，新增的 3 条全部发表于 2004 年以前，为器械与概念的溯源文献。这一数字本身就是本节最有价值的结论：<strong>该领域的可检索证据总量不足二十篇</strong>，任何“标准”都只能建立在十余项研究之上，无法期待系统评价级别的证据强度。</p>
-    <div class="kpis">
-      <div class="kpi"><div class="v">15</div><div class="l">主检索命中（2020 年后）</div></div>
-      <div class="kpi"><div class="v">18</div><div class="l">含时间窗外溯源文献</div></div>
-      <div class="kpi"><div class="v">14</div><div class="l">按 6.3 纳入</div></div>
-      <div class="kpi"><div class="v">4</div><div class="l">按 6.3 排除</div></div>
-    </div>
-    <div class="note">
-      <strong>与正文的差额需说明：</strong>本页按 6.2 的检索式实际执行，纳入 14 篇、排除 4 篇；正文第二节的十一项判断引用的是 <strong>13 篇</strong>。差额来自三处：① 本轮新增 2026 年波兰团队的 V-Clamp 综述（此前未纳入）；② 此前将 2021 年健康犬实验研究计入，本轮按“可用于外推”保留；③ 此前将 ACVIM 共识的邀请评论排除在外，本轮同样排除。定稿时应统一为一套计数，本页以检索结果为准，正文数字随后调整。
-    </div>
+  <div class="body-wrap">
+    <div class="panel">
+      <span class="badge">线下维护中</span>
+      <h2>本页暂时不对外提供</h2>
+      <p>该清单的检索式、命中数与纳入排除记录正在与正文同步修订，修订完成前撤下线上版本，以免旧数据被引用或转存。</p>
+      <p class="en-line">This document is temporarily offline while its search and screening records are being revised.</p>
 
-    <h2>二、逐篇结果与判定</h2>
-    <div class="sub2">按发表时间倒序；灰底为排除项。“提供价值”一栏只写该文对“病例筛选”这一个问题的作用，不作全面评价</div>
-    <div class="tw">
-      <table>
-        <thead><tr><th style="width:34px">#</th><th>文献</th><th style="width:104px">研究类型</th><th style="width:66px">样本量</th><th style="width:27%">对筛选的价值</th><th style="width:74px">全文</th></tr></thead>
-        <tbody>
-        <tr class="in">
-          <td class="num">1</td>
-          <td class="ref">Kongchatree S | Rattanasrisomporn J. When to consider mitral valve surgery in dogs: a comparative review of open  mitral valve repair and transcatheter edge-to-edge repair with a proposed selection framework <i>Front Vet Sci</i>. 2026;13:1900762.<div class="ln"><a class="reflink" href="https://doi.org/10.3389/fvets.2026.1900762" target="_blank">10.3389/fvets.2026.1900762</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/42824553/" target="_blank">42824553</a></div></td>
-          <td><span class="ty rv">叙述性综述</span></td>
-          <td class="n">—（基于多中心已发表数据）</td>
-          <td>提供五步选择框架与开胸/TEER 分流判据，是本章骨架</td>
-          <td><span class="st ok">全文已达</span></td>
-        </tr>
-        <tr class="in">
-          <td class="num">2</td>
-          <td class="ref">Petchdee S | Ying X | Huttayananont S | Jaturanratsamee K | Panprom C | Meepoo W | Bootcha R. Outcomes Associated with Mitral Regurgitation Reduction and Myocardial Work After  Transcatheter Edge-to-Edge Repair of a Mitral Valve in Dogs <i>Vet Sci</i>. 2026;13(6).<div class="ln"><a class="reflink" href="https://doi.org/10.3390/vetsci13060597" target="_blank">10.3390/vetsci13060597</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/42357795/" target="_blank">42357795</a></div></td>
-          <td><span class="ty rt">前瞻性观察研究</span></td>
-          <td class="n">10 犬</td>
-          <td>本地团队一手纳排（AP≥12 mm、含 D 期）与术后血栓栓塞教训</td>
-          <td><span class="st ok">全文已达</span></td>
-        </tr>
-        <tr class="out">
-          <td class="num">3</td>
-          <td class="ref">Menciotti G | Orton EC | Haggstrom J | Rishniw M. Invited Commentary: American College of Veterinary Internal Medicine consensus  guidelines on diagnosis and treatment of myxomatous mitral valve disease in dogs <i>J Vet Cardiol</i>. 2026.<div class="ln"><a class="reflink" href="https://doi.org/10.1016/j.jvc.2026.02.006" target="_blank">10.1016/j.jvc.2026.02.006</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/41881755/" target="_blank">41881755</a></div></td>
-          <td><span class="ty ed">邀请评论</span></td>
-          <td class="n">—</td>
-          <td>ACVIM 分期口径的权威表述，可作背景引用</td>
-          <td><span class="st no">付费墙</span></td>
-        </tr>
-        <tr class="in">
-          <td class="num">4</td>
-          <td class="ref">Potter BM | Chi IB | Tantisuwat L | Scansen BA. Transesophageal echocardiography for mitral valve transcatheter edge-to-edge  repair in dogs using the V-Clamp device <i>J Vet Cardiol</i>. 2026.<div class="ln"><a class="reflink" href="https://doi.org/10.1016/j.jvc.2026.01.003" target="_blank">10.1016/j.jvc.2026.01.003</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/41656142/" target="_blank">41656142</a></div></td>
-          <td><span class="ty rv">叙述性综述（影像方法学）</span></td>
-          <td class="n">—</td>
-          <td>TEE 筛选三要素与夹尺寸测量时相</td>
-          <td><span class="st no">付费墙</span></td>
-        </tr>
-        <tr class="in">
-          <td class="num">5</td>
-          <td class="ref">Paslawska U | Grzeczka A | Graczyk S | Nowak K | Paslawski R. Transapical Transcatheter Edge-to-Edge Repair (TEER) of the mitral valve using  the V-Clamp system - A promising approach for minimally invasive cardiology in veterinary and experimental human medicine <i>Pol J Vet Sci</i>. 2026;29(1):157-164.<div class="ln"><a class="reflink" href="https://doi.org/10.24425/pjvs.2026.158510" target="_blank">10.24425/pjvs.2026.158510</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/41860000/" target="_blank">41860000</a></div></td>
-          <td><span class="ty rv">叙述性综述</span></td>
-          <td class="n">—（含实验性应用）</td>
-          <td>实验犬与临床病例混合视角，波兰中心经验</td>
-          <td><span class="st no">付费墙</span></td>
-        </tr>
-        <tr class="in">
-          <td class="num">6</td>
-          <td class="ref">Potter BM | Orton EC | Scansen BA | Abbott-Johnson KM | Tantisuwat L | Arai S | Visser LC | Bonagura JD. One-year echocardiographic follow-up and two-year survival in 111 dogs undergoing  mitral transcatheter edge-to-edge repair <i>J Vet Cardiol</i>. 2025.<div class="ln"><a class="reflink" href="https://doi.org/10.1016/j.jvc.2025.12.002" target="_blank">10.1016/j.jvc.2025.12.002</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/41513577/" target="_blank">41513577</a></div></td>
-          <td><span class="ty rc">回顾性队列</span></td>
-          <td class="n">111 犬</td>
-          <td>最大样本量的入组口径与长期结局基线</td>
-          <td><span class="st no">付费墙</span></td>
-        </tr>
-        <tr class="in">
-          <td class="num">7</td>
-          <td class="ref">Orton EC | Carroll JD. Mitral transcatheter edge-to-edge repair: guidance in dogs from the human  experience <i>J Vet Cardiol</i>. 2025.<div class="ln"><a class="reflink" href="https://doi.org/10.1016/j.jvc.2025.10.005" target="_blank">10.1016/j.jvc.2025.10.005</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/41219030/" target="_blank">41219030</a></div></td>
-          <td><span class="ty rv">专家综述（人-犬迁移）</span></td>
-          <td class="n">—（综合 300+ 犬经验）</td>
-          <td>Table 2 四级解剖复杂度分级，本章分级标准来源</td>
-          <td><span class="st no">付费墙</span></td>
-        </tr>
-        <tr class="in">
-          <td class="num">8</td>
-          <td class="ref">Popiel-Dziewierz S | Noszczyk-Nowak A | Dziewierz A. From bench to bedside and back: translational cardiovascular interventions in  veterinary medicine <i>Postepy Kardiol Interwencyjnej</i>. 2025;21(3):295-304.<div class="ln"><a class="reflink" href="https://doi.org/10.5114/aic.2025.154190" target="_blank">10.5114/aic.2025.154190</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/41114311/" target="_blank">41114311</a></div></td>
-          <td><span class="ty rv">叙述性综述（反向转化）</span></td>
-          <td class="n">—</td>
-          <td>器械谱系与转化路径背景，价值有限</td>
-          <td><span class="st ok">全文已达</span></td>
-        </tr>
-        <tr class="in">
-          <td class="num">9</td>
-          <td class="ref">Lee JM | Youp KA | Lee ST | Lee AR | Cho YW | Jung YS | Her J | Lee SK. Retrospective Evaluation of Transcatheter Edge-To-Edge Mitral Valve Repair in  Dogs With Myxomatous Mitral Valve Disease <i>J Vet Intern Med</i>. 2025;39(4):e70156.<div class="ln"><a class="reflink" href="https://doi.org/10.1111/jvim.70156" target="_blank">10.1111/jvim.70156</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/40459365/" target="_blank">40459365</a></div></td>
-          <td><span class="ty rc">回顾性病例系列</span></td>
-          <td class="n">20 犬</td>
-          <td>反面证据：20 犬中 7 例 9 天内死亡（35%），4/7 归因瓣叶撕裂或单叶附着（SLDA）；前 10 例与后 10 例的学习曲线对比</td>
-          <td><span class="st ok">全文已达</span></td>
-        </tr>
-        <tr class="in">
-          <td class="num">10</td>
-          <td class="ref">Lee JM | Lee SK | Youp KA | Lee AR | Cho YW | Jung YS | Lee ST. Preliminary Evaluation of NT-proBNP and cTnI as Predictors of Procedure Safety in  Dogs Undergoing Transcatheter Edge-to-Edge Mitral Valve Repair <i>Vet Sci</i>. 2025;12(3).<div class="ln"><a class="reflink" href="https://doi.org/10.3390/vetsci12030223" target="_blank">10.3390/vetsci12030223</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/40266932/" target="_blank">40266932</a></div></td>
-          <td><span class="ty rc">回顾性队列</span></td>
-          <td class="n">20 犬</td>
-          <td>术前风险分层（NT-proBNP／cTnI）可作为筛选辅助</td>
-          <td><span class="st ok">全文已达</span></td>
-        </tr>
-        <tr class="in">
-          <td class="num">11</td>
-          <td class="ref">Potter BM | Orton EC | Scansen BA | Abbott-Johnson KM | Visser LC | Chi IB | Ross ES | Del Nero B | Tantisuwat L | Krause ET | Rezende ML | Mama K. Clinical feasibility study of transcatheter edge-to-edge mitral valve repair in  dogs with the canine V-Clamp device <i>Front Vet Sci</i>. 2024;11:1448828.<div class="ln"><a class="reflink" href="https://doi.org/10.3389/fvets.2024.1448828" target="_blank">10.3389/fvets.2024.1448828</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/39717788/" target="_blank">39717788</a></div></td>
-          <td><span class="ty rt">前瞻性单臂研究</span></td>
-          <td class="n">50 犬</td>
-          <td>唯一有完整预定义纳排标准的前瞻研究</td>
-          <td><span class="st ok">全文已达</span></td>
-        </tr>
-        <tr class="in">
-          <td class="num">12</td>
-          <td class="ref">Petchdee S | Pongkan W | Lei J | Jaturanratsamee K | Bootcha R | Meepoo W | Panprom C. Transcatheter Edge-to-Edge Repair of the Mitral Valve in Four Dogs: Preliminary  Results Regarding Efficacy and Safety <i>Animals (Basel)</i>. 2024;14(21).<div class="ln"><a class="reflink" href="https://doi.org/10.3390/ani14213068" target="_blank">10.3390/ani14213068</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/39518790/" target="_blank">39518790</a></div></td>
-          <td><span class="ty rt">前瞻性病例系列</span></td>
-          <td class="n">4 犬</td>
-          <td>团队早期试点，纳排口径（AP≥12 mm）来源</td>
-          <td><span class="st ok">全文已达</span></td>
-        </tr>
-        <tr class="in">
-          <td class="num">13</td>
-          <td class="ref">Bristow P | Markovic LE. Mitral Valve Repair-The Development and Rise of Options in the Veterinary World <i>Vet Clin North Am Small Anim Pract</i>. 2023;53(6):1343-1352.<div class="ln"><a class="reflink" href="https://doi.org/10.1016/j.cvsm.2023.07.001" target="_blank">10.1016/j.cvsm.2023.07.001</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/37798048/" target="_blank">37798048</a></div></td>
-          <td><span class="ty rv">叙述性综述</span></td>
-          <td class="n">—</td>
-          <td>开胸与介入两路径的选择考量，付费墙</td>
-          <td><span class="st no">付费墙</span></td>
-        </tr>
-        <tr class="in">
-          <td class="num">14</td>
-          <td class="ref">Sasaki K | Ma D | Mandour AS | Ozai Y | Yoshida T | Matsuura K | Takeuchi A | Cheng CJ | El-Husseiny HM | Hendawy H | Shimada K | Hamabe L | Uemura A | Tanaka R. Evaluation of Changes in the Cardiac Function before and after Transcatheter  Edge-to-Edge Mitral Valve Repair in Healthy Dogs: Conventional and Novel Echocardiography <i>Animals (Basel)</i>. 2021;12(1).<div class="ln"><a class="reflink" href="https://doi.org/10.3390/ani12010056" target="_blank">10.3390/ani12010056</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/35011161/" target="_blank">35011161</a></div></td>
-          <td><span class="ty ex">实验研究（健康犬）</span></td>
-          <td class="n">2 犬</td>
-          <td>非筛选来源；证明器械本身的血流动力学影响</td>
-          <td><span class="st ok">全文已达</span></td>
-        </tr>
-        <tr class="in">
-          <td class="num">15</td>
-          <td class="ref">Liu B | Leach SB | Pan W | Zheng F | Jia L | Zhou X | Li J. Preliminary Outcome of a Novel Edge-to-Edge Closure Device to Manage Mitral  Regurgitation in Dogs <i>Front Vet Sci</i>. 2020;7:597879.<div class="ln"><a class="reflink" href="https://doi.org/10.3389/fvets.2020.597879" target="_blank">10.3389/fvets.2020.597879</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/33392290/" target="_blank">33392290</a></div></td>
-          <td><span class="ty rt">前瞻性单臂研究</span></td>
-          <td class="n">8 犬</td>
-          <td>器械溯源与早期病例选择（全 B1 期，安全性目的）</td>
-          <td><span class="st ok">全文已达</span></td>
-        </tr>
-        <tr class="out">
-          <td class="num">16</td>
-          <td class="ref">Griffiths LG | Orton EC | Boon JA. Evaluation of techniques and outcomes of mitral valve repair in dogs <i>J Am Vet Med Assoc</i>. 2004;224(12):1941-5.<div class="ln"><a class="reflink" href="https://doi.org/10.2460/javma.2004.224.1941" target="_blank">10.2460/javma.2004.224.1941</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/15230448/" target="_blank">15230448</a></div></td>
-          <td><span class="ty rc">前瞻性非对照研究</span></td>
-          <td class="n">18 犬</td>
-          <td>开胸路径的历史基线，仅作对照背景</td>
-          <td><span class="st no">付费墙</span></td>
-        </tr>
-        <tr class="out">
-          <td class="num">17</td>
-          <td class="ref">Block PC. Percutaneous mitral valve repair for mitral regurgitation <i>J Interv Cardiol</i>. 2003;16(1):93-6.<div class="ln"><a class="reflink" href="https://doi.org/10.1046/j.1540-8183.2003.08007.x" target="_blank">10.1046/j.1540-8183.2003.08007.x</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/12664822/" target="_blank">12664822</a></div></td>
-          <td><span class="ty rv">叙述性综述</span></td>
-          <td class="n">—</td>
-          <td>缘对缘概念溯源，仅作背景</td>
-          <td><span class="st no">付费墙</span></td>
-        </tr>
-        <tr class="out">
-          <td class="num">18</td>
-          <td class="ref">Morales DL | Madigan JD | Choudhri AF | Williams MR | Helman DN | Elder JB | Naka Y | Oz MC. Development of an off bypass mitral valve repair <i>Heart Surg Forum</i>. 1999;2(2):115-20.<div class="ln"><a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/11276467/" target="_blank">PubMed</a> ｜ PMID <a class="reflink" href="https://pubmed.ncbi.nlm.nih.gov/11276467/" target="_blank">11276467</a></div></td>
-          <td><span class="ty ex">体外实验</span></td>
-          <td class="n">11 枚离体瓣膜</td>
-          <td>器械起源，仅作背景</td>
-          <td><span class="st no">付费墙</span></td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="contact">
+        <div class="label">Contact the author</div>
+        <div class="name">应栩枫 ｜ Xufeng Ying</div>
+        <div class="aff">Science and Innovation for Animal Health Program, Graduate School,<br>Faculty of Veterinary Medicine, Kasetsart University, Bangkok 10900, Thailand</div>
+        <p style="margin-top:12px;font-size:0.86rem;color:#4a4a58;">如需获取文档、核对数据或讨论内容，请联系作者；<br>也可在项目仓库留言：<a href="https://github.com/tequilacom/Canine-TEER-review/issues" target="_blank" rel="noopener">GitHub Issues</a></p>
+      </div>
 
-    <h2>三、按研究类型归类</h2>
-    <p>纳入的 14 篇中，提供原始病例数据的只有 8 项，合计 <strong>231 犬</strong>（50＋10＋8＋4＋111＋20＋20＋20），另有 2 只健康犬的实验与 6 篇综述／专家框架。这一比例决定了本章的写法：<strong>数值判据只能来自这 7 项研究，框架性内容来自综述</strong>，两者不可并列陈述。</p>
-    <div class="tw">
-      <table>
-        <thead><tr><th style="width:22%">类型</th><th style="width:9%">篇数</th><th style="width:24%">合计样本</th><th>在筛选问题上的证据地位</th></tr></thead>
-        <tbody>
-          <tr><td><span class="ty rt">前瞻性原始研究</span></td><td>4</td><td>72 犬（50＋10＋8＋4）</td><td>唯一带预定义纳排与前瞻结局的来源；Potter 系列（CSU）是本领域的方法学基准</td></tr>
-          <tr><td><span class="ty rc">回顾性原始研究</span></td><td>4</td><td>171 犬（111＋20＋20＋20）</td><td>样本最大，提供失败模式与死因归因，是排除标准的主要来源；存在选择偏倚</td></tr>
-          <tr><td><span class="ty ex">健康犬实验</span></td><td>1</td><td>2 犬</td><td>只说明器械可置入与术后可存活，不提供任何病例选择信息</td></tr>
-          <tr><td><span class="ty rv">综述与专家框架</span></td><td>6</td><td>—</td><td>提供分级框架与决策路径，不作数值依据</td></tr>
-          <tr><td><span class="ty ed">评论</span></td><td>1（排除）</td><td>—</td><td>ACVIM 共识的解读，用于分期口径背景</td></tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="actions">
+        <a class="btn" href="index.html">返回文档入口</a>
+        <a class="btn ghost" href="Canine_TEER_Global_Review_CN_20261016.html">阅读文献综述</a>
+      </div>
 
-    <h2>四、全文中转情况</h2>
-    <p>纳入的 14 篇中 9 篇开放获取，现 <strong>9 份 PDF 全部取得</strong>：Frontiers 3、MDPI 4、Termedia 1、Wiley 1。每一份都用文本抽取验证过正文页，不是封面或导读页。过程中踩过两个坑，记在这里以免重犯：① MDPI 的 <span class="file">/pdf</span> 直链在部分文章返回的是 4 页期刊宣传扉页（含主编致辞），初次取得时 4 份全是这种，已识别重下；② Wiley 对脚本与无痕浏览器一律返回 Cloudflare 拦截页，最终走 Europe PMC 的开放获取渲染版（<span class="file">europepmc.org/articles/PMC12131550?pdf=render</span>）取得，12 页完整正文，与出版商版一致。</p>
-    <div class="note">
-      <strong>Lee 2025 已到手，且它比预想的更重要：</strong>20 犬中 13 例存活，<strong>7 例在 9 天内死亡（35%）</strong>，其中 4/7 归因于二尖瓣瓣叶撕裂或单叶器械附着（SLDA），其余各 1 例为气管塌陷、术后神经功能缺损、心源性休克。原文还对比了前 10 例与后 10 例，说明存在学习曲线。这一篇是本章“排除标准”最硬的一条实证依据。
+      <div class="note">
+        原页面（2026-10-17 版）已归档，不再对外发布。此前对外分享的链接仍指向本页，不会出现无法访问的错误页。<br>
+        修订完成后本页将恢复为正式文档，并在此注明版本日期。
+      </div>
     </div>
+  </div>
 
-    <h2>五、检索式执行记录</h2>
-    <div class="sub2">供第三方复现。执行日期必须记录：本领域每季度均有新增，2026 年一年即新增 4 篇</div>
-    <div class="tw">
-      <table>
-        <thead><tr><th style="width:16%">检索式</th><th style="width:44%">内容</th><th style="width:10%">命中</th><th>用途</th></tr></thead>
-        <tbody>
-          <tr><td class="num" style="text-align:left">A</td><td>dog / canine / “dog”[MeSH] × mitral valve / mitral regurgitation / MMVD</td><td>2 382</td><td>物种与疾病</td></tr>
-          <tr><td class="num" style="text-align:left">B</td><td>TEER / edge-to-edge / V-Clamp / ValveClamp / mitral clip / MitraClip / leaflet repair</td><td>9 224</td><td>技术与器械</td></tr>
-          <tr><td class="num" style="text-align:left">C</td><td>(A AND B)，限 2020-01-01 至 2026-10-16</td><td><strong>15</strong></td><td>主检索</td></tr>
-          <tr><td class="num" style="text-align:left">C′</td><td>(A AND B)，不限时间</td><td>18</td><td>用于确认总量与遗漏</td></tr>
-          <tr><td class="num" style="text-align:left">S1</td><td>mitral valve × dog × surgery/repair/intervention × criteria/selection/framework</td><td>152</td><td>筛选与决策框架</td></tr>
-          <tr><td class="num" style="text-align:left">S2</td><td>dog × TEE/computed tomography × mitral × repair/intervention</td><td>33</td><td>影像方法学</td></tr>
-          <tr><td class="num" style="text-align:left">S3</td><td>11 位核心作者的姓名检索</td><td>见备注</td><td>作者追踪</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="callout">
-      <strong>须在正文中如实记录的一处失误：</strong>S3 采用 <span class="file">AUTH:"姓 名首字母"</span> 的写法在 PubMed 中无法正确解析，返回 58 516 条无意义结果，本轮未能有效执行。作者追踪改用 Europe PMC 的 <span class="file">AUTH:"Potter BM"</span> 等写法逐人核验后完成。定稿时 6.2 节应改写这条检索式，或注明其执行方式。
-    </div>
-
-    <h2>六、可复现的题录与全文</h2>
-    <p>检索结果已导出为三种格式，均置于 <span class="file">Case screening\题录\</span>。Zotero 用户建议使用 RDF：该文件保留摘要、DOI 与筛选标签，双击即可导入并按“纳入／排除”建立子集合。</p>
-    <ul>
-      <li><span class="file">CaseScreening_18records_ZoteroRDF.rdf</span> —— Zotero 原生格式，含 18 条完整题录＋摘要＋标签</li>
-      <li><span class="file">CaseScreening_18records_RIS.ris</span> —— RIS 2.0，Zotero／EndNote／Mendeley 通用</li>
-      <li><span class="file">CaseScreening_18records_PubMed.nbib</span> —— PubMed 原生 MEDLINE 格式，供核对原始记录</li>
-      <li><span class="file">references_18.txt</span> —— 纯文本引用清单，可直接粘入稿件</li>
-      <li><span class="file">PDF_开放获取\</span> —— 已下载的 9 份全文</li>
-    </ul>
-
-    <h2>七、6.4 数据提取：用六篇原文填六行</h2>
-    <p>6.4 那五个字段名看着抽象，落到实处只是把每篇的方法段读成同一张表。下表六行全部取自原文，未作改写；每行末尾注明出处位置，任何人可回查。填完这张表，本章哪条判据有原文支撑、哪条属于你自己的经验，一望可知。</p>
-    <div class="tw">
-      <table class="ext">
-        <thead><tr>
-          <th style="width:13%">文献</th><th style="width:20%">纳入标准（原文表述）</th><th style="width:19%">排除标准</th><th style="width:20%">阈值与测量</th><th style="width:18%">评估流程</th><th style="width:10%">出处</th>
-        </tr></thead>
-        <tbody>
-          <tr>
-            <td><b>Potter 2024</b><br><span class="sm">50 犬 · 前瞻单臂</span></td>
-            <td>重度退行性 MR（依 ASE 整合指南）；首批为 ACVIM C 或 D 期，术中成功后放宽至 B2 期但须满足下方重度 MR 判据</td>
-            <td>TRPG &gt;80 mmHg 的重度肺高压；预计影响 6 个月生存的非心脏病；活动性全身感染或免疫介导病</td>
-            <td>TTE 左心尖流入/流出道切面测收缩中期 AP 径 <b>14–22 mm</b>（对应 14/16/18 mm 三种夹）；瓣叶脱垂或连枷限于 <b>A2 和/或 P2</b>；重度 MR 三项并列：<b>E 波 &gt;1 m/s、RF &gt;50%、RVol &gt;1.0 mL/kg</b></td>
-            <td>麻醉前 TTE 定 AP 径与脱垂部位 → 麻醉后 TEE 复核并引导 → 术后 2–3 天 TTE 复评</td>
-            <td>Methods 2.1；超声阈值见 Echocardiography 段</td>
-          </tr>
-          <tr>
-            <td><b>Petchdee 2026</b><br><span class="sm">10 犬 · 前瞻观察</span></td>
-            <td>① TTE 证实 MMVD 且 MR 至少中度，ACVIM B2／C／D；② 体重与 AP 径适配器械；③ 有临床症状且可承担手术风险</td>
-            <td>① AP 径 <b>&lt;12 mm</b>；② 有临床意义的二尖瓣狭窄；③ 先天性心脏病；④ 与容量负荷无关的重度收缩功能不全；⑤ 重度肺高压；⑥ 影响麻醉或随访的全身疾病</td>
-            <td>“中度”为下限而非重度；未设 E 波／RF／RVol 数值门槛；实测中位数 AP 径与体重未单列，基线 LA/Ao 1.9±0.3</td>
-            <td>体检＋胸片两体位 → 标准超声 → TEE 与 TTE 分工评估瓣叶与器械型号；未做样本量计算（自述为预试验）</td>
-            <td>Methods 2.1、2.2；Table 1</td>
-          </tr>
-          <tr>
-            <td><b>Lee 2025</b><br><span class="sm">20 犬 · 回顾病例系列</span></td>
-            <td>2023-09 至 2024-06 单中心接受 TEER 的 MMVD <b>B2、C、D 期</b>；按 Figure 1 的术前评估因素逐项判断收益与风险后由主诊医师决定</td>
-            <td><b>原文未设正式排除条目</b>——这一点本身是关键：7 例死亡中 4 例为瓣叶撕裂／单叶附着，说明当时缺的正是解剖层面的排除门槛</td>
-            <td>器械型号按 AP 径：<b>&lt;14 mm 用 2 号、14–16 mm 用 3 号、16–18 mm 用 4 号、&gt;20 mm 用 5 号</b>；术前测 AML、PML、VC、体重等（Figure 1）</td>
-            <td>全部先做 TTE＋TEE 再决定 → 术中全程 TEE 引导 → 住院期与出院后复查胸片与超声；另比较前 10 例与后 10 例的学习曲线</td>
-            <td>Methods 2.1–2.4；Table 1；Figure 1</td>
-          </tr>
-          <tr>
-            <td><b>Petchdee 2024</b><br><span class="sm">4 犬 · 前瞻病例系列</span></td>
-            <td>据其总结，成功率最高的选择为：小型犬、ACVIM <b>B2 或 C</b> 期、<b>体重 &gt;3 kg</b>，或 TTE 测 <b>AP 径 &gt;10 mm</b></td>
-            <td>原文未单列排除条目（以“最优选择条件”反向表述）</td>
-            <td>AP 径实测 12.7–22.8 mm；器械型号 II–V 号；未设 MR 定量门槛</td>
-            <td>体检与实验室 → 胸片 → 3D-TEE 评估瓣结构 → 透视确认夹位置</td>
-            <td>Methods 2.1；判据见引言；Table 1–2</td>
-          </tr>
-          <tr>
-            <td><b>Liu 2020</b><br><span class="sm">8 犬 · 前瞻单臂</span></td>
-            <td>听诊左心尖收缩期杂音＋超声证实 MR；体检、血常规、尿检无其他异常；<b>未接受任何心脏专科药物</b></td>
-            <td>原文未单列；以“otherwise healthy”与“未用药”两条作事实上的筛选</td>
-            <td>杂音 I–VI 级分级；MR 半定量用 <b>MRA/LAA</b>：痕迹 &lt;5%、轻度 5–20%、中度 20–50%、重度 &gt;50%</td>
-            <td>术前基线超声（LA/Ao、ACVIM 分期、MRA/LAA）→ 置夹即刻复测</td>
-            <td>Material and Methods 首段</td>
-          </tr>
-          <tr>
-            <td><b>Sasaki 2021</b><br><span class="sm">2 犬 · 健康犬实验</span></td>
-            <td>健康比格犬 2 只（2 岁与 2.5 岁，8.6 与 10.3 kg），体检、血液生化、常规超声、尿检均正常</td>
-            <td>非研究犬；无心脏病即无排除逻辑</td>
-            <td>不适用（无病变，无 MR 定量门槛）</td>
-            <td>麻醉 → 左第 6 肋间开胸暴露心尖 → TEE 引导下经心尖置入 → 术后重症监护随访</td>
-            <td>Methods 2.1</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="note">
-      <strong>这张表读出来的三件事：</strong>① AP 径的下限并不统一——Potter 14 mm、Petchdee 2024 为 10 mm、Petchdee 2026 排除 &lt;12 mm，写“标准”时必须点明取自哪一项；② 只有 Potter 系列把“重度 MR”写成三项并列的定量门槛，其余研究停留在半定量或临床判断；③ 六篇里只有 Sasaki 是无病犬，它的价值在器械安全性，不在病例选择，引用时不可与临床研究并列。
-    </div>
-
-    <div class="footer">
-      编制：应栩枫（Xufeng Ying）｜ Science and Innovation for Animal Health Program, Graduate School, Faculty of Veterinary Medicine, Kasetsart University, Bangkok 10900, Thailand<br>
-      检索执行：2026-10-17 ｜ 记录版本：检索清单 v1 ｜ 本页为执行记录，非最终稿件；数值以原文为准
-    </div>
+  <div class="footer">
+    编制：应栩枫 ｜ Prepared by Xufeng Ying　·　Kasetsart University, Bangkok, Thailand<br>
+    页面状态更新：2026-10-18
   </div>
 </div>
 </body>
