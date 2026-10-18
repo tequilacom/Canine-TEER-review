@@ -72,10 +72,10 @@ To be explicit: this is a personal academic resource and is **not affiliated wit
 | 页面 ｜ Page | 语言 ｜ Language | 内容 ｜ Content |
 |---|---|---|
 | [入口页 ｜ Index](https://tequilacom.github.io/Canine-TEER-review/) | 中 / EN | 全部文档入口 ｜ Entry point to all documents |
-| [文献综述 ｜ Literature Review](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_V-Clamp_Global_Review_CN_20261016.html) | 中 | 文献总表、核心团队脉络、趋势总结、人类 TEER 器械演进文献（五节）｜ Master table, team trajectories, trends, human TEER and device-evolution literature |
-| [Literature Review](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_V-Clamp_Global_Review_EN_20261016.html) | EN | 与中文版逐节对应 ｜ Section-by-section counterpart of the Chinese version |
-| [病例筛选总结 ｜ Case Selection](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_V-Clamp_Case_Selection_CN_20261017.html) | 中 | 十一项核心判断、四级解剖分级、六步流程、本团队 10 例经验（v0.5 草稿）｜ Eleven core judgements, four-tier anatomy grading, six-step workflow, institutional 10-case experience (draft v0.5) |
-| [检索与筛选清单 ｜ Retrieval Log](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_V-Clamp_Retrieval_Log_20261017.html) | 中 | 检索式命中数、逐篇纳入排除判定、全文中转状态 ｜ Search yields, per-paper inclusion decisions, full-text status |
+| [文献综述 ｜ Literature Review](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Global_Review_CN_20261016.html) | 中 | 文献总表、核心团队脉络、趋势总结、人类 TEER 器械演进文献（五节）｜ Master table, team trajectories, trends, human TEER and device-evolution literature |
+| [Literature Review](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Global_Review_EN_20261016.html) | EN | 与中文版逐节对应 ｜ Section-by-section counterpart of the Chinese version |
+| [病例筛选总结 ｜ Case Selection](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Case_Selection_CN_20261017.html) | 中 | 十一项核心判断、四级解剖分级、六步流程、本团队 10 例经验（v0.5 草稿）｜ Eleven core judgements, four-tier anatomy grading, six-step workflow, institutional 10-case experience (draft v0.5) |
+| [检索与筛选清单 ｜ Retrieval Log](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Retrieval_Log_20261017.html) | 中 | 检索式命中数、逐篇纳入排除判定、全文中转状态 ｜ Search yields, per-paper inclusion decisions, full-text status |
 
 English and Thai versions of the case-selection document are in preparation and will be published at the same URLs' sibling paths.
 
@@ -98,6 +98,7 @@ English and Thai versions of the case-selection document are in preparation and 
 | 2026-10-18 | 隐私设置：关闭访客地区与浏览器信息显示（`DISABLE_REGION` / `DISABLE_USERAGENT`）｜ Privacy: visitor region and user-agent display disabled |
 | 2026-10-18 | 仓库补全网站链接与简介；新增本 README ｜ Repository homepage link and description added; this README created |
 | 2026-10-18 | README 与仓库简介改为以 TEER 技术为主线，弱化具体器械 ｜ README and repository description re-centred on the TEER technique rather than a specific device |
+| 2026-10-18 | 页面文件名与页面标题去器械名（如 `Canine_TEER_Global_Review_CN_…`）；旧网址保留跳转页，外链不会失效 ｜ File names and page titles no longer lead with a device name; old URLs kept as redirect pages so shared links keep working |
 
 ---
 
