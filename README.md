@@ -8,16 +8,16 @@
 ## 目的 ｜ Purpose ｜ วัตถุประสงค์ ｜ 目的
 
 **中文**
-本网站是一份关于犬二尖瓣修复的公开文献调查与病例筛选笔记，按两个技术方向分栏：**经导管缘对缘修补（TEER）**与**直视下外科修复（OSMVR，Open Surgical Mitral Valve Repair）**。讨论的是技术本身——适应证、影像评估、操作要点、疗效与证据质量，而不是某一款器械。部分犬类 TEER 文献所用器械为 V-Clamp。最初为个人自用而建，同时也为接受过 TEER 操作培训的医生提供一个随时可查的资料入口。欢迎任何语言的讨论与批评。
+本网站是一份关于犬二尖瓣修复的公开文献调查与病例筛选笔记，按三个板块分栏：**经导管缘对缘修补（TEER）**、**直视下外科修复（OSMVR，Open Surgical Mitral Valve Repair）**，以及**计算仿真与数字孪生**。讨论的是技术本身——适应证、影像评估、操作要点、疗效与证据质量，而不是某一款器械。部分犬类 TEER 文献所用器械为 V-Clamp。最初为个人自用而建，同时也为接受过 TEER 操作培训的医生提供一个随时可查的资料入口。欢迎任何语言的讨论与批评。
 
 **English**
-A public literature survey and case-selection notebook on mitral valve repair in dogs, organised by two technical directions: **transcatheter edge-to-edge repair (TEER)** and **open surgical mitral valve repair (OSMVR)**. The subject is the technique itself: indications, imaging assessment, procedural detail and the quality of the evidence behind it, rather than any single device. Some of the reviewed canine work uses the V-Clamp system. It started as a personal working file and now also serves as a reference point for clinicians trained in TEER techniques. Comments in any language are welcome.
+A public literature survey and case-selection notebook on mitral valve repair in dogs, organised in three sections: **transcatheter edge-to-edge repair (TEER)**, **open surgical mitral valve repair (OSMVR)**, and **computational simulation / digital twin**. The subject is the technique itself: indications, imaging assessment, procedural detail and the quality of the evidence behind it, rather than any single device. Some of the reviewed canine work uses the V-Clamp system. It started as a personal working file and now also serves as a reference point for clinicians trained in TEER techniques. Comments in any language are welcome.
 
 **ไทย**
-เว็บไซต์นี้เป็นการทบทวนวรรณกรรมและบันทึกเกณฑ์การคัดเลือกผู้ป่วยสำหรับการซ่อมลิ้นหัวใจไมตรัลในสุนัข โดยแบ่งเป็นสองแนวทาง คือ TEER (Transcatheter Edge-to-Edge Repair) และการผ่าตัดซ่อมแซมแบบเปิด (Open Surgical Mitral Valve Repair) โดยเน้นที่ตัวเทคนิคการรักษา ทั้งข้อบ่งชี้ การประเมินด้วยภาพวินิจฉัย ขั้นตอนการทำ และคุณภาพของหลักฐาน ไม่ได้มุ่งเน้นที่อุปกรณ์ตัวใดตัวหนึ่ง เดิมจัดทำขึ้นเพื่อใช้ส่วนตัว และเพื่อเป็นแหล่งค้นคว้าเพิ่มเติมสำหรับสัตวแพทย์ที่ได้รับการฝึกอบรมเทคนิค TEER ยินดีรับความคิดเห็นและการวิจารณ์ในทุกภาษา
+เว็บไซต์นี้เป็นการทบทวนวรรณกรรมและบันทึกเกณฑ์การคัดเลือกผู้ป่วยสำหรับการซ่อมลิ้นหัวใจไมตรัลในสุนัข โดยแบ่งเป็นสามส่วน คือ TEER (Transcatheter Edge-to-Edge Repair) การผ่าตัดซ่อมแซมแบบเปิด (Open Surgical Mitral Valve Repair) และการจำลองเชิงคำนวณ/ดิจิทัลทวิน โดยเน้นที่ตัวเทคนิคการรักษา ทั้งข้อบ่งชี้ การประเมินด้วยภาพวินิจฉัย ขั้นตอนการทำ และคุณภาพของหลักฐาน ไม่ได้มุ่งเน้นที่อุปกรณ์ตัวใดตัวหนึ่ง เดิมจัดทำขึ้นเพื่อใช้ส่วนตัว และเพื่อเป็นแหล่งค้นคว้าเพิ่มเติมสำหรับสัตวแพทย์ที่ได้รับการฝึกอบรมเทคนิค TEER ยินดีรับความคิดเห็นและการวิจารณ์ในทุกภาษา
 
 **日本語**
-本サイトは、犬の僧帽弁修復に関する文献レビューと症例選択の記録です。経カテーテル僧帽弁接合修復術（TEER）と直視下外科的修復（OSMVR）の二方向を扱い、主題は手技そのもの——適応、画像評価、手技の要点、治療成績とエビデンスの質——であり、特定のデバイスではありません。もともとは個人用の作業ノートとして始め、TEER 手技の研修を受けた獣医師がいつでも参照できる資料となることも目的としています。あらゆる言語でのご意見を歓迎します。
+本サイトは、犬の僧帽弁修復に関する文献レビューと症例選択の記録です。経カテーテル僧帽弁接合修復術（TEER）、直視下外科的修復（OSMVR）、計算シミュレーション／デジタルツインの三つの柱で構成し、主題は手技そのもの——適応、画像評価、手技の要点、治療成績とエビデンスの質——であり、特定のデバイスではありません。もともとは個人用の作業ノートとして始め、TEER 手技の研修を受けた獣医師がいつでも参照できる資料となることも目的としています。あらゆる言語でのご意見を歓迎します。
 
 ---
 
@@ -69,8 +69,8 @@ To be explicit: this is a personal academic resource and is **not affiliated wit
 
 ## 网站内容 ｜ What's inside
 
-按技术方向分栏；每个方向中文版与英文版逐节对应。
-Organised by technical direction; each direction is available in Chinese and English, section by section.
+按板块分栏；前两个板块中文版与英文版逐节对应，第三个板块中英分别成文。
+Organised by section; the first two are available in Chinese and English section by section, the third as two separate documents.
 
 | 页面 ｜ Page | 语言 ｜ Language | 内容 ｜ Content |
 |---|---|---|
@@ -79,10 +79,12 @@ Organised by technical direction; each direction is available in Chinese and Eng
 | [Literature Survey](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Survey_EN_20261016.html) | EN | 与中文版逐节对应 ｜ Section-by-section counterpart of the Chinese version |
 | 犬二尖瓣直视修复全球文献调查 ｜ Open Surgical MVR Survey | 中 | **整理中**：检索与筛选正在线下进行 ｜ **In preparation**: search and screening under way |
 | Open Surgical Mitral Valve Repair: A Global Survey | EN | **整理中**，与中文版同步发布 ｜ **In preparation**, to be released together with the Chinese edition |
-| [病例筛选总结 ｜ Case Selection](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Case_Selection_CN_20261017.html) | 中 | **线下维护中**（2026-10-18 起下线，页面仅保留标题与联系说明）｜ **Offline for revision** since 2026-10-18; title and contact notice only |
-| [检索与筛选清单 ｜ Retrieval Log](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Retrieval_Log_20261017.html) | 中 | **线下维护中**（2026-10-18 起下线）｜ **Offline for revision** since 2026-10-18 |
+| [方向三 · 仿真调查 ｜ Simulation Survey](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Simulation_Survey_CN_v0.2.2.html) | 中 | 人类 TEER 仿真版图（S1–S5）、可复现性判定、开源工具与模型、犬类承接路径（44 篇，2001–2026）｜ Simulation landscape, reproducibility criteria, open tools and models, canine translation ranking |
+| [Simulation Survey](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Simulation_Survey_EN_v0.2.2.html) | EN | 与中文版内容对应 ｜ English counterpart of the Chinese version |
+| [病例筛选总结 ｜ Case Selection](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Case_Selection_CN_20261017.html) | 中 | **工作草稿**，术前/围术期/术后/临床路径四板块，逐条附方法与局限；2026-10-29 重新开放 ｜ **Working draft**, four sections with per-item method and limitations; reopened 2026-10-29 |
+| [检索与筛选清单 ｜ Retrieval Log](https://tequilacom.github.io/Canine-TEER-review/Canine_TEER_Retrieval_Log_20261017.html) | 中 | 检索式、命中数与纳入排除的逐步执行记录 ｜ Search strings, hit counts and step-by-step screening record |
 
-病例筛选相关文档（含英文版与泰语版计划）均已暂停发布，待正文定稿后统一恢复。如需获取内容，请通过评论区或仓库 Issue 联系作者。
+病例筛选的英文版与泰语版待中文版定稿后统一整理并开放。已在线文档均为工作草稿，随研究推进持续更新；引用或对外分享前请核对版本日期。
 
 **维护机制**：核心页面每月复核更新，所有改动记录在下表。文档为单文件网页，无需登录或安装软件；打印按 `Ctrl + P`（macOS 为 `⌘ + P`）可直接导出 PDF，版式已做打印优化。部分阶段性页面可能设置访问密码，需要时可通过评论区或仓库 Issue 说明情况联系我。
 
@@ -107,6 +109,8 @@ Organised by technical direction; each direction is available in Chinese and Eng
 | 2026-10-18 | 页面文件名与页面标题去器械名（如 `Canine_TEER_Global_Review_CN_…`）；旧网址保留跳转页，外链不会失效 ｜ File names and page titles no longer lead with a device name; old URLs kept as redirect pages so shared links keep working |
 | 2026-10-18 | **"综述"改称"调查"**：两份长文改名为 `Canine_TEER_Survey_*`，标题、入口页、本 README 统一为 literature survey；页首加"非同行评议"声明；旧 `Global_Review` 网址保留跳转页 ｜ Renamed from "review" to "survey" across pages, index and README; status notice added; old URLs kept as redirects |
 | 2026-10-18 | **站点大方向改为"犬二尖瓣修复"**：入口页按两个技术方向分栏（① TEER 已上线 ② 直视外科修复整理中）；两份 TEER 页加"方向一 / 二"标识；README 标题与目的段同步 ｜ Site scope widened to mitral valve repair as a whole, organised into two directions (TEER live; open surgical in preparation); direction label added to both TEER pages |
+| 2026-10-29 | **病例筛选总结与检索清单恢复上线**（结束 10-18 起的维护状态），入口页与 README 同步改为"工作草稿"标注 ｜ Case selection and retrieval log brought back online; index and README now label them as working drafts |
+| 2026-10-29 | **新增方向三 · 计算仿真与数字孪生**：中英两版调查框架 v0.2.2 上线（44 篇，2001–2026，机构逐篇核实）；入口页与 README 改为三板块结构 ｜ New section: computational simulation and digital twin; CN/EN framework v0.2.2 published, site restructured into three sections |
 
 ---
 
