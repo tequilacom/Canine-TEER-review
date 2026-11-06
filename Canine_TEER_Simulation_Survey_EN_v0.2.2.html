@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Survey Framework v0.2.2 (English Edition): The Complete Human TEER Pathway and Feasible Canine Translational Pathway</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; background: #f0f2f5; color: #1a1a2e; line-height: 1.7; padding: 24px; }
+  .container { max-width: 1400px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); overflow: hidden; }
+  .header { background: linear-gradient(135deg, #16213e 0%, #0f3460 50%, #533483 100%); color: #fff; padding: 32px 40px; }
+  .header h1 { font-size: 1.65rem; font-weight: 700; margin-bottom: 8px; line-height: 1.45; }
+  .header .subtitle { font-size: 0.92rem; opacity: 0.85; line-height: 1.6; }
+  .header .author { font-size: 0.9rem; opacity: 0.95; margin-top: 12px; line-height: 1.55; }
+  .header .author .aff { font-size: 0.78rem; opacity: 0.85; }
+  .stats-bar { display: flex; gap: 24px; padding: 16px 40px; background: #f8f9fa; border-bottom: 1px solid #e9ecef; flex-wrap: wrap; }
+  .stat-item { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: #495057; }
+  .stat-item .num { font-weight: 700; color: #0f3460; font-size: 1.15rem; }
+  .disclaimer { background:#fdf8ef; border:1px solid #ecd9b0; border-left:4px solid #b8892b; border-radius:6px; padding:13px 20px; margin:16px 0 0; font-size:0.86rem; color:#6b5426; line-height:1.7; }
+  .part-divider { background: linear-gradient(90deg,#0f3460,#533483); color:#fff; padding: 14px 40px; font-size: 1.05rem; font-weight: 700; letter-spacing: .06em; }
+  .section { padding: 28px 40px; border-bottom: 1px solid #eef0f4; }
+  .section h2 { font-size: 1.22rem; color: #16213e; border-left: 5px solid #533483; padding-left: 12px; margin-bottom: 16px; }
+  .section h3 { font-size: 1.02rem; color: #0f3460; margin: 20px 0 8px; }
+  .section h4 { font-size: 0.95rem; color: #533483; margin: 14px 0 6px; }
+  .prose { font-size: 0.9rem; color: #333; }
+  .prose p, .prose li { margin-bottom: 8px; }
+  .prose ul { padding-left: 22px; }
+  .status { display:inline-block; padding:1px 9px; border-radius:10px; font-size:0.7rem; font-weight:700; vertical-align:2px; white-space:nowrap; }
+  .st-done { background:#e8f5e9; color:#2e7d32; }
+  .st-skel { background:#fff3e0; color:#e65100; }
+  .st-todo { background:#eceff1; color:#607d8b; }
+  .table-wrapper { overflow-x: auto; padding: 8px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+  thead th { background: #16213e; color: #fff; padding: 10px; text-align: left; font-weight: 600; font-size: 0.78rem; white-space: nowrap; position: sticky; top: 0; }
+  tbody td { padding: 11px 10px; border-bottom: 1px solid #e9ecef; vertical-align: top; }
+  tbody tr:hover { background: #f0f5ff; }
+  .title-link { color: #0f3460; text-decoration: none; font-weight: 600; }
+  .title-link:hover { color: #533483; text-decoration: underline; }
+  .authors { font-size: 0.74rem; color: #888; margin-top: 3px; }
+  .doi { font-size: 0.74rem; color: #533483; margin-top: 3px; font-family: Consolas, monospace; }
+  .type-tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; white-space: nowrap; }
+  .tag-A { background: #fce4ec; color: #b71c1c; }
+  .tag-B { background: #fff3e0; color: #e65100; }
+  .tag-C { background: #e3f2fd; color: #1565c0; }
+  .tag-D { background: #e8f5e9; color: #2e7d32; }
+  .pubmed-btn { display: inline-block; padding: 3px 9px; background: #16213e; color: #fff; text-decoration: none; border-radius: 6px; font-size: 0.7rem; font-weight: 600; white-space: nowrap; }
+  .pubmed-btn:hover { background: #533483; }
+  .timeline { border-left: 3px solid #533483; margin: 10px 0 24px 8px; padding-left: 20px; }
+  .timeline-item { margin-bottom: 12px; position: relative; font-size: 0.88rem; }
+  .timeline-item::before { content: ''; position: absolute; left: -27px; top: 7px; width: 11px; height: 11px; border-radius: 50%; background: #533483; }
+  .timeline-year { font-weight: 700; color: #533483; }
+  .team-head { font-weight: 700; color: #533483; margin: 20px 0 8px; font-size: 0.98rem; border-bottom: 1px dashed #c9c2b4; padding-bottom: 5px; }
+  .team-head .loc { display: inline-block; background: #533483; color: #fff; border-radius: 4px; padding: 1px 8px; margin-right: 6px; font-size: 0.78rem; }
+  .team-note { font-size: 0.82rem; color: #666; margin: 4px 0 10px; }
+  .callout { background: #f5f3ff; border: 1px solid #d8cfeb; border-radius: 10px; padding: 14px 18px; margin: 12px 0; font-size: 0.87rem; }
+  .keybox { background:#eef7f0; border:1px solid #c4dfc9; border-left:4px solid #2e7d32; border-radius:8px; padding:12px 18px; margin:14px 0; font-size:0.88rem; }
+  .keybox b { color:#1b5e20; }
+  .warnbox { background:#fdf0ef; border:1px solid #f0c7c3; border-left:4px solid #b71c1c; border-radius:8px; padding:12px 18px; margin:14px 0; font-size:0.88rem; }
+  .warnbox b { color:#8e1414; }
+  .legend { padding: 16px 40px 28px; font-size: 0.76rem; color: #777; }
+  @page { size: A4 landscape; margin: 10mm; }
+  @media print {
+    body { background:#fff !important; padding:0 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .container { max-width:none !important; box-shadow:none !important; border-radius:0 !important; }
+    .section { padding: 14px 8px !important; }
+    .section, .prose, .callout, .keybox, .warnbox, table, tr, li { break-inside: avoid; page-break-inside: avoid; }
+    h1,h2,h3,h4 { break-after: avoid; page-break-after: avoid; }
+    thead { display: table-header-group; }
+    a { color: inherit !important; text-decoration: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div style="display:inline-block;font-size:0.72rem;letter-spacing:.12em;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:10px;padding:3px 11px;margin-bottom:12px;">SURVEY FRAMEWORK · v0.2.2 ｜ English edition (translated from the finalized Chinese v0.2.2) ｜ Working document</div>
+    <h1>Survey Framework: The Complete Human Transcatheter Edge-to-Edge Repair (TEER) Pathway<br>and Feasible Canine Translational Pathways</h1>
+    <div class="subtitle">Structure: Chapters 1–7 = Human part (a full account of how it is done in humans) ｜ Chapters 8–13 = Canine part (translational pathways)<br>Evidence anchors: full-text close reading of 8 simulation papers + the human/canine TEER clinical evidence chain ｜ Compiled: 29 October 2026</div>
+    <div class="author">Compiled by: Xufeng Ying<br><span class="aff">Science and Innovation for Animal Health Program, Graduate School, Faculty of Veterinary Medicine, Kasetsart University, Bangkok 10900, Thailand</span></div>
+  </div>
+  <div class="stats-bar">
+    <div class="stat-item"><span class="num">8</span> simulation papers close-read (final-version PDFs, archive drive)</div>
+    <div class="stat-item"><span class="num">7</span> human chapters (principles / evidence / devices / imaging / selection / simulation)</div>
+    <div class="stat-item"><span class="num">6</span> canine chapters (status / differences / transferability / pathway)</div>
+    <div class="stat-item"><span class="num">111+25+4+8</span> dogs with published clinical evidence (plus 2 healthy dogs, experimental reproduction)</div>
+    <div class="stat-item"><span class="num">2</span> global maps: clinical — 7 countries, 10+ teams × simulation — 25 years, 9+ teams, all verifiable</div>
+  </div>
+  <div style="padding:0 40px;">
+    <div class="disclaimer"><b>This is a survey framework (working document), not a peer-reviewed review.</b> It fixes the chapter structure, analytical conclusions, and search plan, to support chapter-by-chapter gap-filling and the subsequent global survey expansion; cite the formally published versions where available. Status markers: <span class="status st-done">■ written</span> <span class="status st-skel">◐ skeleton in place, to be expanded</span> <span class="status st-todo">□ to fill</span></div>
+  </div>
+
+  <!-- ============ Survey design ============ -->
+  <div class="section">
+    <h2>0. Survey Design <span class="status st-done">■</span></h2>
+    <div class="prose">
+      <p><b>Research questions:</b> RQ1 — What is the current state of human TEER and the companion transcatheter repair technologies along six lines: principles, evidence, devices, imaging, selection, and simulation? (Chapters 1–7) ｜ RQ2 — What can each line answer, and what are its hard limits? (Chapter 7) ｜ RQ3 — What is the global status of canine TEER, and what is the cross-species difference list? (Chapters 8–10) ｜ RQ4 — Of the six human lines, which are transferable to the dog today, where are the gaps, and what does a feasible transfer pathway look like? (Chapters 11–12, the center of gravity of this survey) ｜ RQ5 — Who is doing this worldwide, and how far have they got? (Chapter 13, completed)</p>
+      <p><b>Evidence anchors:</b> The archive folder <code>FEA相关调查\</code> (the "FEA-related survey" folder on drive E) holds 8 final-version PDFs (Aslan 2026, Laurence 2025, Mangine 2026, Wu 2026, Nakhaei 2026, Ching 2023, Haese 2026, Gaidulis 2023; DOIs in the Chapter 7 summary cards); the human clinical evidence chain and canine TEER data build on and update the prior survey "Global Literature Survey of Canine Mitral Valve TEER (20261016)".</p>
+      <p><b>Workflow:</b> framework finalized → chapter-by-chapter gap-filling → global survey (Chapter 13, completed in v0.2.1) → <b>Chinese finalization (that edition) → English translation (this edition)</b> → quarterly re-runs of the lightweight screening log → final manuscript (de-AI-toning + reference formatting + HTML/PDF delivery).</p>
+    </div>
+  </div>
+
+  <!-- ============ PART I Human ============ -->
+  <div class="part-divider">PART Ⅰ　Human (Chapters 1–7) — How It Is Done in Humans</div>
+
+  <div class="section">
+    <h2>1. Disease Background and Treatment Landscape of Human Mitral Regurgitation <span class="status st-done">■</span></h2>
+    <div class="prose">
+      <h3>1.1 Disease classification: primary (degenerative) and secondary (functional) MR are two different evidence lines</h3>
+      <ul>
+        <li><b>Primary/degenerative MR (DMR)</b>: disease of the leaflet itself (prolapse, flail, myxomatous degeneration) → structurally "repairable", surgery is first choice. This corresponds to the homologous pathology of canine MMVD (see Chapter 10) — <b>the single most important human disease prototype for canine translation</b>.</li>
+        <li><b>Secondary/functional MR (FMR)</b>: the leaflets themselves are normal; LV dilation/papillary displacement tethers them → the ventricle is what is being treated. The opposite conclusions of MITRA-FR and COAPT are rooted precisely in population selection (see Chapter 3).</li>
+      </ul>
+      <h3>1.2 The treatment landscape and where TEER sits</h3>
+      <ul>
+        <li>Surgical repair/replacement: the gold standard, but a substantial share of patients are judged "high surgical risk" (advanced age, low LVEF, comorbidities) and denied surgery.</li>
+        <li>Drugs (GDMT): the foundation for FMR, but they do not solve the mechanical problem.</li>
+        <li><b>TEER</b>: the minimally invasive alternative for high-risk/inoperable patients; within two decades it moved from technical exploration to guideline recommendation (DMR high surgical risk Ⅱa; secondary MR meeting COAPT criteria Ⅱa — ESC/AHA wording □ to verify).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>2. Technical Principles and Brief History of TEER <span class="status st-skel">◐</span></h2>
+    <div class="prose">
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">1991–2001</span> — Alfieri proposes the surgical "edge-to-edge suture" (double-orifice conversion): suturing the midpoints of the anterior and posterior leaflets together. Technically simple but disrupts normal valve physiology; long-term function is maintained by the double orifice — the principle starting point of all TEER.</div>
+        <div class="timeline-item"><span class="timeline-year">2003</span> — First percutaneous edge-to-edge clip implantation in humans (MitraClip precursor); the EVEREST I feasibility study begins.</div>
+        <div class="timeline-item"><span class="timeline-year">2008 →</span> — MitraClip CE mark; the transfemoral–transseptal approach is standardized.</div>
+        <div class="timeline-item"><span class="timeline-year">2011 / 2013</span> — EVEREST II RCT published (NEJM): superior safety, effectiveness non-inferiority not met but 5-year outcomes converge (Chapter 3) — TEER formally enters the guideline system.</div>
+        <div class="timeline-item"><span class="timeline-year">2018</span> — COAPT positive result (FMR, NEJM) and MITRA-FR negative result (JACC) published the same year — "patient selection matters more than device performance" becomes field-wide consensus (Chapter 6).</div>
+        <div class="timeline-item"><span class="timeline-year">2018–2023</span> — Device iteration: MitraClip G4 four-arm family; the domestic (Chinese) ValveClamp first case (2018.07, Zhongshan Hospital, Fudan University) → FIM (2019, JACC CI) → CLAMP-2 (2023) → NMPA approval (2023.09, the first independently developed Chinese mitral intervention device); tricuspid TEER (TriClip, TRILUMINATE 2023) and PASCAL (CLASP series) advance in parallel.</div>
+        <div class="timeline-item"><span class="timeline-year">2020 →</span> — Human devices spill over into veterinary medicine: the human ValveClamp adapted for 8 dogs with spontaneous MR (Front Vet Sci 2020, the world's first canine TEER paper) → the canine-dedicated V-Clamp → global clinical translation at CSU (Chapter 9).</div>
+      </div>
+      <p class="st-todo">□ To fill: exact source verification for Alfieri's original papers, EVEREST I, the Condado first case, and other origins.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>3. The Evidence Chain: From EVEREST to TRILUMINATE <span class="status st-skel">◐</span></h2>
+    <div class="prose">
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Study</th><th>Population</th><th>Design / sample</th><th>Key results</th><th>Implication for canine translation</th></tr></thead>
+        <tbody>
+          <tr><td><b>EVEREST II</b><br>2011, NEJM</td><td>Primary MR (mostly DMR)</td><td>RCT, n=279 (2:1 TEER:surgery)</td><td>Effectiveness endpoint at 1 year: 54.6% vs 73.3% for surgery (non-inferiority not met); significantly superior safety (adverse events 15% vs 48%); no survival difference at 4 years; outcomes converge by 5 years</td><td>The "safety advantage + long-term convergence" positioning logic applies equally to the dog (minimally invasive value first)</td></tr>
+          <tr><td><b>MITRA-FR</b><br>2018, JACC</td><td>Secondary MR (EF 15–40%)</td><td>RCT, n=256</td><td>No difference in 1-year death/heart-failure hospitalization — the underlying ventricular disease was never addressed</td><td>The dog has no typical FMR counterpart, but the warning "do not expect clipping to solve a ventricular problem" applies</td></tr>
+          <tr><td><b>COAPT</b><br>2018, NEJM</td><td>Secondary MR (LVEF 20–50%, LVESD ≤70 mm)</td><td>RCT, n=614</td><td>TEER arm: significantly lower 2-year HF hospitalization and mortality (all-cause death 29.1% vs 46.1%)</td><td>The divergence from MITRA-FR established "<b>anatomy–clinical matched case selection</b>" as the determinant — directly shaping canine screening logic</td></tr>
+          <tr><td><b>TRILUMINATE</b><br>2023, NEJM</td><td>Tricuspid regurgitation</td><td>RCT, TriClip</td><td>Win ratio 1.48; symptom/quality-of-life improvement</td><td>The second AV-valve demonstration: precedent for translating the same technical principle across valves — supporting the methodological confidence behind "from mitral valve to dog"</td></tr>
+          <tr><td><b>CLAMP-2</b><br>2023, JACC CI</td><td>Elderly/high-surgical-risk primary MR</td><td>Multicenter confirmatory, n=102 (ValveClamp)</td><td>Acute success 97%; 1-year effectiveness 87.3%; MR ≤2+ at 12 months in 97.8%; <b>learning curve ≈ 50 cases</b></td><td>The learning-curve data is the direct reference for veterinary center training programs</td></tr>
+        </tbody>
+      </table></div>
+      <p class="st-todo">□ To fill: source and number verification for EXPAND/GADO registries, COAPT 3/5-year follow-up, MITRA-HR, TRISCEND II, PASCAL CLASP IIF, etc.; original guideline recommendation classes (ESC/EACTS and ACC/AHA).</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>4. Device Genealogy <span class="status st-skel">◐</span></h2>
+    <div class="prose">
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Device</th><th>Approach</th><th>Mechanism</th><th>Key points (including reference value for the dog)</th></tr></thead>
+        <tbody>
+          <tr><td><b>MitraClip G4 family</b><br>(Abbott)</td><td>Transfemoral → transseptal</td><td>Two-arm clipping; four-arm variants (NT/NTR/XTR/XTW)</td><td>The gold-standard reference frame. The four-arm variants give simulation studies a geometric spectrum (wide arms ↑ coaptation area, long arms ↑ leaflet stress — see the Aslan card) — <b>a template for designing the canine device size spectrum</b></td></tr>
+          <tr><td><b>PASCAL / PASCAL Ace</b> (Edwards)</td><td>Transfemoral</td><td>Central self-expanding spacer + independently grasping arms</td><td>More tolerant of wide coaptation gaps; CLASP series (□ numbers to fill) — the "spacer enlarges coaptation" concept is a useful reference for thick canine leaflets</td></tr>
+          <tr><td><b>TriClip</b> (Abbott)</td><td>Transfemoral</td><td>Tricuspid-dedicated TEER</td><td>TRILUMINATE; proves AV-valve TEER is feasible — a potential transfer route for canine tricuspid regurgitation ◐</td></tr>
+          <tr><td><b>CardioBand</b> (Boston)</td><td>Transfemoral</td><td>Transcatheter annular band, plication</td><td>Modeled in Aslan 2026 as "displacement-controlled annuloplasty"; canine annuli are small with little room for annular devices (Chapter 11)</td></tr>
+          <tr><td><b>Mitralign</b></td><td>Transfemoral arterial → retrograde</td><td>Suture annuloplasty (folded plication)</td><td>Modeled in Aslan as "discrete node constraint"; at equal annular reduction its coaptation outperforms CardioBand — the methodological starting point for comparing reduction strategies</td></tr>
+          <tr><td><b>ValveClamp</b> (original creation by Zhongshan Hospital, Fudan University)<br>→ <b>canine V-Clamp</b></td><td><b>Transapical</b> (16F straight sheath, ultrasound-only guidance, radiation-free)</td><td>Edge-to-edge clipping; larger capture range, simpler operation</td><td>FIM 12/12 success (2019, JACC CI) → CLAMP-2 (2023) → NMPA 2023; <b>in 2020 it spawned the canine V-Clamp — the only canine-dedicated TEER device with peer-reviewed data</b> (17-paper human ValveClamp list in Section 5 of the prior survey, not repeated here)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout"><b>Device-genealogy wording rule:</b> human ValveClamp (original creation by Zhongshan Hospital, Fudan University) → canine V-Clamp; this document does not mention any former-company entities.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>5. Imaging Guidance and Procedural Workflow <span class="status st-skel">◐</span></h2>
+    <div class="prose">
+      <h3>5.1 The dual-track approach</h3>
+      <ul>
+        <li><b>Transfemoral–transseptal</b> (MitraClip/PASCAL/TriClip): least invasive, but requires fluoroscopy/radiation and transseptal puncture skills; the delivery system's freedom of motion across the septum is constrained.</li>
+        <li><b>Transapical</b> (ValveClamp/V-Clamp): straight-line alignment with the mitral valve, the most natural force axis, and <b>ultrasound-only, radiation-free guidance</b> — precisely the engineering reason it can migrate to veterinary medicine (small canine hearts; fluoroscopy is a scarce resource in veterinary hospitals).</li>
+      </ul>
+      <h3>5.2 Imaging guidance essentials (the TEE step sequence)</h3>
+      <ul>
+        <li>Preprocedural TEE screening (anatomic enrollment, Chapter 6) → intraprocedural real-time 3D TEE guidance: transseptal puncture position → delivery system crossing the valve → clip-arm orientation (perpendicular to the coaptation line) → the four-step assessment of position/grasp/closure/release (grasped tissue length, double-orifice formation, residual MR, transvalvular gradient).</li>
+        <li>ValveClamp-system companion protocols: the stepwise TEE operating standard (Ge 2021, J Interv Cardiol, PMID 33976590) and the real-time guidance strategy for eccentric jets (A1/A3/P1) (Long 2021, J Card Surg, PMID 34396585) — <b>the latter breaks the "A2-P2 only" restriction and is directly usable for choosing where to grasp diseased canine leaflets</b>.</li>
+      </ul>
+      <h3>5.3 Learning curve and team</h3>
+      <ul>
+        <li>CLAMP-2: 1-year effectiveness rose from 80% to 96.1% after ≈50 cases — the golden quantitative reference for training; the multidisciplinary care model (PMID 34321032) provides a team-building template.</li>
+        <li>□ To fill: global MitraClip learning-curve literature; a complication-rate table (single-leaf attachment / clip detachment / iatrogenic MS / septal complications).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>6. Case Selection Criteria: The Field-Wide "First Determinant" <span class="status st-skel">◐</span></h2>
+    <div class="prose">
+      <div class="keybox"><b>Core fact:</b> MITRA-FR and COAPT reached opposite conclusions → post-hoc analyses pointed to population/anatomic selection differences → case selection was established as the first determinant of TEER outcomes. The same logic is validated in the dog: the CSU 111-dog highly selected cohort (93.7% discharge survival) vs the Korean 25-dog broad-inclusion series (65% early survival; see 9.2 Team 2 and Chapter 13).</div>
+      <h3>6.1 EVEREST anatomic enrollment criteria (the classic wording)</h3>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Parameter</th><th>Criterion</th><th>Rationale</th><th>Canine counterpart (preview; details in Chapter 10)</th></tr></thead>
+        <tbody>
+          <tr><td>Jet origin</td><td>Central A2-P2</td><td>Reachable by a single clip</td><td>The Willows canine criteria likewise require A2-P2 prolapse</td></tr>
+          <tr><td>Flail gap / width</td><td>gap&lt;10 mm, width&lt;15 mm</td><td>Graspable by the arms</td><td>Canine counterpart "coaptation gap 2–4 mm" (Willows)</td></tr>
+          <tr><td>Coaptation length</td><td>≥2 mm</td><td>Tissue available to grasp</td><td>Canine leaflets are short; this parameter is tighter (◐ canine imaging data pending)</td></tr>
+          <tr><td>Leaflet condition</td><td>No severe calcification, no cleft, no rheumatic change</td><td>Graspable without tearing</td><td>Homologous to the Hong Kong WeHUG exclusion: "not advised with severe calcification or deformity"</td></tr>
+          <tr><td>Annulus/orifice</td><td>No severe mitral stenosis</td><td>Double orifice must not create stenosis</td><td>Small canine hearts → higher transvalvular gradient risk → the clip size spectrum is a hard constraint</td></tr>
+        </tbody>
+      </table></div>
+      <h3>6.2 Expansion and beyond</h3>
+      <ul>
+        <li>With experience, criteria relax to non-central jets (Long 2021), complex prolapse, and intravalvular devices (MitraClip+plug, JACC CI 2016 case report);</li>
+        <li>Mechanistic prediction of residual MR: degree of leaflet tethering (Ge 2021, Front Cardiovasc Med, PMID 33996943) — a "leaflet quality" dimension enters screening;</li>
+        <li>Quantified post-TEER geometric remodeling on 3D TEE (Ge 2021, CCI, PMID 32497395): annular reduction, improved coaptation height/area — TEER's hidden "annuloplasty effect", for which Haese 2026 gives a mechanistic explanation in the tricuspid valve (Chapter 7 card ⑦).</li>
+      </ul>
+      <p class="st-todo">□ To fill: original sources and page numbers for each criterion; the full COAPT enrollment wording for FMR; verification of the Willows canine criteria source link.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>7. Preprocedural Assessment Frontier: Computational and Physical Simulation <span class="status st-done">■</span></h2>
+    <div class="prose">
+      <p>This chapter is the hinge between the human and canine parts: human medicine has industrialized "virtual repair" into a pipeline, and the canine transferability assessment (Chapters 11–12) stands entirely on this base. The following 8 papers were close-read in full text from the archive; one summary card each.</p>
+
+      <h3>7.1 Paper-by-paper summary cards</h3>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>#</th><th>Paper</th><th>Methods</th><th>Key findings</th><th>Limitations</th><th>Meaning for the dog</th></tr></thead>
+        <tbody>
+          <tr><td>①</td><td><span class="type-tag tag-A">Main axis</span><b>Aslan et al. 2026</b><br>Ann Biomed Eng 54:3797–3815<div class="doi">10.1007/s10439-025-03959-w<br>PMID 42118231 (OA: PMC13434352)</div><div class="authors"><b>USA</b> · Children's Hospital of Philadelphia (CHOP), Jolley group × University of Utah (Salt Lake City), Weiss/Maas groups — <b>the FEBio developers themselves</b>; cross-institution, cross-engineering collaboration</div></td><td>SlicerHeart/3D Slicer reconstruction of patient-specific mitral valves → FEBio; 4 G4 MitraClip geometries + CardioBand (displacement-controlled annuloplasty) + Mitralign (discrete node constraint); introduces a "<b>released clip</b>" formulation (the clip moves with the leaflets — contact-driven, not fixed)</td><td>Prolapse: TEER restores coaptation but <b>raises leaflet stress</b>; reduction-type repairs show lower stress; dilated: <b>TEER alone leaves residual MR</b>, combined annuloplasty is best (ROA 0.06 cm², CA 2.57 cm²); long arms (XT/XTR) ↑ posterior-leaflet strain, wide arms (NTW/XTW) ↑ coaptation area; proposes a "staged leaflet capture" strategy; the pinned-annulus assumption is acceptable for the mitral valve</td><td>Prolapse/dilated geometries were modified from healthy valves (not real patients); isotropic Lee–Sacks constitutive model (adult parameters); no clinical paired validation</td><td><b>The direct template for canine virtual repair</b>: fully open-source framework, zero licensing cost; the released clip suits simulating a V-Clamp that moves with the leaflets; establishes the "relative-comparison-first" principle</td></tr>
+          <tr><td>②</td><td><span class="type-tag tag-A">Main axis</span><b>Laurence et al. 2025 (FINESSE)</b><br>Ann Biomed Eng 53:241–259<div class="doi">10.1007/s10439-024-03637-3<br>Model library: repo.febio.org project/137</div><div class="authors"><b>USA</b> · CHOP Jolley group × University of Utah Weiss group (same axis as ①; first author Laurence within the CHOP/Penn system)</div></td><td>Shape enforcement: a sliding elastic interface forces the FEM solution onto the imaging target surface; requires no patient-specific material/thickness/chordae data</td><td>Synthetic tests + 3 pediatric patients: matching error ≈ minimum voxel size; principal strain estimated to ±0.03 strain; free .feb models included (mitral, HLHS tricuspid, atrioventricular canal)</td><td>Outputs an "image-hugging strain field", not an independent mechanical prediction; penalty parameter is user-set</td><td><b>The most dog-friendly entry point</b>: strain can be extracted from ultrasound without canine tissue-mechanics parameters — bypassing the "missing canine constitutive data" gap entirely</td></tr>
+          <tr><td>③</td><td><span class="type-tag tag-C">Component</span><b>Mangine et al. 2026</b><br>Ann Biomed Eng<div class="doi">10.1007/s10439-026-04310-7</div><div class="authors"><b>USA</b> · CHOP Jolley group (same axis as ①②; first author Mangine in the CHOP imaging/modeling line)</div></td><td>Open-source chordae generator (SlicerHeart) + parametric sweeps: cross-sectional area, density, length, radius, branching</td><td>Chordal geometry significantly changes closure metrics and mechanics; <b>cross-sectional area matters most</b>; conclusions used to calibrate dilated mitral and tricuspid models</td><td>Synthetic geometry, not patient-specific</td><td>For canine modeling, <b>chordal data collection is the top priority</b>; the chordae generator can directly semi-automate manual canine chordal annotation</td></tr>
+          <tr><td>④</td><td><span class="type-tag tag-C">Component</span><b>Wu et al. 2026</b><br>Ann Biomed Eng<div class="doi">10.1007/s10439-026-04273-9<br>Preprint PMC12632704</div><div class="authors"><b>USA</b> · CHOP Jolley group × University of Utah Weiss group × University of Pennsylvania Pouch (imaging/ultrasound; same axis as ①)</div></td><td>Geometric feature tracking of 3D ultrasound point clouds (registration-parameter-free) to estimate leaflet strain, with FEM as benchmark validation</td><td>Accuracy superior to other point-based methods; robust across morphologies; <b>median principal strain / IQR &gt;0.5 associated with leaflet billow (prolapse)</b></td><td>Absolute strain values depend on image quality; no post-repair follow-up</td><td>A pure-imaging route: if canine TEE sequences can be processed, this yields <b>in-vivo leaflet mechanics metrics</b>, doubling as ground truth for FEM validation</td></tr>
+          <tr><td>⑤</td><td><span class="type-tag tag-C">Component</span><b>Nakhaei et al. 2026</b><br>Ann Biomed Eng<div class="doi">10.1007/s10439-026-04245-z</div><div class="authors"><b>USA</b> · CHOP Jolley group × University of Utah Weiss group (same axis as ①④)</div></td><td>FEM-generated intermediate deformed states to enhance 4D image registration (aortic valve)</td><td>Tracking accuracy <b>+40%</b> over direct registration; strain estimates with uncertainty bounds</td><td>Validated on the aortic valve; AV-valve transfer pending</td><td>The methodology transfers to canine AV valves; the "uncertainty bounds" concept is useful when reporting to clinical veterinarians</td></tr>
+          <tr><td>⑥</td><td><span class="type-tag tag-A">Physical</span><b>Ching et al. 2023</b><br>Ann Thorac Surg Short Rep 1:40–45<div class="doi">10.1016/j.atssr.2022.09.008</div><div class="authors"><b>USA</b> · CHOP Jolley group (same axis as ①; the physical route — the same axis's computational and physical legs)</div></td><td>Imaging → 3D-printed heart model → real clipping rehearsal (Cianciulli 2021 multimodal simulation planning; PMIDs in the prior survey)</td><td>Physical rehearsal is feasible; grasp technique / approach angle / clip orientation can be drilled ex vivo</td><td>Mimicking myxomatous leaflet hardness in printed material is a recognized difficulty</td><td>Dogs can print <b>directly from naturally diseased canine imaging</b> — no artificial pathology needed; a ready vehicle for curriculum-based training</td></tr>
+          <tr><td>⑦</td><td><span class="type-tag tag-B">Mechanism</span><b>Haese et al. 2026</b><br>J Biomech 205:113423<div class="doi">10.1016/j.jbiomech.2026.113423</div><div class="authors"><b>USA</b> · UT Austin mechanical engineering, Rausch group × Corewell Health West/Michigan State, Timek group (cardiac surgery) × Stanford (Mathur) — an external counterweight independent of the CHOP axis</div></td><td>Computational mechanics of tricuspid TEER: annular remodeling and force mechanisms</td><td>Explains the "<b>annuloplasty effect</b>": clipping tension acutely shrinks the annulus; <b>annular compliance substantially changes post-procedural stress</b> (in tension with Aslan's pinned assumption)</td><td>Tricuspid valve; human parameters</td><td>The canine myxomatous annulus is "softer" — whether the pinned assumption transfers is <b>doubtful</b>; canine boundary conditions need dedicated justification</td></tr>
+          <tr><td>⑧</td><td><span class="type-tag tag-B">Paradigm</span><b>Gaidulis &amp; Padala 2023</b><br>Ann Biomed Eng 51:1984–2000<div class="doi">10.1007/s10439-023-03219-9</div><div class="authors"><b>USA</b> · Emory University + Georgia Tech, Padala group (computational modeling/device development for structural heart disease; independent of the CHOP axis)</div></td><td>3D-echo personalized FEM to predict undersized annuloplasty ring sizing (surgical FMR)</td><td>A personalized model can output "which ring to choose" — moving surgical decision-making onto the computer</td><td>Surgical ring scenario, not TEER</td><td>The "<b>one size up or down</b>" personalized-prediction paradigm = the direct template for choosing within the V-Clamp size spectrum</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>7.2 Cross-comparison: what this pipeline has solved, and what it still lacks</h3>
+      <ul>
+        <li><b>Solved</b>: a fully open-source pipeline (imaging → modeling → solving → metrics) with zero commercial dependencies; virtual repair can compare TEER/annuloplasty/combined in one frame; three independent routes to strain estimation (FEM shape enforcement / pure-imaging tracking / FEM-enhanced registration).</li>
+        <li><b>Hard limits</b>: ① geometries mostly modified from healthy valves; ② isotropic Lee–Sacks constitutive model with adult parameters; ③ no pre/post paired validation (ADEPT, arXiv:2409.19081, is filling the "non-invasive elasticity estimation" gap); ④ the annular boundary-condition schools disagree (pinned vs compliance-sensitive).</li>
+        <li><b>Convergence point of the two lines</b>: image-based direct strain measurement (④⑤) can provide validation data for FEM (①②) — computation and imaging calibrate each other.</li>
+      </ul>
+    </div>
+      <h3>7.3 Human-part summary: the transferable-asset list</h3>
+      <div class="prose">
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Human asset</th><th>Maturity</th><th>Form of canine transfer (details in Chapters 11–12)</th></tr></thead>
+        <tbody>
+          <tr><td>Edge-to-edge principle + two decades of device iteration</td><td>Very high</td><td>The canine V-Clamp already exists (the only device with peer-reviewed data)</td></tr>
+          <tr><td>Evidence chain (RCTs/registries)</td><td>Very high</td><td>Transplant the "selection-first" methodology, not the raw numbers</td></tr>
+          <tr><td>Stepwise TEE operating standards</td><td>High</td><td>CSU has published a canine TEE standard paper (PMID 41656142) — standardization is already happening</td></tr>
+          <tr><td>EVEREST anatomic criteria</td><td>High</td><td>The Willows canine criteria (RF ≥50%, A2-P2, annulus ≥13 mm, coaptation gap 2–4 mm) are already their veterinary mirror</td></tr>
+          <tr><td>Open-source FEM virtual-repair pipeline</td><td>High (human)</td><td>Framework directly usable; missing canine geometry library/constitutive/chordae data (Chapter 11 item-by-item assessment)</td></tr>
+          <tr><td>3D-printed rehearsal</td><td>Medium-high</td><td>Print directly from diseased canine imaging — no ethical barriers; immediate training value</td></tr>
+          <tr><td>Learning-curve quantification (~50 cases)</td><td>Medium</td><td>The quantitative reference for veterinary center training programs</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- ============ PART II Canine ============ -->
+  <div class="part-divider">PART Ⅱ　Canine (Chapters 8–13) — Feasible Translational Pathways</div>
+
+
+  <div class="section">
+    <h2>8. Canine MMVD (Myxomatous Mitral Valve Disease) and the Current Treatment Landscape <span class="status st-skel">◐</span></h2>
+    <div class="prose">
+      <h3>8.1 Disease burden</h3>
+      <ul>
+        <li>MMVD (myxomatous mitral valve disease; older literature: degenerative mitral valve disease, DMVD) is the most common acquired heart disease in dogs; prevalence is high in small/older dogs (ACVIM stages A–F); its natural history is homologous to human degenerative MR — <b>the dog is the only species in which the human-homologous valve disease occurs naturally at scale</b>.</li>
+        <li>□ To fill: precise prevalence figures (the Charles/Borgarelli epidemiology series), ACVIM consensus update points.</li>
+      </ul>
+      <h3>8.2 Current treatment and the gap</h3>
+      <ul>
+        <li>Drugs: pimobendan as cornerstone (+ diuretics/ACEI, etc.) — improves symptoms and prognosis but does not reverse the disease process.</li>
+        <li>Surgery: open-chest repair on cardiopulmonary bypass (the Japanese Uechi system is the most mature; a few European centers) — very few centers, high barrier, high cost.</li>
+        <li><b>The interventional gap</b>: TEER fills the middle band of "drugs not enough, surgery too risky" — structurally identical to why human TEER was born.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>9. Global Status of Canine TEER <span class="status st-done">■</span> (building on and updating the 20261016 survey)</h2>
+    <div class="prose">
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Team / region</th><th>Evidence</th><th>Key numbers</th><th>Positioning</th></tr></thead>
+        <tbody>
+          <tr><td><b>USA — CSU</b> (Orton/Scansen/Potter)</td><td>50-dog feasibility (2024, Front Vet Sci, PMID 39717788)<br>111-dog 2-year follow-up (2025, J Vet Cardiol, PMID 41513577)</td><td>Device feasibility 96%, <b>no intraprocedural deaths</b>, discharge survival 96%; technical success 97.3% (single clip 74% / double 26%); in-hospital mortality 6.3%; cardiac survival 80%/78% at 1/2 years; RF 60.6%→35%→30.7%</td><td>The world's translational mainstay, highly selected cohort; 2026 TEE operating standard (PMID 41656142) + cardiac CT (PMID 42270470) exporting standardization</td></tr>
+          <tr><td><b>South Korea — KAMC</b> (Cheongju) — clinical execution core Youp KA (Ye); led by the Lee family</td><td>20-dog retrospective (2025, JVIM, PMID 40459365) + 25-dog cohort safety analysis (Vet Sci, PMID 40266932; operative window 2023.09–2025.01)</td><td>Early survival 65%; causes of death: leaflet injury/single-leaf attachment (4), tracheal collapse (1), neurological complication (1), cardiogenic shock (1); at 3 months VHS/VLAS/LA:AO/RF/regurgitant volume all significantly reduced</td><td>The largest real-world cohort (25 dogs) — the contrast with CSU is the canine empirical proof of "selection determinism"; team roles in 9.2 Team 2</td></tr>
+          <tr><td><b>Thailand</b> (Petchdee group)</td><td>4-dog pilot (2024, Animals, PMID 39518790) + myocardial work follow-up (2026, Vet Sci, PMID 42357795)</td><td>No device complications at 6 months; symptom/quality-of-life improvement</td><td>Southeast Asia's first report; a functional-metrics route</td></tr>
+          <tr><td><b>Poland</b> (Wrocław University of Environmental and Life Sciences, UPWr × Jagiellonian University)</td><td>Transapical V-Clamp TEER (2026, Pol J Vet Sci, PMID 41860000)</td><td>Positioned as a two-way veterinary + experimental human medicine platform</td><td>Europe's new entrant</td></tr>
+          <tr><td><b>Japan</b> (Tokyo University of Agriculture and Technology, veterinary surgery, Tanaka R group)</td><td>In-vivo TEER in 2 healthy dogs (2021, Animals 12(1):56, PMID 35011161) — new finding in v0.2.1</td><td>Successful implantation (98/63 min); 4-week longitudinal echo (2D speckle tracking + color M-mode IVPG): mild non-progressive mitral stenosis, elevated E/e&#8242;</td><td>The world's only "healthy-dog in-vivo reproduction" study — its longitudinal functional-assessment methods can be borrowed directly by clinical centers</td></tr>
+          <tr><td><b>Founding study</b> (Chinese team + CSU collaboration)</td><td>8 dogs, adapted human ValveClamp (2020, Front Vet Sci, PMID 33392290; co-authors include Pan W-Z of Zhongshan)</td><td>100% success, no complications</td><td>The world's first canine TEER paper; the V-Clamp origin</td></tr>
+          <tr><td><b>United Kingdom</b></td><td>Willows (2024) → RVC QMHA + Bristol (2025.11, non-indexed)</td><td>Case-selection criteria published: RF ≥50%, A2-P2 prolapse, annular diameter ≥13 mm, coaptation gap 2–4 mm, no MS/cleft</td><td>European landing + the clearest published statement of selection criteria</td></tr>
+          <tr><td><b>Chinese-language region</b> (non-indexed)</td><td>Shanghai Shenpu (2020, national first case; 2024 ultrasound-guided mini-incision) → first Chinese-language case report (ACRPVM 2023) → Hong Kong WeHUG (2026.08, first in Hong Kong)</td><td>Exclusion-criteria lead: not advised with severe calcification/deformity</td><td>Active practice, absent peer review — an evidence gap (see the prior survey, Section 3, Team 8)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="keybox"><b>The field's center of gravity has shifted:</b> 2020 "can it be done" (8 dogs) → 2024 "how many can be done safely" (50 dogs) → 2025 "who benefits" (111-dog follow-up + the Korean counterpoint data) → 2025–2026 "how to do it right" (TEE standards/CT quantification/biomarkers/selection-framework reviews). <b>The next gap is precisely the subject of this survey: preprocedural simulation and individualized planning — blank for the dog.</b></div>
+      <p class="team-note">Note: the Uechi counter-route and the selection-framework review are captured as team profiles in 9.2 (Teams 6 and 7); their global evidence positioning is in the 13.2 master table; the Szatmári discussion is quoted in 9.2 Team 7 and Section 3.6 of the 20261016 survey.</p>
+
+      <h3>9.2 Core team profiles: country · institution · intra-institutional grouping · research lineage</h3>
+      <p><b>Carried over in full from Section 3 ("Core authors and team research lineages") of the Global Literature Survey of Canine Mitral Valve TEER (20261016), with additions.</b> Recording rule (adopted long-term from this survey onward; field definitions in <code>调查框架\团队调查字段规范.md</code> [Team Survey Field Specification]): each team is recorded in five layers — <b>country/region → city → institution → intra-institutional grouping → key people</b> — with a role label (origin / translational mainstay / follower / comparator route / methods extension) and a year-by-year timeline, so that "who is who and what they are doing" is memorable at a glance.</p>
+
+      <p class="team-head"><span class="loc">USA</span>Team 1 ｜ Colorado State University (CSU, Fort Collins) — Orton / Scansen / Potter groups <span class="type-tag tag-A">Translational mainstay</span></p>
+      <p class="team-note">James K. Orton (cardiac surgery), Brian A. Scansen (interventional cardiology), Potter (imaging); the world's largest case volume; the lead of veterinary clinical translation for the V-Clamp.</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2021.01</span> — First clinical transapical V-Clamp TEER (start of the 111-dog cohort). The canine V-Clamp derives from the human ValveClamp (Zhongshan Hospital, Fudan University); CSU led its veterinary clinical translation (device genealogy: 9.2 Team 8).</div>
+        <div class="timeline-item"><span class="timeline-year">2021–2022</span> — Team valve-surgery foundations: Sutherland/Orton tricuspid repair (JVC 2021), Scansen structural interventions (VSD occlusion 2022), etc.</div>
+        <div class="timeline-item"><span class="timeline-year">2024</span> — 50-dog prospective feasibility study (Front Vet Sci, PMID 39717788): <b>the world's first formal paper on canine-dedicated-device TEER</b>.</div>
+        <div class="timeline-item"><span class="timeline-year">2025</span> — Three parallel lines: ① 111-dog 2-year follow-up (JVC, PMID 41513577); ② MR quantification methodology (Del Nero, PMID 39914360); ③ "human experience guiding canine practice" review with human interventionalist Carroll (PMID 41219030).</div>
+        <div class="timeline-item"><span class="timeline-year">2026</span> — TEE operating standard paper (PMID 41656142) + cardiac CT valve imaging (Scansen, PMID 42270470). <b>Lineage signature: device-translation collaboration → feasibility → large-cohort follow-up → standardization (imaging/methodology) → selection-framework output.</b></div>
+      </div>
+
+      <p class="team-head"><span class="loc">South Korea</span>Team 2 ｜ Korea Animal Medical Center (KAMC, Cheongju) — Lee family × Youp KA (Ye) team <span class="type-tag tag-A">Follower · real world</span></p>
+      <p class="team-note">A private animal medical center; collaboration with North Carolina State University (Her J). <b>Authorship pattern (verified against PubMed bylines):</b> the JVIM 20-dog paper = first author Jeong-Min Lee, last (corresponding) author Seung-Keun Lee; the Vet Sci paper = first author Jeong-Min Lee, second author Seung-Keun Lee; <b>Kyoung-A Youp (Dr. Ye) sits in core-author positions (second/third) on both papers — the operational core of the center's surgery and perioperative data chain.</b> The Lee family leads center operations, device access, and external collaboration. (Internal note: Dr. Ye is a close friend of the compiler and the actual primary operator; public wording is deliberately softened, with no commentary on authorship credit.)</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2023.09–2024.09</span> — 20-dog retrospective TEER series (JVIM, PMID 40459365, with NCSU): 35% early mortality, deaths concentrated in leaflet injury/single-leaf attachment, comorbidities (tracheal collapse, hydrocephalus), and cardiogenic shock; the 13 survivors showed significant 3-month reductions in VHS, VLAS, LA:AO, LVIDdN, RF, and regurgitant volume (p&lt;0.05).</div>
+        <div class="timeline-item"><span class="timeline-year">2025</span> — Perioperative NT-proBNP/cTnI safety analysis (Vet Sci, PMID 40266932): actually enrolled <b>25 dogs</b> (operative window 2023.09–2025.01) — <b>the center's true case volume of 25 dogs exceeds the 20 in the JVIM paper</b>; conclusion: neither biomarker was a strong predictor (p=0.187/0.869) — the negative result is itself evidence.</div>
+        <div class="timeline-item"><span class="timeline-year">Lineage signature</span> — high-risk real-world data + biomarker risk stratification; in sharp contrast to CSU's highly selected cohort, jointly pointing to "case selection" as the outcome determinant. This 20-dog series is also the only public record of clinical use of all four V-Clamp sizes (Size 2–5, arm width 6.7–9.5 mm) (JVIM Figure 2).</div>
+      </div>
+
+      <p class="team-head"><span class="loc">Thailand</span>Team 3 ｜ Petchdee S group <span class="type-tag tag-B">Follower · functional metrics</span></p>
+      <p class="team-note">□ Petchdee group's institution name to verify. <b>v0.2.1 correction:</b> the selection-framework review was previously attributed to the same group; verified as authored by the Rattanasrisomporn J group, Department of Companion Animal Clinical Sciences, Faculty of Veterinary Medicine, Kasetsart University (official email fvetjpn@nontri.ku.ac.th) — Thailand in fact has two teams.</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2024</span> — 4-dog pilot (Animals, PMID 39518790).</div>
+        <div class="timeline-item"><span class="timeline-year">2026</span> — Myocardial work outcome study (Vet Sci, PMID 42357795). <b>Lineage signature: small-sample start → functional metrics.</b></div>
+        <div class="timeline-item"><span class="timeline-year">2026.09 (KU group)</span> — Attribution correction for the "open-chest repair vs TEER selection framework" review: verified as published by the Rattanasrisomporn J group at Kasetsart University (Kongchatree &amp; Rattanasrisomporn, Front Vet Sci 13:1900762, doi:10.3389/fvets.2026.1900762, PMID 42824553) — Kasetsart University has entered the "decision-framework output" stage, separate from the Petchdee group.</div>
+      </div>
+
+      <p class="team-head"><span class="loc">Poland</span>Team 4 ｜ Pasławska U group <span class="type-tag tag-B">Europe's new entrant</span></p>
+      <p class="team-note">Verified (author bylines + ResearchGate): Department of Internal Medicine and Clinic of Diseases of Horses, Dogs and Cats, Faculty of Veterinary Medicine, Wrocław University of Environmental and Life Sciences (UPWr) — Pasławska U, Noszczyk-Nowak A; interdisciplinary collaboration with the cardiac intervention line at Jagiellonian University, Kraków (Dziewierz A et al., authors of the translational review).</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2026</span> — Transapical V-Clamp TEER study (Pol J Vet Sci, PMID 41860000) + translational review "From bench to bedside and back" (Postepy Kardiol Interwencyjnej, doi:10.5114/aic.2025.154190, PMID 41114311; Popiel-Dziewierz/Noszczyk-Nowak/Dziewierz). <b>Positioning: the UPWr veterinary cardiology × Kraków human interventional pairing — a two-way veterinary + experimental human medicine platform (Europe's new entrant).</b></div>
+      </div>
+
+      <p class="team-head"><span class="loc">Japan</span>Team 5 ｜ Tokyo University of Agriculture and Technology (TUAT), Laboratory of Veterinary Surgery — Tanaka R group <span class="type-tag tag-B">Experimental reproduction</span> (added in v0.2.1)</p>
+      <p class="team-note">Fuchū, Tokyo; first author Sasaki K, multinational co-authors (Nanjing Agricultural University; Suez Canal/Benha, Egypt; Obihiro). Completed in-vivo TEER in healthy dogs in 2021 — <b>missed by all previous surveys; added via this systematic global search</b>.</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2021</span> — In-vivo TEER implantation in 2 healthy dogs (hybrid-access device; Animals 2021;12(1):56, doi:10.3390/ani12010056, PMID 35011161): 98/63 min procedures; weekly follow-up to 4 weeks with conventional + 2D speckle-tracking + color M-mode (IVPG) longitudinal assessment — mild non-progressive mitral stenosis, elevated E/e&#8242;, stable IVPG. <b>Positioning: not a treatment study but a reference frame for "post-TEER longitudinal cardiac function in healthy dogs" — the world's only in-vivo experimental reproduction.</b></div>
+      </div>
+
+      <p class="team-head"><span class="loc">Japan</span>Team 6 ｜ Uechi Masami group (Nippon Veterinary and Life Science University) <span class="type-tag tag-B">Comparator route</span></p>
+      <p class="team-note">The world's most mature open-chest cardiopulmonary-bypass mitral repair system — the core comparator for TEER; does not do TEER but exports perioperative management evidence.</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2025</span> — TEE safety study of the bypass mitral repair surgical system (JVIM, PMID 40095386): prospective assessment of esophageal mucosal injury from intraoperative TEE in 60 dogs.</div>
+      </div>
+
+      <p class="team-head"><span class="loc">Netherlands</span>Team 7 ｜ Utrecht University — Viktor Szatmári <span class="type-tag tag-B">Commentary route</span></p>
+      <p class="team-note">Faculty of Veterinary Medicine, cardiology; does not perform TEER himself, but his commentary is the bellwether of European veterinary positioning toward TEER.</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2024</span> — van Staveren, Muis &amp; Szatmári multinational veterinary survey (Animals 2024;14:772, PMID 38473157), discussion mentions TEER: "open-chest repair and TEER are both available in Europe; TEER is a promising new modality — less invasive, lower risk, cheaper than open-chest; but which stage benefits most is unclear and large-sample long-term follow-up is needed". (Original quotation in the 20261016 survey, Section 3.6)</div>
+      </div>
+
+      <p class="team-head"><span class="loc">China</span>Team 8 ｜ Device origin: Zhongshan Hospital, Fudan University (Shanghai) — academician Ge Junbo's team → canine V-Clamp → international diffusion <span class="type-tag tag-A">Origin</span></p>
+      <p class="team-note">Intra-hospital grouping: cardiology (Zhou Daxin, Pan Wenzhi), cardiac surgery (Wei Lai, Wang Chunsheng), echocardiography (Pan Cuizhen, Li Wei, Long Yuliang).</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2018.07.02</span> — <b>World's first ValveClamp transapical mitral edge-to-edge repair</b> (73-year-old woman, extreme MR). Vs MitraClip: slimmer delivery (16F straight sheath), larger capture range, ultrasound-only guidance (radiation-free), simpler operation.</div>
+        <div class="timeline-item"><span class="timeline-year">2019</span> — FIM results in JACC Cardiovasc Interv (doi:10.1016/j.jcin.2019.05.043): 12 patients (three centers: Zhongshan/Fuwai/West China), <b>100%</b> success.</div>
+        <div class="timeline-item"><span class="timeline-year">2020</span> — Liu B, Leach SB, Pan W-Z (Zhongshan) et al., Front Vet Sci: the human ValveClamp adapted for 8 dogs with spontaneous MR, 100% success — <b>the world's first canine TEER paper</b> (PMID 33392290).</div>
+        <div class="timeline-item"><span class="timeline-year">Derived thereby</span> — the canine-dedicated <b>V-Clamp</b> → used by CSU for the 50/111-dog clinical studies; the UK's Vet Times documents this lineage explicitly.</div>
+        <div class="timeline-item"><span class="timeline-year">2023</span> — Twin milestones: ① the CLAMP-2 multicenter confirmatory trial (JACC CI; 11 hospitals, 102 patients, acute success 97%, 1-year effectiveness 87.3%, MR ≤2+ in 97.8%; learning curve ≈50 cases); ② 2023-09-07 NMPA approval of ValveClamp — China's first independently developed mitral intervention device.</div>
+        <div class="timeline-item"><span class="timeline-year">2024–2025</span> — UK landing: Willows referral centre (2024, among Europe's first) → RVC QMHA + Bristol (announced 2025-11), citing CSU's 80% two-year survival.</div>
+      </div>
+
+      <p class="team-head"><span class="loc">China (incl. HK)</span>Team 9 ｜ Chinese-language region clinical practice (non-indexed sources) <span class="type-tag tag-D">Evidence gap</span></p>
+      <p class="team-note">Active practice, absent from international peer review — a hole in the field's evidence chain.</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2020 →</span> — Shanghai Shenpu Specialty Animal Hospital (director Zhang Jing's team; grouping: Lin Yifeng — imaging, Zhuang Jincheng/Guo Jianhong — surgery, Yang Yuqiao — anesthesia): the country's first minimally invasive mitral clipping (2020, a 15-year-old poodle) → 2024 public coverage of the "radiation-free, contrast-free" ultrasound-guided technique and multiple referral cases.</div>
+        <div class="timeline-item"><span class="timeline-year">2023</span> — <b>The first Chinese-language canine TEER case report</b> (Ma Q et al., ACRPVM 2023, doi:10.12677/acrpvm.2023.124005, not PubMed-indexed).</div>
+        <div class="timeline-item"><span class="timeline-year">2026.08</span> — WeHUG New Territories Animal Medical Centre, Hong Kong: the first canine TEER in Hong Kong (10-year-old Pomeranian, stage B2→C; operator Pak-Yu Yau, Max Chiu team), ~40% left-atrial volume reduction at 1 month; public exclusion lead: not advised with severe calcification/deformity.</div>
+      </div>
+
+      <p class="team-head"><span class="loc">USA</span>Team 10 ｜ Human simulation-methodology teams <span class="type-tag tag-A">Methods extension</span> (added in v0.2.1)</p>
+      <p class="team-note">One-to-one with the eight Chapter 7 cards — the "second source" of evidence for canine translation. Three independent forces balancing one another; no single monopoly.</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">CHOP × Utah axis</span> — CHOP Jolley group × University of Utah Weiss/Maas groups (FEBio developers): the open-source virtual-repair pipeline (cards ①②③④⑤⑥), clinical pediatric cardiology × computational mechanics; model files free (repo.febio.org).</div>
+        <div class="timeline-item"><span class="timeline-year">UT Austin</span> — mechanical engineering, Rausch group: the tricuspid TEER boundary-condition series (JMBBM 2025 → J Biomech 2026, card ⑦), providing external counterweight evidence against the CHOP axis's pinned-annulus assumption.</div>
+        <div class="timeline-item"><span class="timeline-year">Emory + GaTech</span> — Padala group: the personalized FEM decision paradigm (card ⑧); annuloplasty ring sizing → the direct template for choosing within the V-Clamp size spectrum.</div>
+        <div class="timeline-item"><span class="timeline-year">Lineage signature</span> — CHOP-Utah supplies the pipeline, Rausch supplies the counter-evidence, Padala supplies the decision paradigm: three lines matching the "tools / boundaries / decisions" triad of canine translation (Chapters 11–12).</div>
+        <div class="timeline-item"><span class="timeline-year">v0.2.2 map expansion</span> — a full check of 44 records found 9+ active TEER-simulation teams worldwide (the Milan two lines / Georgia Tech Sun / UCSF / Charité Berlin / UNC / ISMETT Palermo / Canon / Wuhan Renmin × CAS Institute of Mechanics, etc.); the full map and open-source asset inventory are in 13.6–13.8; the three lines in this profile remain the first tier for canine adoption.</div>
+      </div>
+
+      <div class="keybox"><b>Training-relationship memo (internal field; omitted from public versions by default):</b> □ to be annotated upon the compiler's confirmation — the founding/training of multiple teams worldwide is directly related to the compiler (technical training for about two-thirds of visiting teams); once teams and cohorts are confirmed, fill in the "training/exchange relationship" field of each team profile so that key people and contributions are not erased.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>10. Cross-Species Differences: Dog vs Human <span class="status st-skel">◐</span></h2>
+    <div class="prose">
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Dimension</th><th>Human (DMR)</th><th>Dog (MMVD)</th><th>Implication for translation</th></tr></thead>
+        <tbody>
+          <tr><td>Pathology</td><td>Myxomatous degeneration (sporadic, elderly)</td><td>Homologous disease, <b>high-incidence and observable over the natural course</b></td><td>Pathologic homology = the fundamental reason human evidence logic can be transplanted; and cases are the source of endpoints</td></tr>
+          <tr><td>Anatomic scale</td><td>Annulus 25–35 mm; redundant leaflets</td><td>Annulus ~13–25 mm (Willows floor 13 mm); thin, short leaflets</td><td>Less margin in coaptation length/clip-arm size → the device size spectrum is the first hard constraint</td></tr>
+          <tr><td>Comparative anatomy</td><td colspan="2" style="text-align:left;">Four-species (human/sheep/pig/dog) comparative anatomy (2023, Anat Histol Embryol, PMID 37485820) — systematic human-dog valve geometry data is in that paper ◐ to be mined</td><td>The source of anatomic priors for modeling</td></tr>
+          <tr><td>Imaging conditions</td><td>Mature 3D TEE; CT/MR available</td><td>Intraoperative TEE now standardized (CSU 2026 paper); cardiac CT starting (PMID 42270470)</td><td>The upstream of the modeling pipeline is connected; resolution/phase standards need veterinary adaptation</td></tr>
+          <tr><td>Tissue mechanics</td><td>Adult mitral constitutive libraries exist (Lee–Sacks, etc.)</td><td><b>Blank</b> (no systematic publication of myxomatous canine leaflet mechanics)</td><td>The lowest-scoring item of the Chapter 11 assessment; a FINESSE-type route can bypass it</td></tr>
+          <tr><td>Hemodynamics</td><td>Upright posture; HR 60–100</td><td>Recumbent; fast HR (60–140+); large anesthetic-state variation</td><td>Simulation loading conditions and intraoperative thresholds need veterinary recalibration</td></tr>
+          <tr><td>Devices</td><td>Multi-vendor, multi-generation competition</td><td>Only the V-Clamp has peer-reviewed data</td><td>Narrow size spectrum → "which clip" depends on simulation/planning even more than in humans</td></tr>
+        </tbody>
+      </table></div>
+      <p class="st-todo">□ To fill: specific data from the comparative-anatomy paper; imaging studies of the canine annular size distribution; normal values of canine leaflet thickness/length.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>11. Canine Transferability Assessment of the Simulation Routes <span class="status st-done">■</span> (this survey's core analysis)</h2>
+    <div class="prose">
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Pipeline segment</th><th>Canine readiness</th><th>Basis / gap</th><th>Action item</th></tr></thead>
+        <tbody>
+          <tr><td>Image acquisition (3D TEE)</td><td><b>High</b></td><td>Intraoperative TEE is now standard in canine TEER (PMID 41656142); Uechi team's 60-dog TEE safety data (PMID 40095386)</td><td>Write a canine acquisition SOP (views/phases/resolution)</td></tr>
+          <tr><td>Geometric reconstruction (SlicerHeart)</td><td><b>Medium-high</b></td><td>Tools are open and generic; human parametric templates cannot be applied to canine anatomy as-is</td><td>Adapt canine leaflet segmentation/annulus marking; build a canine geometry library (modeled on the FINESSE three-patient pediatric library)</td></tr>
+          <tr><td>Chordae geometry and modeling</td><td><b>Low–medium</b></td><td>Mangine's parametric framework directly usable; canine chordal baseline data missing</td><td>Chordal annotation is the top priority; reuse the semi-automatic generator</td></tr>
+          <tr><td>Leaflet constitutive model</td><td><b>Low (the biggest gap)</b></td><td>No systematic publication of myxomatous canine leaflet mechanics; ADEPT (non-invasive elasticity estimation) not yet formally published</td><td>Short term: isotropic Lee–Sacks for relative comparisons only; mid term: ex-vivo canine leaflet uniaxial/biaxial testing; long term: ADEPT "caninized"</td></tr>
+          <tr><td>Solver (FEBio)</td><td><b>High</b></td><td>Species-independent; FINESSE model library freely available</td><td>No action needed</td></tr>
+          <tr><td>Annular boundary conditions</td><td><b>Medium (contested)</b></td><td>Aslan: pinned acceptable (mitral); Haese: compliance materially changes stress (tricuspid); the canine myxomatous annulus is softer</td><td>Canine models require boundary-condition sensitivity analysis — never default to pinned</td></tr>
+          <tr><td>Virtual repair (clip model/position/number)</td><td><b>Medium</b></td><td>Aslan framework directly usable; needs a V-Clamp geometry; the released-clip formulation suits simulating a clip moving with the leaflets</td><td>Build the V-Clamp geometry into the library; run plan sweeps (ROA/CA/stress)</td></tr>
+          <tr><td>Strain inference (FINESSE / feature tracking)</td><td><b>High</b></td><td>Requires no canine tissue parameters; Wu 2026's pure-imaging route is robust across morphologies</td><td><b>The preferred canine entry point</b>; start with retrospective validation on existing canine TEE images</td></tr>
+          <tr><td>3D-printed physical models</td><td><b>High (workflow) / Medium (material)</b></td><td>Imaging→printing workflow is generic; mimicking myxomatous leaflet stiffness is the hard part</td><td>Material-stiffness calibration (against ex-vivo canine leaflet indentation testing)</td></tr>
+          <tr><td>Personalized device-choice prediction (Gaidulis paradigm)</td><td><b>Medium</b></td><td>Paradigm directly transferable; needs a canine geometry library and outcomes data first</td><td>Start retrospective pairing with CSU/partner centers (pre-op imaging + operative results)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="keybox"><b>Analysis summary (answering the simulation part of RQ4):</b> the computational route can answer "is this clip/annuloplasty plan mechanically sound on this geometry", but not "what happened to this dog in vivo". Canine adoption should therefore lean on FINESSE-type strain inference and <b>relative comparisons</b> (plan A vs B, one clip size up vs down), avoiding absolute stress values for decisions; tissue constitutive data is the biggest gap but is effectively bypassed by the "image-based strain inference + relative comparison" pairing — <b>a gap that exists but does not block</b>.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>12. The Feasible Canine Translational Pathway: The Phase 0–4 Roadmap <span class="status st-skel">◐</span></h2>
+    <div class="prose">
+      <div class="keybox"><b>Core argument (this survey's stance):</b> the dog is not "a lesser human model" but <b>the only natural model that carries the target pathology by itself</b> — every preprocedural simulation tool of human TEER can go further in the dog, because the cases are themselves the source of endpoints; and simulation/printing is simultaneously a direct implementation of the 3R principles (Reduce/Replace/Refine) of animal ethics.</div>
+      <h3>12.1 Case-selection layer</h3>
+      <ul>
+        <li>Naturally diseased MMVD dogs (ACVIM stage C/D) as subjects; enrollment framework: staging + MR quantification (Del Nero 2025 methodology, PMID 39914360) + leaflet anatomic conditions (prolapse vs tethering, coaptation gap) + annular size window (Willows ≥13 mm as the starting point).</li>
+        <li>Biomarker dimension: NT-proBNP/cTnI (Korea 2025, PMID 40266932) as risk-stratification support. ◐</li>
+      </ul>
+      <h3>12.2 Imaging and modeling layer</h3>
+      <ul>
+        <li>Intraoperative 3D TEE acquisition SOP → SlicerHeart canine adaptation (segmentation/marking/chordal annotation) → an <b>open canine mitral image-geometry library</b> (open-source, cross-center sharing, mirroring the openness of the human FINESSE model library).</li>
+      </ul>
+      <h3>12.3 Virtual-repair layer</h3>
+      <ul>
+        <li>Build the V-Clamp geometry into the library (modeled on Aslan's four G4 geometries) → plan sweeps (model × position × number) → relative rankings of ROA/CA/stress → a virtual-trial report as part of the pre-procedure discussion.</li>
+        <li>Personalized size prediction (Gaidulis paradigm): a retrospective paired study (existing cases' pre-op imaging + actual clip results) first, to verify the model's directional correctness. ◐</li>
+      </ul>
+      <h3>12.4 Physical-rehearsal layer</h3>
+      <ul>
+        <li>3D printing of diseased canine hearts (material stiffness calibrated ex vivo) → delivery-path and clipping-feel rehearsal → curriculum-based training (against the CLAMP-2 learning curve of ~50 cases).</li>
+      </ul>
+      <h3>12.5 In-vivo validation layer</h3>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Phase</th><th>Content</th><th>Role of simulation</th><th>Exit criteria (draft)</th></tr></thead>
+        <tbody>
+          <tr><td><b>Phase 0</b></td><td>Ex-vivo perfused canine-heart bench clipping</td><td>Cross-validation of virtual-repair predictions vs bench measurements</td><td>ROA/CA prediction-direction agreement &gt;80% (draft)</td></tr>
+          <tr><td><b>Phase 1</b></td><td>Image library + retrospective virtual-repair validation (existing CSU/Korean cases)</td><td>Pairing model outputs with actual operative outcomes</td><td>Proportion of key cases where the chosen plan matched reality (to be defined)</td></tr>
+          <tr><td><b>Phase 2</b></td><td>Acute in-vivo (pre-survival)</td><td>Real-time intraoperative 3D TEE geometry into the library; immediate post-procedure virtual comparison</td><td>Acute ROA reduction matches prediction; no unexplained complications</td></tr>
+          <tr><td><b>Phase 3</b></td><td>Survival-model follow-up</td><td>Follow-up imaging strain (FINESSE/feature tracking) to monitor remodeling</td><td>No abnormal long-term rise in leaflet strain (preventive monitoring concept)</td></tr>
+          <tr><td><b>Phase 4</b></td><td>Prospective clinical use + multicenter</td><td>Virtual repair in routine pre-procedure discussion; printed rehearsal in training</td><td>Prospective controlled design (vs drugs/surgery) — a field-recognized gap</td></tr>
+        </tbody>
+      </table></div>
+      <h3>12.6 Training, ethics, and dissemination</h3>
+      <ul>
+        <li>Training system: a three-stage curriculum of simulation + printing + graded hands-on; cross-center standardization (against the CLAMP-2 learning curve and the multidisciplinary care experience in humans).</li>
+        <li>Ethics: simulation/printing directly reduces the number of live-animal experiments (a 3R argument); IACUC-analogous procedures and welfare monitoring for survival models. □ To fill: sample ethics clauses from Thailand/CSU.</li>
+      </ul>
+      <p class="st-todo">□ To fill: per-phase sample-size estimates; budget/equipment lists; partner-center division of labor (CSU's existing data is the ready-made source for Phase 1 retrospective validation — the highest-feasibility collaboration).</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>13. Global Survey: Who Has Done It, Who Can Reproduce It — the Clinical Map × the Simulation Map (evidenced by actual publications)<span class="status st-done">■</span></h2>
+    <div class="prose">
+      <h3>13.1 Survey method (executed 29 October 2026)</h3>
+      <ul>
+        <li><b>PubMed primary search</b> (E-utilities official API, no intermediary bias): <code>(transcatheter edge-to-edge [tiab] OR "edge-to-edge repair" [ti] OR TEER [tiab] OR V-Clamp) AND (dog OR dogs OR canine OR veterinary)</code> → 64 hits → manual de-noising (in cell-biology literature TEER = transepithelial electrical resistance, the dominant noise source; 50+ excluded) → <b>12 core papers</b>.</li>
+        <li><b>Title-only supplementary search</b>: <code>"edge-to-edge"[ti] AND (dog OR canine)</code> → 13 hits, recovering the 2020 8-dog founding paper (PMID 33392290, which used "edge-to-edge closure device" and was missed by the primary query).</li>
+        <li><b>Simulation-dimension search (added in v0.2.2; this survey's core)</b>: two parallel queries — <code>MitraClip/TriClip × (finite element OR computational OR numerical)</code> and <code>edge-to-edge × (finite element OR computational) × (mitral OR tricuspid OR atrioventricular)</code> → 44 deduplicated records (2001→2026) → all re-pulled from PubMed bylines to verify institutions → compiled into the 13.6 simulation map.</li>
+        <li><b>Non-indexed channels</b>: trade media (Vet Times), hospital press releases (RVC QMHA/Bristol, WeHUG), Chinese-language case reports (ACRPVM) — carried over from the 20261016 survey.</li>
+        <li><b>Admissibility standard</b>: only peer-reviewed publications (or traceable institutional public records) count as "has done it"; statements of intent do not.</li>
+      </ul>
+
+      <h3>13.2 The global evidence master table (clinical map)</h3>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Tier</th><th>Country · team (institution)</th><th>Evidence (PMID/DOI)</th><th>Scale</th><th>Notes and positioning</th></tr></thead>
+        <tbody>
+          <tr><td><span class="type-tag tag-A">T1 Reproducible clinical program</span></td><td><b>USA</b> · CSU (Orton/Scansen/Potter)</td><td>50 dogs (PMID 39717788), 111-dog 2-year follow-up (PMID 41513577), TEE standard (41656142), CT (42270470), MR quantification (39914360), human-experience review (41219030)</td><td><b>161 dog-procedures</b>, continuous output 2021→2026</td><td>The only team worldwide with the full chain "feasibility → large cohort → standardization → decision support"; learning curve, device size spectrum, and imaging standards all public</td></tr>
+          <tr><td rowspan="4"><span class="type-tag tag-A">T2 Clinical cases done<br>(peer-reviewed)</span></td><td><b>China</b> · Zhongshan line + CSU collaboration (Liu B/Pan W-Z)</td><td>8 dogs (2020, Front Vet Sci, PMID 33392290)</td><td>8 dogs</td><td>The world's first paper; adapted human ValveClamp, 100% success — device origin and first validation in one</td></tr>
+          <tr><td><b>South Korea</b> · KAMC (Cheongju; clinical core Youp KA/Ye, led by the Lee family × NCSU)</td><td>20 dogs (PMID 40459365) + 25-dog cohort (PMID 40266932)</td><td><b>25 dogs</b> (2023.09–2025.01)</td><td>The largest real-world broad-inclusion cohort; 65% early survival — the other half of the "selection determinism" evidence; the only record of all V-Clamp sizes in clinical use</td></tr>
+          <tr><td><b>Thailand</b> · Petchdee group</td><td>4 dogs (PMID 39518790) + myocardial work follow-up (42357795)</td><td>4 dogs</td><td>Southeast Asia's first report; a functional-metrics route (□ institution to verify)</td></tr>
+          <tr><td><b>Poland</b> · UPWr (Pasławska/Noszczyk-Nowak) × Jagiellonian University</td><td>Transapical V-Clamp (PMID 41860000) + translational review (10.5114/aic.2025.154190)</td><td>□ case number to verify from full text</td><td>Europe's new entrant; veterinary cardiology × human interventional pairing</td></tr>
+          <tr><td><span class="type-tag tag-B">T3 In-vivo experimental reproduction</span></td><td><b>Japan</b> · Tokyo University of Agriculture and Technology, TUAT (Tanaka R/Sasaki K)</td><td>2 healthy dogs (Animals 2021;12(1):56, PMID 35011161)</td><td>2 dogs (healthy)</td><td><b>The world's only non-pathological in-vivo reproduction</b>: establishes a longitudinal post-TEER cardiac-function reference frame (speckle tracking/IVPG); proves the procedure can be independently replicated by an academic institution — missed by all previous surveys, added here</td></tr>
+          <tr><td rowspan="2"><span class="type-tag tag-D">T4 Declared active<br>(non-indexed)</span></td><td><b>UK</b> · Willows (2024) → RVC QMHA + Bristol (2025.11)</td><td>Vet Times coverage; hospital press releases (citing CSU data)</td><td>Unpublished</td><td>Published the clearest canine TEER case-selection criteria (RF ≥50%, A2-P2, annulus ≥13 mm, coaptation gap 2–4 mm)</td></tr>
+          <tr><td><b>Chinese-language region</b> · Shanghai Shenpu (2020→); Hong Kong WeHUG (2026.08)</td><td>Media coverage; Chinese-language case report (ACRPVM 2023)</td><td>Unpublished</td><td>Active practice without peer review — the evidence gap (a structural vacancy this survey repeatedly stresses)</td></tr>
+          <tr><td rowspan="4"><span class="type-tag tag-B">T5 Decision frameworks / commentary<br>(no surgery, but defines the field)</span></td><td><b>Thailand</b> · Kasetsart University, KU (Rattanasrisomporn group)</td><td>Selection-framework review (Front Vet Sci 13:1900762, PMID 42824553)</td><td>—</td><td>An open-chest vs TEER indication framework — Thailand's second team, alongside the Petchdee group</td></tr>
+          <tr><td><b>USA</b> · CSU × human interventional (Orton/Carroll)</td><td>Human experience guiding canine practice (JVC, PMID 41219030)</td><td>—</td><td>The founding paper of the "human RCT → canine pathway" translation paradigm</td></tr>
+          <tr><td><b>Poland</b> · translational review (Popiel-Dziewierz et al.)</td><td>PMID 41114311</td><td>—</td><td>"From bench to bedside and back" — placing veterinary intervention inside the translational-medicine frame</td></tr>
+          <tr><td><b>Netherlands</b> · Utrecht (Szatmári)</td><td>Animals 2024;14:772 (PMID 38473157), discussion</td><td>—</td><td>Europe's bellwether for TEER positioning; insists long-term follow-up evidence comes first</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>13.3 Direct answer: which teams "have done it, even reproduced it" (clinically)</h3>
+      <ul>
+        <li><b>Established a reproducible clinical program (unique)</b>: CSU, USA — from the 2021 first case to 2026 standardization, 8 papers, 161 dog-procedures, covering devices-imaging-quantification-follow-up end to end.</li>
+        <li><b>Peer-reviewed clinical data (5 countries)</b>: China (8 dogs, first proof 2020) → USA (CSU) → South Korea (25 dogs, the largest real-world series) → Thailand (4 dogs) → Poland (2026). Adding Japan's healthy-dog in-vivo experiment (2 dogs), <b>six countries have published "hands actually on the valve" evidence</b>.</li>
+        <li><b>In-vivo reproduction (experimental platform)</b>: only TUAT, Japan — proving TEER can be independently replicated by an academic institution experimentally, not merely via a commercial device channel.</li>
+        <li><b>Publicly declared active without peer review</b>: UK (Willows, RVC QMHA + Bristol), Chinese-language region (Shanghai Shenpu, Hong Kong WeHUG) — clinical capability present, evidence absent.</li>
+        <li><b>Key judgment</b>: the teams worldwide that "truly did it and published it" can be counted on one hand; only CSU sustains multi-case output; Korea's 25 dogs is the largest real-world (non-highly-selected) cohort.</li>
+      </ul>
+
+      <h3>13.4 Answers to the three global questions (closing the original placeholder questions)</h3>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Question</th><th>Answer (from the 29 October 2026 search)</th></tr></thead>
+        <tbody>
+          <tr><td>Besides the framework's 8 papers, who else does valve-intervention simulation (especially on the veterinary side)?</td><td><b>No veterinary applicants.</b> New on the human side: the Rausch boundary-condition series (JMBBM 2025 → J Biomech 2026), the ADEPT elasticity-estimation preprint, and Wu 2022's founding framework (10.1115/1.4054485) — all human medicine; veterinary-side publications are zero. <b>The full simulation-team map is in 13.6 (9+ active teams, 2001→2026, with an adoption ranking).</b></td></tr>
+          <tr><td>Do the in-vivo canine TEER centers have preprocedural planning/simulation practice (an unpublished step)?</td><td><b>Unverifiable</b> at the publication level — none of the in-vivo centers (CSU/Korea/Thailand/Poland/Japan) report a simulation or 3D-printing planning step in their papers; whether unpublished practice exists is internal intelligence (□ to confirm via the compiler's channels). <b>This is precisely the footing of the Chapter 12 Phase 0–4 roadmap: the preprocedural individualized-planning layer is blank worldwide.</b></td></tr>
+          <tr><td>Are there scattered reports of canine leaflet tissue-mechanics testing?</td><td><b>None found</b> in this round (exhaustive-search obligations remain: CAB Abstracts, ACVIM/ECVIM conference abstracts, and the FEBio Model Repository not yet scanned — listed in Chapter 14's to-do).</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>13.5 Search-strategy archive (for future reproduction and updating)</h3>
+      <ul>
+        <li>Primary queries and de-noising rules: see 13.1 (E-utilities JSON channel, scriptable re-runs).</li>
+        <li>Channels still to scan: CAB Abstracts (broader veterinary coverage), the FEBio Model Repository, the SlicerHeart publications page, ACVIM/ECVIM/BSAVA conference abstracts, CNKI/Wanfang (the Chinese-language gap), Google Scholar citation tracking (citing articles of 33392290).</li>
+        <li>Update cadence: re-run the primary query quarterly (~5 minutes); archive new hits into the 9.2 team-profile schema.</li>
+      </ul>
+
+      <h3>13.6 The simulation map: 25 years of global TEER/edge-to-edge computational simulation<span class="status st-done">■</span> (this survey's core deliverable)</h3>
+      <p><b>Positioning note:</b> this survey is titled an "FEA survey", so the <b>primary object of "who has done it, who can reproduce it" is computational simulation, not clinical surgery</b> — the 13.2 clinical map answers "who wields the scalpel"; this section answers "who runs the numbers". Methods in 13.1 (executed 29 October 2026; all 44 records re-pulled from PubMed bylines to verify institutions — no memory-based attributions were accepted).</p>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Tier</th><th>Country · team (institution · grouping)</th><th>Representative evidence (PMID/DOI)</th><th>Method lineage</th><th>Reproducibility assets</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="2"><span class="type-tag tag-A">S1 Fully open-source<br>(software + models + pipeline)</span></td><td><b>USA</b> · CHOP Jolley × University of Utah Weiss/Maas (FEBio developers)</td><td>Wu 2022 founding framework (10.1115/1.4054485) → Laurence 2025 FINESSE (10.1007/s10439-024-03637-3) → Mangine 2026 chordae (10.1007/s10439-026-04310-7) → Aslan 2026 virtual TEER (10.1007/s10439-025-03959-w) → Wu 2026 / Nakhaei 2026 imaging strain and registration</td><td>FEM (FEBio) + imaging pipeline (SlicerHeart) + 3D printing</td><td><b>All three elements in place: open-source software + fully public model files (repo.febio.org project/137, incl. mitral / HLHS tricuspid / AV canal .feb) + pipeline documentation</b> — the only one worldwide</td></tr>
+          <tr><td><b>USA</b> · UT Austin mechanical engineering, Rausch group</td><td>Texas TriValve 1.0 (2022, Eng Comput, PMID 37139164) → Haese 2025 boundary-condition sensitivity (JMBBM, PMID 39742687) → Haese 2026 annuloplasty effect (J Biomech 205:113423)</td><td>FEM (in-house + FEBio lineage)</td><td>TriValve 1.0 reverse-engineered geometry <b>explicitly labeled an open model</b>; boundary-condition sensitivity protocol published with the paper</td></tr>
+          <tr><td rowspan="4"><span class="type-tag tag-A">S2 Device-level specialists<br>(continuous output)</span></td><td><b>Italy</b> · Politecnico di Milano, two lines: ① Dept. of Electronics, Information and Bioengineering — Votta/Redaelli/Sturla/Munafò (deeply tied to San Raffaele Hospital, where the Alfieri procedure was invented) ② mathematics, MOX — Vergara/Fumagalli/Quarteroni</td><td>① Redaelli 2001, first edge-to-edge hemodynamics paper (PMID 11783727) → Votta 2002, first 3D stress paper (12479282) → Sturla 2015 review (26577231) → Sturla 2017 in vitro + in silico (27863743) → Denti 2017 SAM prediction (28962497) → Munafò 2025 deep-learning clip localization (41038109) ｜ ② Fumagalli 2020 SAM flow field (32741752) → Bennati 2023 turbulent MR (37400622) → Bennati 2025 whole-heart FSI with chordae and papillaries (39864334)</td><td>FEM + FSI + in-vitro bench + deep learning</td><td><b>The longest lineage — 25 continuous years (2001→2025), tied to the procedure's birthplace</b> — the natural candidate for independent third-party academic validation; no public model repository, but methods fully described</td></tr>
+          <tr><td><b>USA</b> · the Atlanta pair: Georgia Tech × Emory Coulter department, Wei Sun group (Tissue Mechanics Lab) × Emory Structural Heart Research lab, Padala group (side by side in one city)</td><td>Sun group: Bloodworth 2018 in-vitro leaflet tethering (30091509) → Kong 2020 MitraClip FEA (32147238) → Errthum 2021 PASCAL vs MitraClip comparison (34426167) → Caballero 2022 in-silico MR quantification vs echo (35872413) ｜ Padala group: Gaidulis 2022 3D-echo modeling (35380321) → Gaidulis 2023 ring sizing (10.1007/s10439-023-03219-9)</td><td>FEM (Abaqus) + in vitro; the Padala line = imaging → modeling → decision paradigm</td><td>No model repository; <b>deepest ties to clinical decisions (ring size / clip choice / indications) — the team closest to "usable by the operator"</b></td></tr>
+          <tr><td><b>USA</b> · UCSF line (Guccione/Kassab; industry partner 3DT Holdings; past collaboration with Dassault Simulia)</td><td>Dabiri 2019 MitraClip FSI tricuspid-regurgitation reduction (31439968) → Dabiri 2021 AI MitraClip-outcome atlas (34957251) → Dabiri 2022 clip number and position simulation (JACC Adv, 38939090)</td><td>FSI + AI</td><td>Industrial-software collaboration background; the first AI atlas predicting MitraClip outcomes — the representative of the AI×FEM hybrid route</td></tr>
+          <tr><td><b>Germany</b> · Charité × German Heart Center DHZC Berlin (Institute of Computer-assisted Cardiovascular Medicine; Kuehne/Goubergrits/Vellguth/Franz)</td><td>Vellguth 2018 image-based CFD virtual-repair pipeline (30008058) → Vellguth 2022 clip position × diastolic hemodynamics (36093164) → Franz 2025 reduced-order model (40752397)</td><td>image-based CFD + reduced-order models</td><td>Pipeline papers (workflow replicable); <b>signature = diastolic risk (post-TEER mitral stenosis) — a dimension highly relevant to the small canine annulus</b></td></tr>
+          <tr><td rowspan="6"><span class="type-tag tag-B">S3 New entrants / single points<br>(2024–2026 and scattered)</span></td><td><b>USA</b> · University of North Carolina at Chapel Hill (Griffith group, IBAMR) × UC Irvine Kheradvar</td><td>Sadipour 2026 whole-heart FSI TEER (ABME, 10.1007/s10439-026-04368-3, PMID 42909734)</td><td>Whole-heart FSI</td><td>IBAMR itself is open source — the fluid side is reproducible</td></tr>
+          <tr><td><b>Italy</b> · IRCCS ISMETT, Palermo (Pasta S group)</td><td>Sausa 2026 personalized tricuspid modeling predicting repair effect + double-orifice flow (Phys Eng Sci Med 49:1285, PMID 42113439)</td><td>Patient-specific FEM</td><td>Single point; the tricuspid direction complements Rausch</td></tr>
+          <tr><td><b>Japan</b> · Canon Inc. / Canon Medical Systems (Tokyo / Ōtawara)</td><td>Ooida 2024 in-silico prediction of edge-to-edge efficacy (J Biomech Eng, PMID 37978048)</td><td>FEM/fluid, corporate pipeline</td><td><b>A device manufacturer with in-house simulation</b> — a ready industrial template for V-Clamp-type manufacturers</td></tr>
+          <tr><td><b>Canada/France</b> · University of Ottawa Heart Institute × Predisurge (Saint-Étienne)</td><td>Messika-Zeitoun 2024 TEER computational-simulation proof of concept (EHJCI 25:1415, PMID 38801398)</td><td>Clinical × industry joint</td><td>Single-point proof of concept; direction = "simulation into intraprocedural decision-making"</td></tr>
+          <tr><td><b>China</b> · Renmin Hospital of Wuhan University, ultrasound (Song group) × Institute of Mechanics, Chinese Academy of Sciences (He group, State Key Laboratory of Nonlinear Mechanics)</td><td>Song 2025 patient-specific CFD TEER (QIMS 15:10768, PMID 41209267) → He 2025 post-TEER LV flow field (Cardiovasc Eng Technol 16:386, PMID 40180778)</td><td>CFD</td><td>The only TEER-simulation publications from the Chinese-language region — <b>a mirror of the region's clinical evidence gap (9.2 Team 9): clinically unpublished, simulation just starting; the two tracks can be built together</b></td></tr>
+          <tr><td><b>Switzerland/Germany</b> · Inselspital Bern (Praz) × Bonn (Omran); scattered points: UCSF×NYU (Morgan 2017 uneven-clip stress, PMID 27706490), NYIT×Pacific Northwest (Toma 2020 chordal-strain FSI, 32708356), Houston Methodist (Vukicevic 2020 3D-printed tricuspid MitraClip planning, 32605380), Ottawa (Labrosse 2016, 24904177), Texas Tech × Florida International (Hu 2010 LV vortex, 21666755)</td><td>Kirchner 2025 CT-CFD intraprocedural hemodynamic prediction (Front Cardiovasc Med, PMID 41346491) and the above scattered points</td><td>CFD/FEM/FSI/3D printing</td><td>Scattered single points without a continuous lineage; the Vukicevic paper is the <b>earliest in-hospital application of 3D-printed physical planning in human TEER</b> (echoing Ching 2023 — the two legs of the physical-simulation route)</td></tr>
+          <tr><td><span class="type-tag tag-B">S4 Early pioneers<br>(2001–2014)</span></td><td><b>Italy</b> · University of Brescia mechanical engineering (Dal Pan/Donzelli/Avanzini); <b>China</b> · Xiamen University of Technology (Zhong Q)</td><td>Dal Pan 2005, the world's first edge-to-edge structural FEM (J Biomech, PMID 16214494) → Avanzini 2008 (18532864) / 2011 double-orifice vs suture comparison (22204118); Zhong 2014 FEA of edge-to-edge for SAM (Acta Bioeng Biomech, PMID 25597231)</td><td>Structural FEM</td><td>Historical coordinates: the Italian academic pioneers; <b>China's first paper = 2014, Xiamen University of Technology</b></td></tr>
+          <tr><td><span class="type-tag tag-D">S5 Veterinary side</span></td><td>—</td><td>—</td><td>—</td><td><b>Zero publications</b> (exhaustive search, 29 October 2026) — the footing of this survey's Chapter 12 roadmap; CAB/conference-abstract channels still to scan (see 13.5)</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>13.7 Judging "can reproduce": the open-source asset inventory</h3>
+      <ul>
+        <li><b>All three elements in place (software + models + pipeline): the CHOP×Utah axis, uniquely</b> — the open-source FEBio solver, the open-source SlicerHeart imaging pipeline, and patient-specific .feb models freely downloadable (repo.febio.org project/137). Any institution — including a veterinary one — can load a canine geometry and start today, with no application to anyone.</li>
+        <li><b>Open geometry model</b>: UT Austin's Texas TriValve 1.0 (PMID 37139164) — a reverse-engineered open model of the human tricuspid valve, directly usable as the comparator baseline for canine TEER boundary-condition studies.</li>
+        <li><b>Open solver framework</b>: UNC's whole-heart FSI uses IBAMR (an open-source adaptive FSI framework) — the fluid side is reproducible.</li>
+        <li><b>Other teams (the Milan lines / Georgia Tech / UCSF / Berlin)</b>: methods fully described but no public model repositories — "replicable" (redo from the paper) ≠ "reproducible" (run the artifacts directly). This judgment field is incorporated in <code>调查框架\团队调查字段规范.md</code> [Team Survey Field Specification] (added in v1.1).</li>
+      </ul>
+
+      <h3>13.8 From the simulation map to the canine pathway: direct conclusions (closing this survey's core question)</h3>
+      <ul>
+        <li><b>Nine-plus active simulation teams worldwide, none with a veterinary application published</b> — "who has simulated the dog" currently has the answer "no one"; but that means the first mover is instantly world-first, and every tool is already free.</li>
+        <li><b>Adoption-feasibility ranking (by publication evidence)</b>: ① <b>CHOP×Utah</b> — the tool triad is complete; only canine geometry and tissue-parameter inputs are missing (closing the Chapter 11 assessment); ② <b>UT Austin Rausch</b> — open TriValve geometry plus boundary-condition sensitivity methodology; best placed to answer "clip mechanics in a small canine annulus"; ③ <b>Emory/Padala</b> — the decision paradigm closest to the operator's use case; ④ <b>the Canon model</b> — manufacturer-owned simulation; a ready industrial path for a V-Clamp manufacturer; ⑤ <b>the Milan lines</b> — the best candidates for independent academic validation with no ties to the device origin.</li>
+        <li><b>Canine entry-point recommendation</b>: for Phase 0 (Chapter 12), first reuse the CHOP×Utah triad plus the Rausch boundary-condition protocol, starting with "healthy canine geometry + virtual-repair retrospective" — zero licensing cost, zero software cost.</li>
+        <li><b>Breakthrough point for the Chinese-language region</b>: the region's clinical evidence gap (9.2 Team 9) + its simulation teams just starting (Wuhan Renmin / CAS Institute of Mechanics, 2025) — <b>building the "clinical × simulation" tracks together in the Chinese-language region</b> is the differentiation opportunity, and the path that turns the evidence gap into a publication opportunity.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>14. Citation and Version Management <span class="status st-done">■</span></h2>
+    <div class="prose">
+      <ul>
+        <li>DOIs of the 8 simulation papers are in the Chapter 7 cards; human clinical milestone sources are annotated along Chapters 5 and 6 (some marked □ to verify).</li>
+        <li>Canine TEER data is carried over entirely from the 20261016 survey (all PMIDs verified) plus 2026 additions.</li>
+        <li>Device-genealogy wording rule: <b>human ValveClamp (original creation by Zhongshan Hospital, Fudan University) → canine V-Clamp</b>; no former-company entities are mentioned.</li>
+        <li>Before finalization, references will be uniformly formatted (NLM/Vancouver) and the full text de-AI-toned.</li>
+        <li><b>Translation convention:</b> this English edition is translated from the finalized Chinese edition (v0.2.2); where terminology first appears, the Chinese term or the source wording is noted; the device-genealogy rule applies equally here (human ValveClamp, original creation by Zhongshan Hospital, Fudan University → canine V-Clamp; no former-company entities).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="legend">
+    Status legend: <span class="status st-done">■ written</span> <span class="status st-skel">◐ skeleton in place</span> <span class="status st-todo">□ to fill</span>
+    ｜ This framework is based on full-text close reading of the 8 simulation papers on the archive drive (Aslan/Laurence/Mangine/Wu/Nakhaei/Ching/Haese/Gaidulis) and the prior survey "Global Literature Survey of Canine Mitral Valve TEER (2020–2026, compiled 20261016)"; all PMID/DOI sources are traceable.
+    ｜ v0.1 (2026-10-29, skeleton) → <b>v0.2 (2026-10-29, human part expanded to seven full chapters with paper-by-paper simulation cards + six canine chapters + a standalone transferability-assessment table)</b>; <b>v0.2.1 (2026-10-29, late night): correction of the Korea KAMC authorship pattern (clinical execution core Youp KA/Ye), addition of the TUAT Japan experimental team (the world's only healthy-dog in-vivo reproduction), separation of Thailand's two teams (Petchdee/KU), verification of the Polish institution (UPWr × Jagiellonian), completion of the Chapter 13 global survey (7 countries, 10+ teams, all evidenced)</b>; <b>v0.2.2 (2026-10-29): Chapter 13 expanded into the "clinical map × simulation map" — adding 13.6, the 25-year global TEER-simulation lineage (all 44 records re-verified from bylines: S1 fully open-source, 2 teams / S2 device-level specialists, 4 teams / S3 new entrants and scattered points, 6 groups / S4 early pioneers / S5 veterinary side = 0), 13.7 the open-source asset inventory (the triad judgment), and 13.8 the canine adoption ranking (CHOP×Utah → Rausch → Padala → the Canon model → Milan)</b>. This English edition (v0.2.2-EN) is translated from the finalized Chinese v0.2.2.
+  </div>
+</div>
+</body>
+</html>

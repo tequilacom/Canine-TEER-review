@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>调查框架 v0.2.2（中文定稿）：人类 TEER 完整路径与犬类转化可行路径</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; background: #f0f2f5; color: #1a1a2e; line-height: 1.7; padding: 24px; }
+  .container { max-width: 1400px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); overflow: hidden; }
+  .header { background: linear-gradient(135deg, #16213e 0%, #0f3460 50%, #533483 100%); color: #fff; padding: 32px 40px; }
+  .header h1 { font-size: 1.65rem; font-weight: 700; margin-bottom: 8px; line-height: 1.45; }
+  .header .subtitle { font-size: 0.92rem; opacity: 0.85; line-height: 1.6; }
+  .header .author { font-size: 0.9rem; opacity: 0.95; margin-top: 12px; line-height: 1.55; }
+  .header .author .aff { font-size: 0.78rem; opacity: 0.85; }
+  .stats-bar { display: flex; gap: 24px; padding: 16px 40px; background: #f8f9fa; border-bottom: 1px solid #e9ecef; flex-wrap: wrap; }
+  .stat-item { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: #495057; }
+  .stat-item .num { font-weight: 700; color: #0f3460; font-size: 1.15rem; }
+  .disclaimer { background:#fdf8ef; border:1px solid #ecd9b0; border-left:4px solid #b8892b; border-radius:6px; padding:13px 20px; margin:16px 0 0; font-size:0.86rem; color:#6b5426; line-height:1.7; }
+  .part-divider { background: linear-gradient(90deg,#0f3460,#533483); color:#fff; padding: 14px 40px; font-size: 1.05rem; font-weight: 700; letter-spacing: .06em; }
+  .section { padding: 28px 40px; border-bottom: 1px solid #eef0f4; }
+  .section h2 { font-size: 1.22rem; color: #16213e; border-left: 5px solid #533483; padding-left: 12px; margin-bottom: 16px; }
+  .section h3 { font-size: 1.02rem; color: #0f3460; margin: 20px 0 8px; }
+  .section h4 { font-size: 0.95rem; color: #533483; margin: 14px 0 6px; }
+  .prose { font-size: 0.9rem; color: #333; }
+  .prose p, .prose li { margin-bottom: 8px; }
+  .prose ul { padding-left: 22px; }
+  .status { display:inline-block; padding:1px 9px; border-radius:10px; font-size:0.7rem; font-weight:700; vertical-align:2px; white-space:nowrap; }
+  .st-done { background:#e8f5e9; color:#2e7d32; }
+  .st-skel { background:#fff3e0; color:#e65100; }
+  .st-todo { background:#eceff1; color:#607d8b; }
+  .table-wrapper { overflow-x: auto; padding: 8px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+  thead th { background: #16213e; color: #fff; padding: 10px; text-align: left; font-weight: 600; font-size: 0.78rem; white-space: nowrap; position: sticky; top: 0; }
+  tbody td { padding: 11px 10px; border-bottom: 1px solid #e9ecef; vertical-align: top; }
+  tbody tr:hover { background: #f0f5ff; }
+  .title-link { color: #0f3460; text-decoration: none; font-weight: 600; }
+  .title-link:hover { color: #533483; text-decoration: underline; }
+  .authors { font-size: 0.74rem; color: #888; margin-top: 3px; }
+  .doi { font-size: 0.74rem; color: #533483; margin-top: 3px; font-family: Consolas, monospace; }
+  .type-tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; white-space: nowrap; }
+  .tag-A { background: #fce4ec; color: #b71c1c; }
+  .tag-B { background: #fff3e0; color: #e65100; }
+  .tag-C { background: #e3f2fd; color: #1565c0; }
+  .tag-D { background: #e8f5e9; color: #2e7d32; }
+  .pubmed-btn { display: inline-block; padding: 3px 9px; background: #16213e; color: #fff; text-decoration: none; border-radius: 6px; font-size: 0.7rem; font-weight: 600; white-space: nowrap; }
+  .pubmed-btn:hover { background: #533483; }
+  .timeline { border-left: 3px solid #533483; margin: 10px 0 24px 8px; padding-left: 20px; }
+  .timeline-item { margin-bottom: 12px; position: relative; font-size: 0.88rem; }
+  .timeline-item::before { content: ''; position: absolute; left: -27px; top: 7px; width: 11px; height: 11px; border-radius: 50%; background: #533483; }
+  .timeline-year { font-weight: 700; color: #533483; }
+  .team-head { font-weight: 700; color: #533483; margin: 20px 0 8px; font-size: 0.98rem; border-bottom: 1px dashed #c9c2b4; padding-bottom: 5px; }
+  .team-head .loc { display: inline-block; background: #533483; color: #fff; border-radius: 4px; padding: 1px 8px; margin-right: 6px; font-size: 0.78rem; }
+  .team-note { font-size: 0.82rem; color: #666; margin: 4px 0 10px; }
+  .callout { background: #f5f3ff; border: 1px solid #d8cfeb; border-radius: 10px; padding: 14px 18px; margin: 12px 0; font-size: 0.87rem; }
+  .keybox { background:#eef7f0; border:1px solid #c4dfc9; border-left:4px solid #2e7d32; border-radius:8px; padding:12px 18px; margin:14px 0; font-size:0.88rem; }
+  .keybox b { color:#1b5e20; }
+  .warnbox { background:#fdf0ef; border:1px solid #f0c7c3; border-left:4px solid #b71c1c; border-radius:8px; padding:12px 18px; margin:14px 0; font-size:0.88rem; }
+  .warnbox b { color:#8e1414; }
+  .legend { padding: 16px 40px 28px; font-size: 0.76rem; color: #777; }
+  @page { size: A4 landscape; margin: 10mm; }
+  @media print {
+    body { background:#fff !important; padding:0 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .container { max-width:none !important; box-shadow:none !important; border-radius:0 !important; }
+    .section { padding: 14px 8px !important; }
+    .section, .prose, .callout, .keybox, .warnbox, table, tr, li { break-inside: avoid; page-break-inside: avoid; }
+    h1,h2,h3,h4 { break-after: avoid; page-break-after: avoid; }
+    thead { display: table-header-group; }
+    a { color: inherit !important; text-decoration: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div style="display:inline-block;font-size:0.72rem;letter-spacing:.12em;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:10px;padding:3px 11px;margin-bottom:12px;">调查框架 · 第 2 版 ｜ SURVEY FRAMEWORK v0.2.2 ｜ 中文定稿（翻译底稿）</div>
+    <h1>调查框架：人类经导管缘对缘修补（TEER）完整路径<br>与犬类转化可行路径</h1>
+    <div class="subtitle">结构：第一～七章 = 人类篇（完整详述人类是怎么做的）｜ 第八～十三章 = 犬类篇（转化路径）<br>证据锚点：8 篇仿真文献全文精读 + 人类/犬 TEER 临床证据链 ｜ 编制日期：2026 年 10 月 29 日</div>
+    <div class="author">编制：应栩枫（Xufeng Ying）<br><span class="aff">Science and Innovation for Animal Health Program, Graduate School, Faculty of Veterinary Medicine, Kasetsart University, Bangkok 10900, Thailand</span></div>
+  </div>
+  <div class="stats-bar">
+    <div class="stat-item"><span class="num">8</span> 篇仿真文献精读（E 盘正式版 PDF）</div>
+    <div class="stat-item"><span class="num">7</span> 章人类篇（原理/证据/器械/影像/选择/仿真）</div>
+    <div class="stat-item"><span class="num">6</span> 章犬类篇（现状/差异/可迁移性/路径）</div>
+    <div class="stat-item"><span class="num">111+25+4+8</span> 犬已发表临床证据（另 +2 只健康犬实验复现）</div>
+    <div class="stat-item"><span class="num">2</span> 张全球版图：临床 7 国 10+ 团队 × 仿真 25 年 9+ 团队，逐一有据可查</div>
+  </div>
+  <div style="padding:0 40px;">
+    <div class="disclaimer"><b>本文为调查框架（工作文档），非同行评议综述。</b> 用于固定章节结构、分析结论与检索计划，供逐章填空式推进与后续全球性调查拓展；引用请以正式发表版本为准。状态标记：<span class="status st-done">■ 已成文</span> <span class="status st-skel">◐ 骨架已立待充实</span> <span class="status st-todo">□ 待填</span></div>
+  </div>
+
+  <!-- ============ 调查设计 ============ -->
+  <div class="section">
+    <h2>〇、调查设计 <span class="status st-done">■</span></h2>
+    <div class="prose">
+      <p><b>调查问题：</b> RQ1 人类 TEER 及配套经导管修复技术的原理、证据、器械、影像、选择、仿真六条线目前是什么状态？（第一～七章）｜ RQ2 这些线各自能回答什么问题、有什么硬限制？（第七章）｜ RQ3 犬 TEER 全球现状与跨物种差异清单？（第八～十章）｜ RQ4 人类六条线中，哪些在犬类当前就可迁移、哪些有缺口、迁移的可行路径是什么样子？（第十一～十二章，本调查重心）｜ RQ5 全球范围内谁在做、做到哪一步？（第十三章，已完成）</p>
+      <p><b>证据锚点：</b> E 盘 <code>FEA相关调查\</code> 收录 8 篇正式版 PDF（Aslan 2026、Laurence 2025、Mangine 2026、Wu 2026、Nakhaei 2026、Ching 2023、Haese 2026、Gaidulis 2023，DOI 见第七章归纳卡）；人类临床证据链与犬 TEER 数据沿用《犬二尖瓣 TEER 全球文献调查（20261016）》既有归纳并更新。</p>
+      <p><b>工作流：</b> 框架定稿 → 逐章填空 → 全球性调查（第十三章，v0.2.1 已完成）→ <b>中文定稿（本版）→ 英文翻译</b> → 轻量筛选台账季度重跑 → 终稿（去 AI 腔 + 引用排版 + HTML/PDF 交付）。</p>
+    </div>
+  </div>
+
+  <!-- ============ PART I 人类篇 ============ -->
+  <div class="part-divider">PART Ⅰ　人类篇（第一～七章）—— 人类是怎么做的</div>
+
+  <div class="section">
+    <h2>一、人类二尖瓣反流的疾病背景与治疗格局 <span class="status st-done">■</span></h2>
+    <div class="prose">
+      <h3>1.1 疾病分型：原发性（退行性）与继发性（功能性）是两条不同的证据线</h3>
+      <ul>
+        <li><b>原发性/退行性 MR（DMR）</b>：瓣叶自身病变（脱垂、连枷、黏液瘤样变性）→ 结构上"瓣修得好"，首选外科修复。对应犬类 MMVD 的同源病理（见第十章）——<b>这是犬类转化最重要的人类疾病原型</b>。</li>
+        <li><b>继发性/功能性 MR（FMR）</b>：瓣叶本身正常，左室扩大/乳头肌移位牵拉瓣叶 → 治疗的是心室。MITRA-FR 与 COAPT 两项 RCT 结论相反的根源就在人群选择（见第三章）。</li>
+      </ul>
+      <h3>1.2 治疗格局与 TEER 的位置</h3>
+      <ul>
+        <li>外科修复/置换：金标准，但相当比例患者因高龄、LVEF 低下、合并症被判"外科高危"而不手术。</li>
+        <li>药物（GDMT）：FMR 的基础，但不解决机械问题。</li>
+        <li><b>TEER</b>：外科高危/禁忌患者的微创替代，二十年内从技术探索走到指南推荐（DMR 外科高危 Ⅱa、继发性 MR 符合 COAPT 标准者 Ⅱa，ESC/AHA 口径待核 □）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>二、TEER 技术原理与发展简史 <span class="status st-skel">◐</span></h2>
+    <div class="prose">
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">1991–2001</span> — Alfieri 提出外科"缘对缘缝合"（双孔化）：把前后瓣叶中点缝在一起。技术简单但破坏瓣膜正常生理，长期功能靠双孔化维持——一切 TEER 的原理起点。</div>
+        <div class="timeline-item"><span class="timeline-year">2003</span> — 首例经皮缘对缘夹合（MitraClip 前身）人体植入；EVEREST I 可行性研究启动。</div>
+        <div class="timeline-item"><span class="timeline-year">2008 →</span> — MitraClip CE mark；经股静脉-房间隔穿刺入路标准化。</div>
+        <div class="timeline-item"><span class="timeline-year">2011 / 2013</span> — EVEREST II RCT 发表（NEJM）：安全性优于外科、有效性非劣未达但 5 年结局趋同（见第五章）——TEER 正式进入指南体系。</div>
+        <div class="timeline-item"><span class="timeline-year">2018</span> — COAPT 阳性结果（FMR，NEJM）与 MITRA-FR 阴性结果（JACC）同年发表——"人选对不对比器械好不好更重要"成为全领域共识（见第六章）。</div>
+        <div class="timeline-item"><span class="timeline-year">2018–2023</span> — 器械迭代：MitraClip G4 四臂型；国产 ValveClamp 首例（2018.07，复旦中山）→ FIM（2019, JACC CI）→ CLAMP-2（2023）→ NMPA 获批（2023.09，中国首个自主研发二尖瓣介入器械）；三尖瓣 TEER（TriClip，TRILUMINATE 2023）与 PASCAL（CLASP 系列）并行推进。</div>
+        <div class="timeline-item"><span class="timeline-year">2020 →</span> — 人类器械向兽医外溢：人类 ValveClamp 改造用于 8 只自发 MR 犬（Front Vet Sci 2020，全球犬 TEER 第一篇）→ 犬用 V-Clamp → CSU 全球临床转化（见第九章）。</div>
+      </div>
+      <p class="st-todo">□ 待填：Alfieri 原始文献、EVEREST I/Condado 首例等源头的准确出处核实。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>三、循证证据链：从 EVEREST 到 TRILUMINATE <span class="status st-skel">◐</span></h2>
+    <div class="prose">
+      <div class="table-wrapper"><table>
+        <thead><tr><th>研究</th><th>人群</th><th>设计/样本</th><th>关键结果</th><th>对犬类转化的启示</th></tr></thead>
+        <tbody>
+          <tr><td><b>EVEREST II</b><br>2011, NEJM</td><td>原发性 MR（多为 DMR）</td><td>RCT，n=279（2:1 TEER:外科）</td><td>有效性终点 1 年时 54.6% vs 外科 73.3%（非劣未达）；安全性显著优（不良事件 15% vs 48%）；4 年生存无差异；5 年时结局趋同</td><td>"安全性优势+长期趋同"的定位逻辑，同样适用于犬（微创价值先行）</td></tr>
+          <tr><td><b>MITRA-FR</b><br>2018, JACC</td><td>继发性 MR（EF 15–40%）</td><td>RCT，n=256</td><td>1 年死亡/心衰住院无差异——心室根本病变未解决</td><td>犬没有典型 FMR 对应物，但"别指望夹合解决心室问题"的警告适用</td></tr>
+          <tr><td><b>COAPT</b><br>2018, NEJM</td><td>继发性 MR（LVEF 20–50%，LVESD≤70mm）</td><td>RCT，n=614</td><td>TEER 组 2 年心衰住院率与死亡率显著降低（全因死亡 29.1% vs 46.1%）</td><td>与 MITRA-FR 的分野确立"<b>解剖-临床匹配的病例选择</b>"为决定因素——直接塑造了犬类筛选逻辑</td></tr>
+          <tr><td><b>TRILUMINATE</b><br>2023, NEJM</td><td>三尖瓣反流</td><td>RCT，TriClip</td><td>胜率比（win ratio）1.48，症状/生活质量改善</td><td>AV 瓣 TEER 的第二个瓣口示范：同一技术原理跨瓣平移的先例——支撑"从二尖瓣再平移到犬"的方法学信心</td></tr>
+          <tr><td><b>CLAMP-2</b><br>2023, JACC CI</td><td>高龄/外科高危原发性 MR</td><td>多中心确证，n=102（ValveClamp）</td><td>急性成功率 97%；1 年有效率 87.3%；12 个月 MR≤2+ 达 97.8%；<b>学习曲线约 50 例</b></td><td>学习曲线数据是兽医中心开展培训计划的直接参照</td></tr>
+        </tbody>
+      </table></div>
+      <p class="st-todo">□ 待填：EXPAND/GADO 注册研究、COAPT 3/5 年随访、MITRA-HR、TRISCEND II、PASCAL CLASP IIF 等的出处与数字核实；ESC/EACTV 与 ACC/AHA 指南推荐级别原文。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>四、器械谱系 <span class="status st-skel">◐</span></h2>
+    <div class="prose">
+      <div class="table-wrapper"><table>
+        <thead><tr><th>器械</th><th>入路</th><th>机制</th><th>要点（含对犬的参照意义）</th></tr></thead>
+        <tbody>
+          <tr><td><b>MitraClip G4 家族</b><br>（Abbott）</td><td>经股静脉→房间隔</td><td>双臂夹合，四臂型（NT/NTR/XTR/XTW）</td><td>金标准参照系。四臂型为仿真研究提供几何谱（宽臂↑对合面积、长臂↑瓣叶应力，见 Aslan 归纳卡）——<b>犬用器械几何谱系设计的模板</b></td></tr>
+          <tr><td><b>PASCAL / PASCAL Ace</b>（Edwards）</td><td>经股静脉</td><td>中央自充式垫子（spacer）+ 独立臂抓捕</td><td>对宽对合间隙更友好；CLASP 系列（□数字待填）——"spacer 增大对合"思路对犬瓣叶厚的情况有参照价值</td></tr>
+          <tr><td><b>TriClip</b>（Abbott）</td><td>经股静脉</td><td>三尖瓣专用 TEER</td><td>TRILUMINATE；证明 AV 瓣 TEER 可行——犬三尖瓣反流的潜在迁移路径 ◐</td></tr>
+          <tr><td><b>CardioBand</b>（Boston）</td><td>经股静脉</td><td>经导管瓣环带环缩</td><td>Aslan 2026 用"位移控制环缩"建模；犬瓣环小、环缩器械选择余地小（见第十一章）</td></tr>
+          <tr><td><b>Mitralign</b></td><td>经股动脉→逆行</td><td>缝线瓣环成形（折叠环缩）</td><td>Aslan 用"离散节点约束"建模；等量环缩下对合优于 CardioBand——环缩策略对比的方法学起点</td></tr>
+          <tr><td><b>ValveClamp</b>（复旦中山原创）<br>→ <b>犬用 V-Clamp</b></td><td><b>经心尖</b>（16F 直鞘，纯超声引导，无射线）</td><td>缘对缘夹合，捕获范围更大、操作更简</td><td>FIM 12 例 100% 成功（2019, JACC CI）→ CLAMP-2（2023）→ NMPA 2023；<b>2020 年衍生犬用 V-Clamp——唯一有同行评议数据的犬专用 TEER 器械</b>（17 篇人类文献清单见旧调查稿第五节，不重复铺开）</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout"><b>器械谱系表述约定：</b>人类 ValveClamp（复旦中山原创）→ 犬用 V-Clamp；本文档不涉及任何前公司主体。</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>五、影像引导与操作流程 <span class="status st-skel">◐</span></h2>
+    <div class="prose">
+      <h3>5.1 入路双轨制</h3>
+      <ul>
+        <li><b>经股静脉-房间隔穿刺</b>（MitraClip/PASCAL/TriClip）：创伤最小，但需要透视+射线、房间隔穿刺技术；输送系统跨间隔的操作自由度受限。</li>
+        <li><b>经心尖</b>（ValveClamp/V-Clamp）：直线对准二尖瓣、操作力线最顺、<b>可纯超声引导无射线</b>——这正是它能向兽医迁移的关键工程原因（犬心小、透视条件在兽医院是稀缺资源）。</li>
+      </ul>
+      <h3>5.2 影像引导要点（TEE 分步流程）</h3>
+      <ul>
+        <li>术前 TEE 筛查（解剖入选，见第六章）→ 术中 3D TEE 实时引导：房间隔穿刺定位 → 导送系统过瓣 → 夹臂方向（与对合线垂直）→ 定位/抓捕/闭合/释放四步判定（抓捕组织长度、双孔形成、残余 MR、跨瓣压差）。</li>
+        <li>ValveClamp 体系配套：TEE 分步操作规范（Ge 2021, J Interv Cardiol，PMID 33976590）+ 非中心性反流（A1/A3/P1）的实时引导策略（Long 2021, J Card Surg，PMID 34396585）——<b>后者突破"仅限 A2-P2"的限制，对犬病变入夹选择直接可用</b>。</li>
+      </ul>
+      <h3>5.3 学习曲线与团队</h3>
+      <ul>
+        <li>CLAMP-2：约 50 例后 1 年有效率从 80% 升至 96.1% —— 培训量化的黄金参照；多学科护理模式（PMID 34321032）提供团队建设模板。</li>
+        <li>□ 待填：MitraClip 全球学习曲线文献、并发症谱（单叶附着/夹子脱落/医源性 MS/房间隔并发症）发生率表。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>六、病例选择标准：全领域共识的"第一决定因素" <span class="status st-skel">◐</span></h2>
+    <div class="prose">
+      <div class="keybox"><b>核心事实：</b>MITRA-FR 与 COAPT 结论相反 → 事后分析指向人群/解剖入选差异 → 病例选择被确立为 TEER 结局的第一决定因素。这一逻辑在犬类被同样验证：CSU 111 犬高选择性队列（出院存活 93.7%）vs 韩国 25 犬宽纳入系列（早期存活 65%，见 9.2 团队 2 与第十三章）。</div>
+      <h3>6.1 EVEREST 解剖入选标准（经典口径）</h3>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>参数</th><th>标准</th><th>含义</th><th>犬类对应（预览，详第十章）</th></tr></thead>
+        <tbody>
+          <tr><td>反流起源</td><td>A2-P2 中央区</td><td>单夹可达</td><td>Willows 犬标准同样要求 A2-P2 脱垂</td></tr>
+          <tr><td>连枷间隙/宽度</td><td>gap&lt;10mm，width&lt;15mm</td><td>夹臂可捕获</td><td>犬对应"对合间隙 2–4mm"（Willows）</td></tr>
+          <tr><td>对合长度</td><td>≥2mm</td><td>有组织可夹</td><td>犬瓣叶短，此参数更吃紧（◐待犬影像数据）</td></tr>
+          <tr><td>瓣叶条件</td><td>无严重钙化、无瓣裂、无风湿性改变</td><td>可抓捕且不撕裂</td><td>香港 WeHUG 排除标准同源："瓣膜严重钙化或变形者不建议"</td></tr>
+          <tr><td>瓣环/瓣口</td><td>无重度二尖瓣狭窄</td><td>双孔化不造成狭窄</td><td>犬心小，跨瓣压差风险更高 → 夹子尺寸谱是硬约束</td></tr>
+        </tbody>
+      </table></div>
+      <h3>6.2 扩展与超越</h3>
+      <ul>
+        <li>经验积累后放宽至非中央区（Long 2021）、复杂脱垂、瓣内装置（MitraClip+plug，JACC CI 2016 个案）；</li>
+        <li>残余反流的机制性预测：瓣叶拴系程度（Ge 2021, Front Cardiovasc Med，PMID 33996943）——"瓣叶质量"维度进入筛选；</li>
+        <li>3D TEE 术后几何重塑量化（Ge 2021, CCI，PMID 32497395）：瓣环缩小、对合高度/面积改善——TEER 的隐性"瓣环成形效应"，Haese 2026 在三尖瓣给出机制解释（见第七章归纳卡 ⑦）。</li>
+      </ul>
+      <p class="st-todo">□ 待填：各标准原始出处与页码；FMR 的 COAPT 入选口径全文；犬 Willows 标准原文链接核对。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>七、术前评估前沿：计算仿真与实体仿真 <span class="status st-done">■</span></h2>
+    <div class="prose">
+      <p>本章是人类篇与犬类篇的枢纽：人类医学已把"虚拟修复"做成管线，犬类转化评估（第十一、十二章）全部以此为底座。以下 8 篇为 E 盘全文精读文献，逐篇归纳卡。</p>
+
+      <h3>7.1 逐篇归纳卡</h3>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>#</th><th>文献</th><th>方法</th><th>核心发现</th><th>局限</th><th>对犬类的意义</th></tr></thead>
+        <tbody>
+          <tr><td>①</td><td><span class="type-tag tag-A">主轴</span><b>Aslan et al. 2026</b><br>Ann Biomed Eng 54:3797–3815<div class="doi">10.1007/s10439-025-03959-w<br>PMID 42118231（OA: PMC13434352）</div><div class="authors"><b>美国</b> · 费城儿童医院（CHOP）Jolley 组 × 犹他大学（盐湖城）Weiss/Maas 组——<b>FEBio 官方开发者</b>；跨医院/跨工程系合作</div></td><td>SlicerHeart/3D Slicer 重建患者特异二尖瓣 → FEBio；4 种 G4 MitraClip 几何 + CardioBand（位移控制环缩）+ Mitralign（离散节点约束）；提出"<b>released clip</b>"公式（夹子随瓣叶运动，接触驱动，非固定约束）</td><td>脱垂型：TEER 恢复对合但<b>瓣叶应力升高</b>，环缩类应力更低；扩张型：<b>单用 TEER 残留反流</b>，联合瓣环成形最优（ROA 0.06 cm²、CA 2.57 cm²）；长臂夹（XT/XTR）后叶应变↑、宽臂夹（NTW/XTW）对合面积↑；提出"分阶段夹取"策略；pinned 瓣环假设对二尖瓣可接受</td><td>脱垂/扩张几何由健康瓣改造（非真实患者）；等向 Lee–Sacks 本构（成人参数）；无临床配对验证</td><td><b>犬类虚拟修复的直接模板</b>：框架全开源零许可成本；released clip 适合模拟 V-Clamp 随瓣叶运动；"相对比较优先"原则由此确立</td></tr>
+          <tr><td>②</td><td><span class="type-tag tag-A">主轴</span><b>Laurence et al. 2025（FINESSE）</b><br>Ann Biomed Eng 53:241–259<div class="doi">10.1007/s10439-024-03637-3<br>模型库：repo.febio.org project/137</div><div class="authors"><b>美国</b> · CHOP Jolley 组 × 犹他大学 Weiss 组（与①同门轴心，一作 Laurence 系 CHOP/宾大体系）</div></td><td>形状强制（shape enforcement）：滑动弹性界面把 FEM 解强制贴合影像目标面；无需患者特异材料/厚度/腱索数据</td><td>合成测试+3 例儿童患者：匹配误差≈最小体素尺寸，主应变估计 ±0.03 应变；附免费 .feb 模型（二尖瓣、HLHS 三尖瓣、房室通道）</td><td>输出的是"贴影像的应变场"，非独立力学预测；penalty 参数需用户定</td><td><b>犬类最友好切入点</b>：不需要犬组织力学参数即可从超声出应变——把"犬本构缺失"这个最大缺口绕开了</td></tr>
+          <tr><td>③</td><td><span class="type-tag tag-C">组件</span><b>Mangine et al. 2026</b><br>Ann Biomed Eng<div class="doi">10.1007/s10439-026-04310-7</div><div class="authors"><b>美国</b> · CHOP Jolley 组（与①②同门轴心；一作 Mangine 系 CHOP 影像/建模方向）</div></td><td>开源腱索生成器（SlicerHeart）+ 参数化扫描：截面积、密度、长度、半径、分支</td><td>腱索几何显著改变闭合指标与力学；<b>截面积影响最大</b>；用结论反向调校扩张型二尖瓣与三尖瓣模型</td><td>合成几何，非患者特异</td><td>犬建模时<b>腱索数据采集优先级最高</b>；腱索生成器可直接用于犬腱索手工标注的半自动化</td></tr>
+          <tr><td>④</td><td><span class="type-tag tag-C">组件</span><b>Wu et al. 2026</b><br>Ann Biomed Eng<div class="doi">10.1007/s10439-026-04273-9<br>预印版 PMC12632704</div><div class="authors"><b>美国</b> · CHOP Jolley 组 × 犹他大学 Weiss 组 × 宾夕法尼亚大学 Pouch（影像超声方向，与①同门轴心）</div></td><td>3D 超声点云几何特征跟踪（免配准参数）估瓣叶应变，FEM 作基准验证</td><td>精度优于其他点基方法；跨形态鲁棒；<b>主应变中位数/IQR &gt;0.5 与瓣叶脱垂（billow）相关</b></td><td>应变绝对值依赖影像质量；未做修复后随访</td><td>纯影像路线：犬 TEE 序列若跑通，即得<b>在体瓣叶力学指标</b>，兼作 FEM 验证地面真值</td></tr>
+          <tr><td>⑤</td><td><span class="type-tag tag-C">组件</span><b>Nakhaei et al. 2026</b><br>Ann Biomed Eng<div class="doi">10.1007/s10439-026-04245-z</div><div class="authors"><b>美国</b> · CHOP Jolley 组 × 犹他大学 Weiss 组（与①④同门轴心）</div></td><td>FEM 生成中间变形态增强 4D 影像配准（主动脉瓣）</td><td>跟踪精度较直接配准 <b>+40%</b>；给出带不确定性界的应变估计</td><td>主动脉瓣验证，房室瓣待平移</td><td>方法论可平移到犬房室瓣；"不确定性界"概念适合向临床兽医汇报时使用</td></tr>
+          <tr><td>⑥</td><td><span class="type-tag tag-A">实体</span><b>Ching et al. 2023</b><br>Ann Thorac Surg Short Rep 1:40–45<div class="doi">10.1016/j.atssr.2022.09.008</div><div class="authors"><b>美国</b> · CHOP Jolley 组（与①同门；实体路线——同一轴心的计算/实体两条腿）</div></td><td>影像 → 3D 打印心脏模型 → 真实夹合排练（Cianciulli 2021 多模态仿真规划 PMIDs 见旧稿）</td><td>实体 rehearsal 可行；抓取手法/入路角度/夹子朝向可离体演练</td><td>材料硬度对黏液瘤样瓣叶的模拟是公认难点</td><td>犬可直接用<b>自然病变犬的影像</b>打印——无需人造病理；培训课程化的载体</td></tr>
+          <tr><td>⑦</td><td><span class="type-tag tag-B">机制</span><b>Haese et al. 2026</b><br>J Biomech 205:113423<div class="doi">10.1016/j.jbiomech.2026.113423</div><div class="authors"><b>美国</b> · 德克萨斯大学奥斯汀分校（UT Austin）机械工程系 Rausch 组 × Corewell Health West/密歇根州立 Timek 组（心外科）× 斯坦福（Mathur）——独立于 CHOP 轴心的外部制衡力量</div></td><td>三尖瓣 TEER 计算力学：瓣环重塑与受力机制</td><td>解释"<b>瓣环成形效应</b>"：夹合牵拉使瓣环急性缩小；<b>瓣环顺应性显著改变术后应力</b>（与 Aslan 的 pinned 假设相左）</td><td>三尖瓣、人参数</td><td>犬二尖瓣瓣环更"软"（黏液瘤样变性），pinned 假设能否平移<b>存疑</b>——犬建模的边界条件需要专门论证</td></tr>
+          <tr><td>⑧</td><td><span class="type-tag tag-B">范式</span><b>Gaidulis & Padala 2023</b><br>Ann Biomed Eng 51:1984–2000<div class="doi">10.1007/s10439-023-03219-9</div><div class="authors"><b>美国</b> · 埃默里大学 + 佐治亚理工 Padala 组（结构性心脏病计算建模/器械研发，独立于 CHOP 轴心）</div></td><td>3D 超声个体化 FEM，预测欠尺寸瓣环成形环的尺寸选择（FMR 外科）</td><td>个体化模型可输出"该选哪个环"的预测——外科决策前移到算力</td><td>外科环缩场景，非 TEER</td><td>"<b>选大一号还是小一号</b>"的个体化预测范式 = V-Clamp 尺寸谱选择问题的直接模板</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>7.2 交叉比较：这条管线打通了什么、还缺什么</h3>
+      <ul>
+        <li><b>已打通</b>：全开源管线（影像→建模→求解→指标）零商业依赖；虚拟修复可同框比较 TEER/环缩/联合；应变估计有三条独立路径（FEM 形状强制 / 纯影像跟踪 / FEM 增强配准）。</li>
+        <li><b>硬限制</b>：① 几何多为健康瓣改造；② 等向 Lee–Sacks 本构 + 成人参数；③ 无术前/术后配对验证（ADEPT，arXiv:2409.19081，正在补"无创弹性估计"一环）；④ 瓣环边界条件两派相左（pinned vs 顺应性敏感）。</li>
+        <li><b>两线汇合点</b>：影像直接测应变（④⑤）可为 FEM（①②）提供验证数据——计算与影像互相校准。</li>
+      </ul>
+    </div>
+      <h3>7.3 人类篇小结：可迁移资产清单</h3>
+      <div class="prose">
+      <div class="table-wrapper"><table>
+        <thead><tr><th>人类资产</th><th>成熟度</th><th>犬类迁移形态（详见第十一、十二章）</th></tr></thead>
+        <tbody>
+          <tr><td>缘对缘原理 + 二十年器械迭代</td><td>极高</td><td>犬用 V-Clamp 已存在（唯一有同行评议数据）</td></tr>
+          <tr><td>循证证据链（RCT/注册）</td><td>极高</td><td>移植"病例选择第一"的方法论，而非直接移植数字</td></tr>
+          <tr><td>TEE 分步操作规范</td><td>高</td><td>CSU 已出犬 TEE 专文（PMID 41656142）——标准化已在发生</td></tr>
+          <tr><td>EVEREST 解剖入选标准</td><td>高</td><td>Willows 犬标准（RF≥50%、A2-P2、瓣环≥13mm、对合间隙 2–4mm）已是其兽医镜像</td></tr>
+          <tr><td>开源 FEM 虚拟修复管线</td><td>高（人类）</td><td>框架直接可用；缺犬几何库/本构/腱索数据（第十一章逐项评估）</td></tr>
+          <tr><td>3D 打印 rehearsal</td><td>中高</td><td>犬病变影像直接打印，无伦理障碍，培训价值立现</td></tr>
+          <tr><td>学习曲线量化（~50 例）</td><td>中</td><td>兽医中心培训计划的量化参照</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- ============ PART II 犬类篇 ============ -->
+  <div class="part-divider">PART Ⅱ　犬类篇（第八～十三章）—— 转化可行路径</div>
+
+
+  <div class="section">
+    <h2>八、犬 MMVD（黏液瘤样二尖瓣疾病）与现有治疗格局 <span class="status st-skel">◐</span></h2>
+    <div class="prose">
+      <h3>8.1 疾病负担</h3>
+      <ul>
+        <li>MMVD（黏液瘤样二尖瓣疾病，文献旧称退行性二尖瓣病 DMVD）是犬最常见获得性心脏病；小型/老龄犬患病率高（ACVIM 分期 A–F）；自然病程与人类退行性 MR 同源——<b>犬是唯一大规模自然发生人类同源瓣膜病变的物种</b>。</li>
+        <li>□ 待填：患病率精确数字（Charles/Borgarelli 系列流调）、ACVIM 共识更新点。</li>
+      </ul>
+      <h3>8.2 现有治疗与缺口</h3>
+      <ul>
+        <li>药物：pimobendan 为基石（+利尿/ACEI 等）——改善症状与预后，但不逆转病变进程。</li>
+        <li>外科：体外循环开胸修复（日本 Uechi 团队体系最成熟、欧洲个别中心）——仅极少数中心、高门槛高成本。</li>
+        <li><b>介入缺口</b>：TEER 填补"药物不够、外科不敢"的中间带——与人类 TEER 的诞生逻辑完全同构。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>九、犬 TEER 全球现状 <span class="status st-done">■</span>（沿用并更新 20261016 调查稿）</h2>
+    <div class="prose">
+      <div class="table-wrapper"><table>
+        <thead><tr><th>团队/地区</th><th>证据</th><th>关键数字</th><th>定位</th></tr></thead>
+        <tbody>
+          <tr><td><b>美国 CSU</b>（Orton/Scansen/Potter）</td><td>50 犬可行性（2024, Front Vet Sci, PMID 39717788）<br>111 犬 2 年随访（2025, J Vet Cardiol, PMID 41513577）</td><td>器械可行性 96%、<b>无术中死亡</b>、出院存活 96%；技术成功 97.3%（单夹 74%/双夹 26%）；院内死亡 6.3%；1/2 年心源性存活 80%/78%；RF 60.6%→35%→30.7%</td><td>全球转化主力，高选择性队列；2026 年 TEE 操作规范专文（PMID 41656142）+ 心脏 CT（PMID 42270470）输出标准化</td></tr>
+          <tr><td><b>韩国 KAMC</b>（清州）——临床执行核心 Youp KA（叶）；Lee 家族领导</td><td>20 犬回顾（2025, JVIM, PMID 40459365）+ 25 犬队列安全性分析（Vet Sci, PMID 40266932；手术窗口 2023.09–2025.01）</td><td>早期存活 65%；死因：瓣叶撕裂/单叶附着（4）、气管塌陷（1）、神经并发症（1）、心源性休克（1）；术后 3 月 VHS/VLAS/LA:AO/RF/反流量全部显著下降</td><td>最大真实世界队列（25 犬）——与 CSU 的反差即"病例选择决定论"的犬类实证；团队分工见 9.2 团队 2</td></tr>
+          <tr><td><b>泰国</b>（Petchdee 团队）</td><td>4 犬初探（2024, Animals, PMID 39518790）+ 心肌做功随访（2026, Vet Sci, PMID 42357795）</td><td>6 个月无器械并发症，症状/生活质量改善</td><td>东南亚首报；功能学指标评价路线</td></tr>
+          <tr><td><b>波兰</b>（弗罗茨瓦夫环境与生命科学大学 UPWr × 雅盖隆大学）</td><td>经心尖 V-Clamp TEER（2026, Pol J Vet Sci, PMID 41860000）</td><td>定位兽医+实验性人类医学双向平台</td><td>欧洲新入局者</td></tr>
+          <tr><td><b>日本</b>（东京农工大学 兽医外科，Tanaka R 组）</td><td>2 只健康犬在体 TEER 实验（2021, Animals 12(1):56, PMID 35011161）——v0.2.1 新发现</td><td>植入成功（手术 98/63 min）；术后 4 周纵向超声（2D 斑点追踪 + 彩色 M 模式 IVPG）：轻度非进展性二尖瓣狭窄、E/e&#8242; 升高</td><td>全球唯一"健康犬在体复现"研究——功能学纵向评价方法可被临床中心直接借用</td></tr>
+          <tr><td><b>奠基研究</b>（中国团队+CSU 合作）</td><td>8 犬人类 ValveClamp 改造（2020, Front Vet Sci, PMID 33392290；共同作者含中山潘文志）</td><td>成功率 100%、无并发症</td><td>全球犬 TEER 第一篇，V-Clamp 源头</td></tr>
+          <tr><td><b>英国</b></td><td>Willows（2024）→ RVC QMHA+Bristol（2025.11，非索引）</td><td>病例选择标准公开：RF≥50%、A2-P2 脱垂、瓣环前后径≥13mm、对合间隙 2–4mm、无 MS/瓣裂</td><td>欧洲落地 + 筛选标准最明确的公开表述</td></tr>
+          <tr><td><b>中文区</b>（非索引）</td><td>上海申普（2020 国内首例；2024 超声引导小切口）→ 中文首篇个案（ACRPVM 2023）→ 香港 WeHUG（2026.08 全港首例）</td><td>排除标准线索：瓣膜严重钙化/变形不建议</td><td>实践活跃、国际同行评议缺位——证据断层（详见旧调查稿第三节第 8 团队）</td></tr>
+        </tbody>
+      </table></div>
+      <div class="keybox"><b>领域重心迁移：</b>2020"能不能做"（8 犬）→ 2024"做多少安全"（50 犬）→ 2025"谁能受益"（111 犬随访 + 韩国反差数据）→ 2025–2026"怎么做才对"（TEE 规范/CT 定量/生物标志物/选择框架综述）。<b>下一个缺口恰好是本调查的对象：术前仿真与个体化规划——犬类尚属空白。</b></div>
+      <p class="team-note">注：Uechi 对照路线与选择框架综述已以团队档案形式收录于 9.2（团队 6、团队 7），全球证据定位见 13.2 总表；Szatmári 论述原文引用见 9.2 团队 7 及 20261016 调查稿第三节第 6 节。</p>
+
+      <h3>9.2 核心团队档案：国家 · 机构 · 校内分组 · 研究脉络</h3>
+      <p><b>完整照搬自《20261016 犬 TEER 全球文献调查》第三节"核心作者与团队研究脉络"并增补。</b>著录规则（自本调查起长期沿用，字段定义见 <code>调查框架\团队调查字段规范.md</code>）：每支团队按 <b>国家/地区 → 城市 → 机构 → 院内分组 → 核心人物</b> 五层著录，附角色定位（源头/转化主力/跟随入局/对照路线/方法学延伸）与逐年时间线，让"谁和谁在干什么"一眼可记。</p>
+
+      <p class="team-head"><span class="loc">美国</span>团队 1 ｜ 科罗拉多州立大学（CSU，Fort Collins）—— Orton / Scansen / Potter 组 <span class="type-tag tag-A">转化主力</span></p>
+      <p class="team-note">James K. Orton（心外科）、Brian A. Scansen（心脏介入）、Potter（影像）；全球病例最多，V-Clamp 兽医临床转化主导者。</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2021.01</span> — V-Clamp 经心尖 TEER 首例临床应用（111 犬队列起点）。犬用 V-Clamp 由人类 ValveClamp（复旦中山）衍生而来，CSU 主导其兽医临床转化（器械谱系见 9.2 团队 8）。</div>
+        <div class="timeline-item"><span class="timeline-year">2021–2022</span> — 团队瓣膜外科基础：Sutherland/Orton 三尖瓣修复（JVC 2021）、Scansen 结构性介入（VSD 封堵 2022）等。</div>
+        <div class="timeline-item"><span class="timeline-year">2024</span> — 50 犬前瞻可行性研究（Front Vet Sci，PMID 39717788）：<b>全球首篇犬专用器械 TEER 正式论文</b>。</div>
+        <div class="timeline-item"><span class="timeline-year">2025</span> — 三线并进：① 111 犬 2 年随访（JVC，PMID 41513577）；② MR 定量方法学（Del Nero，PMID 39914360）；③ 与人类介入专家 Carroll 合作"人类经验指导犬类"综述（PMID 41219030）。</div>
+        <div class="timeline-item"><span class="timeline-year">2026</span> — TEE 操作规范专文（PMID 41656142）+ 心脏 CT 瓣膜成像（Scansen，PMID 42270470）。<b>脉络特征：器械转化合作 → 可行性 → 大队列随访 → 标准化（影像/方法学）→ 选择框架输出。</b></div>
+      </div>
+
+      <p class="team-head"><span class="loc">韩国</span>团队 2 ｜ Korea Animal Medical Center（KAMC，清州）—— Lee 家族 × Youp KA（叶）团队 <span class="type-tag tag-A">跟随入局·真实世界</span></p>
+      <p class="team-note">私立动物医疗中心；与北卡罗来纳州立大学（NCSU）合作（Her J）。<b>署名格局（PubMed 署名页核实）：</b>JVIM 20 犬篇 = 一作 Jeong-Min Lee、末位（通讯位）Seung-Keun Lee；Vet Sci 篇 = 一作 Jeong-Min Lee、二作 Seung-Keun Lee；<b>Kyoung-A Youp（叶医生）两篇均列核心作者位（二作/三作）——中心手术与围术期数据链的实际执行核心。</b>Lee 家族主持中心运营、器械通道与对外合作。（内部备注：叶医生为用户挚友、实际主刀；公开表述已柔化，不写署名性质评价。）</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2023.09–2024.09</span> — 20 犬回顾性 TEER 系列（JVIM，PMID 40459365，与 NCSU 合作）：早期死亡 35%，死因集中在瓣叶损伤/单叶附着、合并症（气管塌陷、脑积水）与心源性休克；存活 13 犬术后 3 个月 VHS、VLAS、LA:AO、LVIDdN、RF、反流量全部显著下降（p&lt;0.05）。</div>
+        <div class="timeline-item"><span class="timeline-year">2025</span> — NT-proBNP/cTnI 围术期安全性分析（Vet Sci，PMID 40266932）：实际纳入 <b>25 犬</b>（手术窗口 2023.09–2025.01）——<b>中心真实经验量 25 犬，大于 JVIM 篇的 20 犬</b>；结论：两标志物均非强预测因子（p=0.187/0.869），阴性结果本身即证据。</div>
+        <div class="timeline-item"><span class="timeline-year">脉络特征</span> — 高风险真实世界数据 + 生物标志物风险分层；与 CSU 高选择性队列形成鲜明对照，共同指向"病例选择"为结局决定因素。该 20 犬系列同时是 V-Clamp 四种规格（Size 2–5，臂径 6.7–9.5 mm）临床使用的唯一公开记录（JVIM 图 2）。</div>
+      </div>
+
+      <p class="team-head"><span class="loc">泰国</span>团队 3 ｜ Petchdee S 组 <span class="type-tag tag-B">跟随入局·功能学</span></p>
+      <p class="team-note">□ Petchdee 组机构全称待核。<b>v0.2.1 订正：</b>此前把选择框架综述记为 Petchdee 同组产出，经核实其通讯作者 Rattanasrisomporn J 属泰国农业大学（Kasetsart）兽医学院伴侣动物临床科学系（官方邮箱 fvetjpn@nontri.ku.ac.th）——泰国实为两支力量。</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2024</span> — 4 犬初探（Animals，PMID 39518790）。</div>
+        <div class="timeline-item"><span class="timeline-year">2026</span> — 心肌做功结局研究（Vet Sci，PMID 42357795）；<b>脉络特征：小样本起步 → 功能学指标。</b></div>
+        <div class="timeline-item"><span class="timeline-year">2026.09（KU 组）</span> — 「开胸修复 vs TEER 选择框架」综述归属订正：经核实为泰国农业大学（Kasetsart）Rattanasrisomporn J 组发表（Kongchatree &amp; Rattanasrisomporn，Front Vet Sci 13:1900762，doi:10.3389/fvets.2026.1900762，PMID 42824553）——泰国农业大学已进入"决策框架输出"阶段，与 Petchdee 组分立。</div>
+      </div>
+
+      <p class="team-head"><span class="loc">波兰</span>团队 4 ｜ Pasławska U 组 <span class="type-tag tag-B">欧洲新入局</span></p>
+      <p class="team-note">已核实（作者署名页 + ResearchGate）：弗罗茨瓦夫环境与生命科学大学（UPWr）兽医学院内科与马犬猫病临床教研室——Pasławska U、Noszczyk-Nowak A；跨学科合作：克拉科夫雅盖隆大学心脏介入方向（Dziewierz A 等，转化综述执笔）。</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2026</span> — 经心尖 V-Clamp TEER 研究（Pol J Vet Sci，PMID 41860000）+ 转化综述《From bench to bedside and back》（Postepy Kardiol Interwencyjnej，doi:10.5114/aic.2025.154190，PMID 41114311；Popiel-Dziewierz/Noszczyk-Nowak/Dziewierz）。<b>定位：UPWr 兽医心脏科 × 克拉科夫人类介入科的跨学科组合——兽医+实验性人类医学双向平台（欧洲新入局者）。</b></div>
+      </div>
+
+      <p class="team-head"><span class="loc">日本</span>团队 5 ｜ 东京农工大学（TUAT）兽医外科教研室 —— Tanaka R 组 <span class="type-tag tag-B">实验复现</span>（v0.2.1 新增）</p>
+      <p class="team-note">东京府中市（Fuchu）；一作 Sasaki K，多国合作者（南京农大、埃及 Suez Canal/Benha、带广畜产）。2021 年即完成健康犬在体 TEER——<b>此前历次调查漏检，本次全球系统检索补入</b>。</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2021</span> — 2 只健康犬在体 TEER 植入（杂交入路装置，Animals 2021;12(1):56，doi:10.3390/ani12010056，PMID 35011161）：手术 98/63 min；术后每周随访至 4 周，用常规+2D 斑点追踪+彩色 M 模式（IVPG）纵向评价——轻度非进展性二尖瓣狭窄、E/e&#8242; 升高、IVPG 稳定。<b>定位：不针对治疗而是建立"健康犬 TEER 后心功能纵向变化"的参考系——全球唯一在体实验复现。</b></div>
+      </div>
+
+      <p class="team-head"><span class="loc">日本</span>团队 6 ｜ Uechi Masami 组（日本兽医生命科学大学）<span class="type-tag tag-B">对照路线</span></p>
+      <p class="team-note">开胸体外循环二尖瓣修复全球最成熟体系——TEER 的核心对照组，不做 TEER 但输出围术期管理证据。</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2025</span> — 体外循环二尖瓣修复外科体系的 TEE 安全性研究（JVIM，PMID 40095386）：60 犬术中 TEE 食道黏膜损伤前瞻评估。</div>
+      </div>
+
+      <p class="team-head"><span class="loc">荷兰</span>团队 7 ｜ 乌得勒支大学（Utrecht）—— Viktor Szatmári <span class="type-tag tag-B">评述路线</span></p>
+      <p class="team-note">兽医学院心脏科；本人不做 TEER，但其论述是欧洲兽医界对 TEER 定位的风向标。</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2024</span> — van Staveren, Muis &amp; Szatmári 多国兽医调查（Animals 2024;14:772，PMID 38473157）讨论部分论及 TEER："欧洲已有犬开胸修复与 TEER 可选；TEER 是有前景的新模式，比开胸创伤小、风险低、费用低；但何种分期获益最大尚不明确，需大样本长期随访"。（原文引用见 20261016 调查稿第三节第 6 节）</div>
+      </div>
+
+      <p class="team-head"><span class="loc">中国</span>团队 8 ｜ 器械源头：复旦大学附属中山医院（上海）—— 葛均波院士团队 → 犬用 V-Clamp → 国际扩散 <span class="type-tag tag-A">源头</span></p>
+      <p class="team-note">院内分组：心内科（周达新、潘文志）、心外科（魏来、王春生）、超声科（潘翠珍、李伟、龙喻良）。</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2018.07.02</span> — <b>全球首例 ValveClamp 经心尖二尖瓣缘对缘修复</b>（73 岁女性，极重度 MR）。相对 MitraClip：输送系统更细（16F 直鞘）、捕获范围更大、仅需超声引导（无射线）、操作更简单。</div>
+        <div class="timeline-item"><span class="timeline-year">2019</span> — FIM 结果发表于 JACC Cardiovasc Interv（doi:10.1016/j.jcin.2019.05.043）：12 例（中山/阜外/华西三中心），成功率 <b>100%</b>。</div>
+        <div class="timeline-item"><span class="timeline-year">2020</span> — Liu B、Leach SB、潘文志（中山）等 Front Vet Sci：人类 ValveClamp 改造用于 8 只自发 MR 犬，100% 成功——<b>全球犬 TEER 第一篇</b>（PMID 33392290）。</div>
+        <div class="timeline-item"><span class="timeline-year">由此衍生</span> — 犬专用 <b>V-Clamp</b> → 供 CSU 开展 50/111 犬临床研究；英国 Vet Times 对这一谱系有明确记载。</div>
+        <div class="timeline-item"><span class="timeline-year">2023</span> — 双里程碑：① CLAMP-2 多中心确证试验（JACC CI；11 家医院 102 例，急性成功率 97%，1 年有效率 87.3%，MR≤2+ 达 97.8%；学习曲线约 50 例）；② 2023-09-07 ValveClamp 获 NMPA 批准上市——中国首个自主研发二尖瓣介入器械。</div>
+        <div class="timeline-item"><span class="timeline-year">2024–2025</span> — 英国落地：Willows 转诊中心（2024，欧洲首批）→ RVC QMHA + Bristol（2025-11 宣布开展），引用 CSU 两年存活 80% 数据。</div>
+      </div>
+
+      <p class="team-head"><span class="loc">中国（含港）</span>团队 9 ｜ 中文区临床实践（非索引来源）<span class="type-tag tag-D">证据断层</span></p>
+      <p class="team-note">实践活跃、国际同行评议发表缺位——领域证据链上的空缺。</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2020 →</span> — 上海申普专科医院（张菁院长团队；分组：林益峰-超声、庄金城/郭建宏-外科、杨雨樵-麻醉）：国内首例微创二尖瓣夹合（2020，15 岁泰迪）→ 2024"无射线、无造影剂"超声引导术式公开报道与多例转诊个案。</div>
+        <div class="timeline-item"><span class="timeline-year">2023</span> — <b>中文首篇犬 TEER 个案报道</b>（Ma Q 等，ACRPVM 2023，doi:10.12677/acrpvm.2023.124005，非 PubMed 索引）。</div>
+        <div class="timeline-item"><span class="timeline-year">2026.08</span> — 香港 WeHUG 新界动物医疗中心：全港首例犬 TEER（10 岁松鼠狗，B2→C 期；主刀邱柏喻、Max Chiu 团队），术后 1 月左房容积缩减约 40%；公开排除线索：瓣膜严重钙化/变形不建议。</div>
+      </div>
+
+      <p class="team-head"><span class="loc">美国</span>团队 10 ｜ 人类仿真方法学团队 <span class="type-tag tag-A">方法学延伸</span>（v0.2.1 增补）</p>
+      <p class="team-note">与第七章 8 篇归纳卡一一对应——犬类转化证据的"第二来源"。三条独立力量互相制衡，无一家垄断。</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">CHOP × Utah 轴心</span> — 费城儿童医院 Jolley 组 × 犹他大学 Weiss/Maas 组（FEBio 官方）：开源虚拟修复管线（归纳卡①②③④⑤⑥），临床儿科心脏 × 计算力学跨系合作；模型文件免费公开（repo.febio.org）。</div>
+        <div class="timeline-item"><span class="timeline-year">UT Austin</span> — 机械工程系 Rausch 组：三尖瓣 TEER 边界条件系列（JMBBM 2025 → J Biomech 2026，归纳卡⑦），给 CHOP 轴心的 pinned 瓣环假设提供外部制衡证据。</div>
+        <div class="timeline-item"><span class="timeline-year">Emory + GaTech</span> — Padala 组：个体化 FEM 决策范式（归纳卡⑧），瓣环环尺寸选择 → V-Clamp 尺寸谱选择的直接模板。</div>
+        <div class="timeline-item"><span class="timeline-year">脉络特征</span> — CHOP-Utah 出管线、Rausch 出反面证据、Padala 出决策范式：三条线恰好对应犬类转化的"工具/边界/决策"三要素（详见第十一、十二章）。</div>
+        <div class="timeline-item"><span class="timeline-year">v0.2.2 版图扩展</span> — 经 44 条记录全量核查，全球 TEER 仿真在编团队 9+ 支（米兰双线/佐治亚理工 Sun/UCSF/柏林 Charité/UNC/巴勒莫 ISMETT/佳能/武大×中科院力学所等），完整版图与开源资产盘点见 13.6–13.8；本档案三条线仍是犬类承接的第一梯队。</div>
+      </div>
+
+      <div class="keybox"><b>培训关系备忘（内部字段，公开版默认不写）：</b>□ 待用户确认后标注——全球多个团队的建立/培训与用户本人有直接关系（约 2/3 来访团队的技术培训），确认对应团队与批次后填入各团队档案的"培训/交流关系"字段，避免关键人物与贡献被埋没。</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>十、跨物种差异分析：犬 vs 人类 <span class="status st-skel">◐</span></h2>
+    <div class="prose">
+      <div class="table-wrapper"><table>
+        <thead><tr><th>维度</th><th>人类（DMR）</th><th>犬（MMVD）</th><th>对转化的含义</th></tr></thead>
+        <tbody>
+          <tr><td>病理</td><td>黏液瘤样退行性变（散发于高龄）</td><td>同源病变，<b>高发、可自然全程观察</b></td><td>病理同源 = 人类证据逻辑可移植的根本理由；且病例即终点来源</td></tr>
+          <tr><td>解剖尺度</td><td>瓣环 25–35mm，瓣叶冗余</td><td>瓣环约 13–25mm（Willows 下限 13mm），瓣叶薄短</td><td>对合长度/夹臂尺寸余量更小 → 器械尺寸谱是第一硬约束</td></tr>
+          <tr><td>比较解剖</td><td colspan="2" style="text-align:left;">人/羊/猪/犬四物种比较解剖（2023, Anat Histol Embryol, PMID 37485820）——犬与人类瓣膜几何差异系统数据在此文 ◐ 待精读提数</td><td>建模时的解剖先验来源</td></tr>
+          <tr><td>影像条件</td><td>3D TEE 成熟、CT/MR 可及</td><td>术中 TEE 已入规范（CSU 2026 专文）；心脏 CT 起步（PMID 42270470）</td><td>建模管线的上游已通；分辨率/时相标准待兽医化</td></tr>
+          <tr><td>组织力学</td><td>成人二尖瓣本构有库（Lee–Sacks 等）</td><td><b>空白</b>（黏液瘤样犬瓣叶力学参数无系统发表）</td><td>第十一章评估表的最低分项；FINESSE 式路线可绕行</td></tr>
+          <tr><td>血流动力学</td><td>直立位、心率 60–100</td><td>水平位、心率快（60–140+）、麻醉状态变化大</td><td>仿真加载条件与术中判定阈值需兽医化重标定</td></tr>
+          <tr><td>器械</td><td>多厂家多代际竞争</td><td>仅 V-Clamp 有同行评议数据</td><td>尺寸谱窄 → "选哪个夹子"比人类更依赖仿真/规划</td></tr>
+        </tbody>
+      </table></div>
+      <p class="st-todo">□ 待填：比较解剖论文具体数据；犬瓣环尺寸分布的影像研究；犬瓣叶厚度/长度正常值。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>十一、仿真路线的犬类可迁移性评估 <span class="status st-done">■</span>（本调查核心分析）</h2>
+    <div class="prose">
+      <div class="table-wrapper"><table>
+        <thead><tr><th>管线环节</th><th>犬类就绪度</th><th>依据 / 缺口</th><th>行动项</th></tr></thead>
+        <tbody>
+          <tr><td>影像采集（3D TEE）</td><td><b>高</b></td><td>术中 TEE 已成犬 TEER 规范（PMID 41656142）；日本 Uechi 团队 60 犬 TEE 安全性数据（PMID 40095386）</td><td>制定犬采集 SOP（切面/时相/分辨率）</td></tr>
+          <tr><td>几何重建（SlicerHeart）</td><td><b>中高</b></td><td>工具开源通用；人类参数化模板不能直接套犬解剖</td><td>犬瓣叶分割/瓣环标记适配；建立犬几何库（对标 FINESSE 三例儿童库）</td></tr>
+          <tr><td>腱索几何与建模</td><td><b>低–中</b></td><td>Mangine 参数化框架可直接用；犬腱索基线数据缺</td><td>腱索标注优先级最高；半自动生成器复用</td></tr>
+          <tr><td>瓣叶组织本构</td><td><b>低（最大缺口）</b></td><td>犬 MMVD 黏液瘤样瓣叶力学参数无系统发表；ADEPT（无创弹性估计）尚未正式发表</td><td>短期：等向 Lee–Sacks 仅作相对比较；中期：离体犬瓣叶单轴/双轴测试；长期：ADEPT 犬化</td></tr>
+          <tr><td>求解器（FEBio）</td><td><b>高</b></td><td>与物种无关；FINESSE 模型库免费可得</td><td>无需行动</td></tr>
+          <tr><td>瓣环边界条件</td><td><b>中（有争议）</b></td><td>Aslan：pinned 可接受（二尖瓣）；Haese：顺应性显著影响应力（三尖瓣）；犬黏液瘤样瓣环更软</td><td>犬建模需做边界条件敏感性分析——不能默认 pinned</td></tr>
+          <tr><td>虚拟修复（夹子型号/位置/数量）</td><td><b>中</b></td><td>Aslan 框架直接可用；需植入 V-Clamp 几何；released clip 公式适合模拟夹子随瓣叶运动</td><td>V-Clamp 几何建模入库；输出 ROA/CA/应变的方案扫描</td></tr>
+          <tr><td>应变反推（FINESSE / 特征跟踪）</td><td><b>高</b></td><td>不需要犬组织参数；Wu 2026 纯影像路线跨形态鲁棒</td><td><b>犬类首选切入点</b>；先在既有犬 TEE 影像上回溯验证</td></tr>
+          <tr><td>3D 打印实体模型</td><td><b>高（流程）/ 中（材料）</b></td><td>影像→打印流程通用；黏液瘤样瓣叶硬度模拟是难点</td><td>材料硬度标定（对照离体犬瓣叶压痕测试）</td></tr>
+          <tr><td>个体化器械选择预测（Gaidulis 范式）</td><td><b>中</b></td><td>范式直接照搬；需先有犬几何库与 outcomes 数据</td><td>与 CSU/合作中心回溯性配对（术前影像+手术结果）启动</td></tr>
+        </tbody>
+      </table></div>
+      <div class="keybox"><b>分析小结（回答 RQ4 的仿真部分）：</b>计算路线能回答"某种夹合/环缩方案在这个几何上力学是否成立"，回答不了"这只犬的活体结果"。犬类落地应以 FINESSE 式应变估计与<b>相对比较</b>（方案 A vs B、夹子大一号 vs 小一号）为主，避免引用绝对应力值做决策；组织本构是最大缺口，但被"影像应变反推 + 相对比较"两条策略有效绕行——<b>缺口存在但不成阻塞</b>。</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>十二、犬类可行转化路径：Phase 0–4 路线图 <span class="status st-skel">◐</span></h2>
+    <div class="prose">
+      <div class="keybox"><b>核心论点（本调查的立场）：</b>犬不是"次一等的人类模型"，而是<b>唯一自带目标病理的自然模型</b>——人类 TEER 的全部术前仿真手段，在犬身上可以走得更远，因为病例本身就是终点的来源；仿真/打印同时是动物伦理 3R 原则（Reduce/Replace/Refine）的直接实现手段。</div>
+      <h3>12.1 病例选择层</h3>
+      <ul>
+        <li>自然 MMVD 犬（ACVIM C/D 期）为受试者；入组框架：分期 + MR 定量（Del Nero 2025 定量方法学，PMID 39914360）+ 瓣叶解剖条件（脱垂 vs 牵拉 tethering、对合间隙）+ 瓣环尺寸窗口（Willows 标准 ≥13mm 为起点）。</li>
+        <li>生物标志物维度：NT-proBNP/cTnI（韩国 2025，PMID 40266932）作为风险分层辅助。◐</li>
+      </ul>
+      <h3>12.2 影像与建模层</h3>
+      <ul>
+        <li>术中 3D TEE 采集 SOP → SlicerHeart 犬适配（分割/标记/腱索标注）→ <b>犬二尖瓣影像-几何开放库</b>（开源、跨中心共享，对标人类 FINESSE 模型库的开放策略）。</li>
+      </ul>
+      <h3>12.3 虚拟修复层</h3>
+      <ul>
+        <li>V-Clamp 几何建模入库（对标 Aslan 的 4 种 G4 建模）→ 方案扫描（型号×位置×数量）→ 输出 ROA/CA/应变相对排序 → 虚拟试验报告作为术前讨论的一部分。</li>
+        <li>个体化尺寸预测（Gaidulis 范式）：回溯性配对研究（既有病例的术前影像+实际夹合结果）先行验证模型方向正确性。◐</li>
+      </ul>
+      <h3>12.4 实体 rehearsal 层</h3>
+      <ul>
+        <li>病变犬心 3D 打印（材料硬度经离体标定）→ 输送路径与夹合手感排练 → 培训课程化（对应 CLAMP-2 学习曲线 ~50 例的量化参照）。</li>
+      </ul>
+      <h3>12.5 活体验证层</h3>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>阶段</th><th>内容</th><th>仿真角色</th><th>出口标准（草案）</th></tr></thead>
+        <tbody>
+          <tr><td><b>Phase 0</b></td><td>离体犬心灌注台架夹合</td><td>虚拟修复预测 vs 台架实测互校</td><td>ROA/CA 预测方向一致率 &gt;80%（草案）</td></tr>
+          <tr><td><b>Phase 1</b></td><td>影像库+虚拟修复回溯验证（既有 CSU/韩国病例）</td><td>模型输出与实际手术结局配对</td><td>方案选择与实际一致的关键病例比例（待定义）</td></tr>
+          <tr><td><b>Phase 2</b></td><td>急性活体（存活前）</td><td>术中 3D TEE 几何实时入库、术后即刻虚拟对比</td><td>急性 ROA 下降与预测相符、无不可解释并发症</td></tr>
+          <tr><td><b>Phase 3</b></td><td>存活模型随访</td><td>随访影像应变（FINESSE/特征跟踪）监测重塑</td><td>长期瓣叶应变无异常升高（预防性监测概念）</td></tr>
+          <tr><td><b>Phase 4</b></td><td>前瞻临床应用 + 多中心</td><td>虚拟修复纳入常规术前讨论；打印 rehearsal 纳入培训</td><td>前瞻对照（vs 药物/外科）设计（领域公认缺口）</td></tr>
+        </tbody>
+      </table></div>
+      <h3>12.6 培训、伦理与推广</h3>
+      <ul>
+        <li>培训体系：仿真+打印+分级实操的三段式课程；跨中心标准化（对应 CLAMP-2 学习曲线与多学科护理模式的人类经验）。</li>
+        <li>伦理：仿真/打印直接减少活体实验数量（3R 论证）；IACUC 类比流程与存活模型 welfare 监测。□ 待填：泰国 CSU 伦理条款样例。</li>
+      </ul>
+      <p class="st-todo">□ 待填：各阶段样本量估算、经费/设备清单、合作中心分工（CSU 已有数据是 Phase 1 回溯验证的现成来源——合作可行性最高）。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>十三、全球调查：谁做过、谁能复现——临床版图 × 仿真版图（以实际发表成果为证）<span class="status st-done">■</span></h2>
+    <div class="prose">
+      <h3>13.1 调查方法（已于 2026-10-29 执行）</h3>
+      <ul>
+        <li><b>PubMed 主检索</b>（E-utilities 官方接口，无代理偏差）：<code>(transcatheter edge-to-edge [tiab] OR "edge-to-edge repair" [ti] OR TEER [tiab] OR V-Clamp) AND (dog OR dogs OR canine OR veterinary)</code> → 命中 64 条 → 人工去噪（TEER 在细胞生物学文献中 = 跨上皮电阻，噪音大户，排除 50+ 条）→ <b>核心文献 12 篇</b>。</li>
+        <li><b>标题补检索</b>：<code>"edge-to-edge"[ti] AND (dog OR canine)</code> → 13 条，补回 2020 年 8 犬奠基篇（PMID 33392290，其用词为 "edge-to-edge closure device"，主检索式遗漏）。</li>
+        <li><b>仿真维度检索（v0.2.2 新增，本调查核心）</b>：两路并行——<code>MitraClip/TriClip × (finite element OR computational OR numerical)</code> 与 <code>edge-to-edge × (finite element OR computational) × (mitral OR tricuspid OR atrioventricular)</code> → 命中 44 条去重记录（2001→2026）→ 全部回拉 PubMed 署名页核实机构 → 编成 13.6 仿真版图。</li>
+        <li><b>非索引渠道</b>：行业媒体（Vet Times）、医院新闻稿（RVC QMHA/Bristol、WeHUG）、中文个案（ACRPVM）——沿用 20261016 调查稿成果。</li>
+        <li><b>采信标准</b>：同行评议发表（或可溯源的机构公开记录）才计入"做过"；仅意向声明不计。</li>
+      </ul>
+
+      <h3>13.2 全球证据总表（核心交付）</h3>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>层级</th><th>国家 · 团队（机构）</th><th>证据（PMID/DOI）</th><th>量级</th><th>说明与定位</th></tr></thead>
+        <tbody>
+          <tr><td><span class="type-tag tag-A">T1 可重复临床项目</span></td><td><b>美国</b> · CSU（Orton/Scansen/Potter）</td><td>50 犬（PMID 39717788）、111 犬 2 年随访（PMID 41513577）、TEE 规范（41656142）、CT（42270470）、MR 定量（39914360）、人类经验综述（41219030）</td><td><b>161 犬次</b>，2021→2026 连续输出</td><td>全球唯一建立"可行性→大队列→标准化→决策支持"完整链条的团队；学习曲线、器械规格谱、影像规范全公开</td></tr>
+          <tr><td rowspan="4"><span class="type-tag tag-A">T2 临床做过<br>（同行评议）</span></td><td><b>中国</b> · 中山系+CSU 合作（Liu B/潘文志）</td><td>8 犬（2020, Front Vet Sci, PMID 33392290）</td><td>8 犬</td><td>全球第一篇；人类 ValveClamp 改造，成功率 100%——器械源头与首证的统一</td></tr>
+          <tr><td><b>韩国</b> · KAMC（清州；临床核心 Youp KA/叶，Lee 家族领导 × NCSU）</td><td>20 犬（PMID 40459365）+ 25 犬队列（PMID 40266932）</td><td><b>25 犬</b>（2023.09–2025.01）</td><td>最大真实世界宽纳入队列；65% 早期存活——"病例选择决定论"的另一半证据；V-Clamp 全规格临床记录</td></tr>
+          <tr><td><b>泰国</b> · Petchdee 组</td><td>4 犬（PMID 39518790）+ 心肌做功随访（42357795）</td><td>4 犬</td><td>东南亚首报；功能学评价路线（□ 机构待核）</td></tr>
+          <tr><td><b>波兰</b> · UPWr（Pasławska/Noszczyk-Nowak）× 雅盖隆大学</td><td>经心尖 V-Clamp（PMID 41860000）+ 转化综述（10.5114/aic.2025.154190）</td><td>□ 病例数待读全文</td><td>欧洲新入局；兽医心脏科 × 人类介入科跨学科组合</td></tr>
+          <tr><td><span class="type-tag tag-B">T3 在体实验复现</span></td><td><b>日本</b> · 东京农工大学 TUAT（Tanaka R/Sasaki K）</td><td>2 只健康犬（Animals 2021;12(1):56, PMID 35011161）</td><td>2 犬（健康）</td><td><b>全球唯一非病理在体复现</b>：建立 TEER 后心功能纵向参考系（斑点追踪/IVPG）；证明该术式可被学术机构以实验方式独立复制——此前历次调查均漏检，本次补入</td></tr>
+          <tr><td rowspan="2"><span class="type-tag tag-D">T4 声明开展<br>（非索引）</span></td><td><b>英国</b> · Willows（2024）→ RVC QMHA+Bristol（2025.11）</td><td>Vet Times 综述；医院新闻稿（引 CSU 数据）</td><td>未发表</td><td>公开了犬 TEER 最明确的病例选择标准（RF≥50%、A2-P2、瓣环≥13mm、对合间隙 2–4mm）</td></tr>
+          <tr><td><b>中国中文区</b> · 上海申普（2020→）；香港 WeHUG（2026.08）</td><td>媒体公开报道；中文个案（ACRPVM 2023）</td><td>未发表</td><td>实践活跃但同行评议缺位——证据断层（本调查反复强调的结构性空缺）</td></tr>
+          <tr><td rowspan="4"><span class="type-tag tag-B">T5 决策框架/评述<br>（不做手术但定义领域）</span></td><td><b>泰国</b> · 泰国农业大学 KU（Rattanasrisomporn 组）</td><td>选择框架综述（Front Vet Sci 13:1900762, PMID 42824553）</td><td>—</td><td>开胸 vs TEER 适应证框架——与 Petchdee 组并列的泰国第二支力量</td></tr>
+          <tr><td><b>美国</b> · CSU × 人类介入（Orton/Carroll）</td><td>人类经验指导犬类（JVC, PMID 41219030）</td><td>—</td><td>"人类 RCT → 犬类路径"转化范式的确立之作</td></tr>
+          <tr><td><b>波兰</b> · 转化综述（Popiel-Dziewierz 等）</td><td>PMID 41114311</td><td>—</td><td>"从台架到临床再回到台架"——把兽医介入放进转化医学框架</td></tr>
+          <tr><td><b>荷兰</b> · 乌得勒支（Szatmári）</td><td>Animals 2024;14:772（PMID 38473157）讨论部分</td><td>—</td><td>欧洲兽医界对 TEER 定位的风向标；强调长期随访证据先行</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>13.3 直接回答：哪些团队"已经做到/哪怕复现"</h3>
+      <ul>
+        <li><b>已建立可重复临床项目（唯一）</b>：美国 CSU——从 2021 首例到 2026 年标准化输出，8 篇论文、161 犬次、覆盖器械-影像-定量-随访全环节。</li>
+        <li><b>有同行评议临床数据（共 5 国）</b>：中国（8 犬，2020 首证）→ 美国（CSU）→ 韩国（25 犬，最大真实世界）→ 泰国（4 犬）→ 波兰（2026）。加上日本健康犬在体实验（2 犬），<b>共 6 国有"实际动过手"的发表证据</b>。</li>
+        <li><b>在体复现（实验平台）</b>：仅日本东京农工大学——证明 TEER 可被独立学术机构以实验方式复制，不只是商业器械通道的产物。</li>
+        <li><b>公开声明已开展但无同行评议</b>：英国（Willows、RVC QMHA+Bristol）、中文区（上海申普、香港 WeHUG）——临床能力存在，证据缺席。</li>
+        <li><b>关键判断</b>：全球"真正做过并发表"的团队一只手数得过来；多病例持续输出的只有 CSU 一家；韩国 25 犬是规模最大的真实世界（非高选择性）队列。</li>
+      </ul>
+
+      <h3>13.4 三个全球性问题的回答（原占位问题闭环）</h3>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>问题</th><th>答案（2026-10-29 检索所得）</th></tr></thead>
+        <tbody>
+          <tr><td>除框架 8 篇外还有谁在做瓣膜介入仿真（尤其兽医方）？</td><td><b>没有兽医应用方</b>。人类侧新增：Rausch 组边界条件系列（JMBBM 2025 → J Biomech 2026）、ADEPT 弹性估计预印本、Wu 2022 开山框架（10.1115/1.4054485）——全部是人类医学；兽医方发表层面为零。<b>完整仿真团队版图见 13.6（2001→2026 共 9+ 支在编力量，含承接排序）。</b></td></tr>
+          <tr><td>各在体犬 TEER 中心是否有术前规划/仿真实践（未发表环节）？</td><td>发表层面<b>不可证</b>——所有在体中心（CSU/韩国/泰国/波兰/日本）论文中均未报告仿真或 3D 打印规划环节；是否有未发表实践属内部情报（□ 待用户渠道确认）。<b>这恰是本调查第十二章 Phase 0–4 路线图的立足点：术前个体化规划层全球空白。</b></td></tr>
+          <tr><td>犬瓣叶组织力学测试是否有散在报道？</td><td>本轮检索<b>未见</b>（保持穷尽式排查义务：CAB Abstracts、ACVIM/ECVIM 会议摘要、FEBio Model Repository 尚未扫描，已列入第十四章待办）。</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>13.5 检索策略存档（供日后复现与更新）</h3>
+      <ul>
+        <li>主检索式与去噪规则见 13.1（E-utilities JSON 通道，可脚本化重跑）。</li>
+        <li>待扫补充通道：CAB Abstracts（兽医覆盖更全）、FEBio Model Repository、SlicerHeart 文献页、ACVIM/ECVIM/BSAVA 会议摘要、知网/万方（中文区断层）、Google Scholar 引用追踪（对 33392290 施引分析）。</li>
+        <li>更新节奏建议：每季度重跑主检索式（约 5 分钟），新命中按 9.2 团队档案 schema 归档。</li>
+      </ul>
+
+      <h3>13.6 仿真版图：全球 TEER/缘对缘计算仿真的 25 年谱系<span class="status st-done">■</span>（本调查核心交付）</h3>
+      <p><b>定位说明：</b>本调查名为「FEA 相关调查」，故「谁做过、谁能复现」的<b>核心判定对象是计算仿真而非临床手术</b>——13.2 临床版图回答"谁在动刀"，本节回答"谁在算数"。检索与核实方法见 13.1（2026-10-29 执行，44 条记录全部回拉 PubMed 署名页核实机构，未采信记忆性归属）。</p>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>层级</th><th>国家 · 团队（机构 · 校内分组）</th><th>代表证据（PMID/DOI）</th><th>方法谱系</th><th>复现性资产</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="2"><span class="type-tag tag-A">S1 全链条开源<br>（软件+模型+管线）</span></td><td><b>美国</b> · CHOP Jolley × 犹他大学 Weiss/Maas（FEBio 官方开发者）</td><td>Wu 2022 开山框架（10.1115/1.4054485）→ Laurence 2025 FINESSE（10.1007/s10439-024-03637-3）→ Mangine 2026 腱索（10.1007/s10439-026-04310-7）→ Aslan 2026 虚拟 TEER（10.1007/s10439-025-03959-w）→ Wu 2026 / Nakhaei 2026 影像应变与配准</td><td>FEM（FEBio）+ 影像管线（SlicerHeart）+ 3D 打印</td><td><b>三件套齐备：开源软件 + 模型文件全公开（repo.febio.org project/137，含二尖瓣/HLHS 三尖瓣/房室通道 .feb）+ 管线文档</b>——全球唯一</td></tr>
+          <tr><td><b>美国</b> · UT Austin 机械工程系 Rausch 组</td><td>Texas TriValve 1.0（2022, Eng Comput, PMID 37139164）→ Haese 2025 边界条件敏感性（JMBBM, PMID 39742687）→ Haese 2026 瓣环成形效应（J Biomech 205:113423）</td><td>FEM（自研 + FEBio 谱系）</td><td>TriValve 1.0 逆向工程几何<b>显式标注 open model</b>；边界条件敏感性协议随论文公开</td></tr>
+          <tr><td rowspan="4"><span class="type-tag tag-A">S2 器械级专精<br>（连续输出）</span></td><td><b>意大利</b> · 米兰理工（Politecnico di Milano）双线：① 电子信息与生物工程系 Votta/Redaelli/Sturla/Munafò（与 San Raffaele 医院——Alfieri 术式发明地——深度绑定）② 数学系 MOX Vergara/Fumagalli/Quarteroni</td><td>① Redaelli 2001 首篇缘对缘血流动力学（PMID 11783727）→ Votta 2002 首篇 3D 应力（12479282）→ Sturla 2015 综述（26577231）→ Sturla 2017 in vitro+in silico（27863743）→ Denti 2017 SAM 预测（28962497）→ Munafò 2025 深度学习夹子定位（41038109）｜② Fumagalli 2020 SAM 流场（32741752）→ Bennati 2023 湍流 MR（37400622）→ Bennati 2025 全心 FSI 含腱索乳头肌（39864334）</td><td>FEM + FSI + in vitro 台架 + 深度学习</td><td><b>2001→2025 连续 25 年、与术式源头绑定的最长谱系</b>——独立第三方学术验证的天然候选；无公开模型仓，方法学描述完备</td></tr>
+          <tr><td><b>美国</b> · 亚特兰大双线：佐治亚理工×埃默里 Coulter 系 Wei Sun 组（Tissue Mechanics Lab）× Emory 结构性心脏实验室 Padala 组（同城并立）</td><td>Sun 组：Bloodworth 2018 in vitro 瓣叶牵拉（30091509）→ Kong 2020 MitraClip FEA（32147238）→ Errthum 2021 PASCAL vs MitraClip 对比（34426167）→ Caballero 2022 in silico MR 定量 vs 超声（35872413）｜Padala 组：Gaidulis 2022 3D 超声建模（35380321）→ Gaidulis 2023 环尺寸选择（10.1007/s10439-023-03219-9）</td><td>FEM（Abaqus）+ in vitro；Padala 线 = 影像→建模→决策范式</td><td>无模型仓；<b>与临床决策（环尺寸/夹子选择/适应证）绑定最深——离"给术者用"最近的团队</b></td></tr>
+          <tr><td><b>美国</b> · UCSF 系（Guccione/Kassab；产业方 3DT Holdings，曾与 Dassault Simulia 合作）</td><td>Dabiri 2019 MitraClip FSI 三尖瓣反流下降（31439968）→ Dabiri 2021 AI 版 MitraClip 结局图谱（34957251）→ Dabiri 2022 夹子数量与位置模拟（JACC Adv, 38939090）</td><td>FSI + AI</td><td>工业软件背景合作；首个 AI 预测 MitraClip 结局的图谱——AI×FEM 混合路线的代表</td></tr>
+          <tr><td><b>德国</b> · 柏林 Charité × 德国心脏中心 DHZC（计算机辅助心血管医学研究所，Kuehne/Goubergrits/Vellguth/Franz）</td><td>Vellguth 2018 影像 CFD 虚拟修复管线（30008058）→ Vellguth 2022 夹子位置×舒张期血流动力学（36093164）→ Franz 2025 降阶模型（40752397）</td><td>image-based CFD + 降阶模型</td><td>管线类论文（工作流可复刻）；<b>特色 = 舒张期风险（TEER 后二尖瓣狭窄）——犬类小瓣环下的高相关维度</b></td></tr>
+          <tr><td rowspan="6"><span class="type-tag tag-B">S3 新入局/单点<br>（2024–2026 及散点）</span></td><td><b>美国</b> · 北卡罗来纳大学教堂山分校（Griffith 组，IBAMR）× UC Irvine Kheradvar</td><td>Sadipour 2026 整心 FSI TEER（ABME, 10.1007/s10439-026-04368-3, PMID 42909734）</td><td>整心 FSI</td><td>IBAMR 框架本身开源——流体侧可复现</td></tr>
+          <tr><td><b>意大利</b> · 巴勒莫 IRCCS ISMETT（Pasta S 组）</td><td>Sausa 2026 个体化三尖瓣建模预测修复效果+双孔流场（Phys Eng Sci Med 49:1285, PMID 42113439）</td><td>患者特异 FEM</td><td>单点；三尖瓣方向与 Rausch 互补</td></tr>
+          <tr><td><b>日本</b> · 佳能公司（Canon Inc./Canon Medical Systems，东京/大田原）</td><td>Ooida 2024 in silico 预测缘对缘疗效（J Biomech Eng, PMID 37978048）</td><td>FEM/流体，企业流水线</td><td><b>器械厂商自带仿真</b>——V-Clamp 类厂商的现成工业模板</td></tr>
+          <tr><td><b>加拿大/法国</b> · 渥太华心脏研究所 × Predisurge（Saint-Étienne）</td><td>Messika-Zeitoun 2024 TEER 计算仿真概念验证（EHJCI 25:1415, PMID 38801398）</td><td>临床×工业联合</td><td>单点 proof-of-concept；方向="仿真进术中决策"</td></tr>
+          <tr><td><b>中国</b> · 武汉大学人民医院超声科（Song 组）× 中国科学院力学研究所（He 组，非线性力学国家重点实验室）</td><td>Song 2025 患者特异 CFD TEER（QIMS 15:10768, PMID 41209267）→ He 2025 TEER 后左室流场（Cardiovasc Eng Technol 16:386, PMID 40180778）</td><td>CFD</td><td>中文区仅有的 TEER 仿真发表——<b>与中文区临床证据断层（9.2 团队 9）形成镜像：临床不发表、仿真刚起步，双轨可同建</b></td></tr>
+          <tr><td><b>瑞士/德国</b> · Inselspital 伯尔尼（Praz）× 波恩（Omran）；散点：UCSF×NYU（Morgan 2017 不均匀夹合应力, PMID 27706490）、纽约理工 NYIT×太平洋西北（Toma 2020 腱索应变 FSI, 32708356）、休斯顿卫理公会（Vukicevic 2020 三尖瓣 3D 打印 MitraClip 规划, 32605380）、渥太华（Labrosse 2016, 24904177）、Texas Tech×佛罗里达国际（Hu 2010 左室涡流, 21666755）</td><td>Kirchner 2025 CT-CFD 术中血流动力学预测（Front Cardiovasc Med, PMID 41346491）及上述散点</td><td>CFD/FEM/FSI/3D 打印</td><td>分散单点、无连续谱系；Vukicevic 一篇是<b>3D 打印实体规划在人类 TEER 的最早院内应用</b>（与 Ching 2023 呼应，实体仿真路线两条腿）</td></tr>
+          <tr><td><span class="type-tag tag-B">S4 早期开创<br>（2001–2014）</span></td><td><b>意大利</b> · 布雷西亚大学机械工程系（Dal Pan/Donzelli/Avanzini）；<b>中国</b> · 厦门理工学院（Zhong Q）</td><td>Dal Pan 2005 全球首篇缘对缘结构 FEM（J Biomech, PMID 16214494）→ Avanzini 2008（18532864）/ 2011 双孔 vs 缝合对比（22204118）；Zhong 2014 边对边治疗 SAM 的 FEA（Acta Bioeng Biomech, PMID 25597231）</td><td>结构 FEM</td><td>历史坐标：意大利学术界开山；<b>中国第一篇 = 2014 厦门理工</b></td></tr>
+          <tr><td><span class="type-tag tag-D">S5 兽医方</span></td><td>——</td><td>——</td><td>——</td><td><b>发表层面为零</b>（穷尽式检索 2026-10-29）——本调查第十二章路线图的立足点；CAB/会议摘要通道待扫（见 13.5）</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>13.7 「能复现」的判定：开源资产盘点</h3>
+      <ul>
+        <li><b>三件套齐备（软件+模型+管线）：唯一 CHOP×Utah 轴心</b>——FEBio 开源求解器、SlicerHeart 开源影像管线、患者特异 .feb 模型免费下载（repo.febio.org project/137）。任何机构（包括兽医机构）今天就可以载入犬几何开跑，无需向任何一方申请。</li>
+        <li><b>几何模型开源</b>：UT Austin Texas TriValve 1.0（PMID 37139164）——逆向工程人类三尖瓣开放模型，可直接作犬 TEER 边界条件研究的对照基准。</li>
+        <li><b>求解框架开源</b>：UNC 整心 FSI 用 IBAMR（开源自适应 FSI 框架）——流体侧可复现。</li>
+        <li><b>其余团队（米兰双线/佐治亚理工/UCSF/柏林）</b>：方法学描述完备但无公开模型仓——「可复刻」（照论文重做）≠「可复现」（拿工件直接跑）。该判定字段已纳入 <code>团队调查字段规范.md</code>（v1.1 增补）。</li>
+      </ul>
+
+      <h3>13.8 仿真版图 → 犬类路径的直接结论（本调查核心问题的闭环回答）</h3>
+      <ul>
+        <li><b>全球在编仿真团队 9+ 支，无一有兽医应用发表</b>——"谁给犬做过仿真"目前答案是没有；但这意味着先做者即为全球第一，且所有工具已经免费可得。</li>
+        <li><b>承接可行性排序（按发表证据）</b>：① <b>CHOP×Utah</b>——工具三件套齐备，缺的只是犬几何与组织参数输入（第十一章评估表结论在此闭环）；② <b>UT Austin Rausch</b>——TriValve 开源几何 + 边界条件敏感性方法论，最擅长回答"犬小瓣环下夹子力学"；③ <b>Emory/Padala</b>——决策范式最接近术者使用场景；④ <b>Canon 模式</b>——器械商自带仿真，V-Clamp 厂商的现成工业路径；⑤ <b>米兰双线</b>——与器械源头无利益绑定的独立学术验证最佳人选。</li>
+        <li><b>犬类切入点建议</b>：Phase 0（第十二章）首选复用 CHOP×Utah 三件套 + Rausch 边界条件协议，先做"健康犬几何 + 虚拟修复回溯"——零授权成本、零软件成本起步。</li>
+        <li><b>中文区破局点</b>：中文区临床证据断层（9.2 团队 9）+ 中文仿真团队刚起步（武大/中科院力学所，2025）——<b>"临床 × 仿真"中文区双轨同建</b>是差异化机会，也是把证据断层变成发表洼地的路径。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>十四、引用与版本管理 <span class="status st-done">■</span></h2>
+    <div class="prose">
+      <ul>
+        <li>仿真文献 8 篇 DOI 见第七章归纳卡；人类临床里程碑出处随第五章、第六章标注（部分标 □ 待核）。</li>
+        <li>犬 TEER 数据全部沿用 20261016 调查稿（PMID 均经核验）+ 2026 年新增条目。</li>
+        <li>器械谱系表述铁律：<b>人类 ValveClamp（复旦中山原创）→ 犬用 V-Clamp</b>；不提及任何前公司主体。</li>
+        <li>定稿前引用统一排版（NLM/Vancouver），全文去 AI 腔处理。</li>
+        <li><b>中英翻译约定：</b>英文版自本中文版（v0.2.1）译出，术语口径以本版为准（MMVD/TEER/rim 等首次译名随文注原词）；器械谱系铁律对英文版同样适用：human ValveClamp (original creation by Zhongshan Hospital, Fudan University) → canine V-Clamp，不出现任何前公司主体。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="legend">
+    状态图例：<span class="status st-done">■ 已成文</span> <span class="status st-skel">◐ 骨架已立待充实</span> <span class="status st-todo">□ 待填</span>
+    ｜ 本框架基于 E 盘 8 篇仿真文献全文精读（Aslan/Laurence/Mangine/Wu/Nakhaei/Ching/Haese/Gaidulis）与既往调查《犬二尖瓣 TEER 全球文献调查（2020–2026, 20261016）》编制；所有 PMID/DOI 来源可溯。
+    ｜ v0.1（2026-10-29 凌晨，骨架）→ <b>v0.2（2026-10-29，人类篇七章完整详述（仿真文献逐篇归纳卡）+ 犬类篇六章 + 可迁移性评估表独立成章）</b>；<b>v0.2.1（2026-10-29 深夜）：韩国 KAMC 署名格局订正（临床执行核心 Youp KA/叶）、日本东京农工大学实验团队补入（全球唯一健康犬在体复现）、泰国两支力量分立（Petchdee/KU）、波兰机构核实（UPWr×雅盖隆）、第十三章全球调查完成（7 国 10+ 团队逐一有据）</b>；<b>v0.2.2（2026-10-29 续）：第十三章扩为「临床版图 × 仿真版图」双版图——新增 13.6 全球 TEER 仿真 25 年谱系（44 条记录全部回拉署名页核实机构：S1 全链条开源 2 支 / S2 器械级专精 4 支 / S3 新入局与散点 6 组 / S4 早期开创 / S5 兽医方=0）、13.7 开源资产盘点（三件套判定）、13.8 犬类承接可行性排序（CHOP×Utah → Rausch → Padala → Canon 模式 → 米兰）</b>。
+  </div>
+</div>
+</body>
+</html>
